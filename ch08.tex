@@ -1,0 +1,241 @@
+\section{Verhalten im Tierreich: Neurologisch, Psychologisch, Ethologisch}
+
+\subsubsection{Neurologisch -- Vektorfeldaddition im Frosch-Rückenmark}
+\begin{itemize}
+	\item Neurobiologische Hypothese der motorischen Kontrolle durch Vektorfelder
+	\item Bizzi (MIT) hat gezeigt, dass Gliedmaßenbewegung in Fröschen im Rückenmark codiert abgelegt sind
+	\item Mikrostimulation im Rückenmark generiert eine Bewegung zu einem spezifischen Punkt
+	\item Planung im ZNS wird auf solche Reize umgesetzt
+\end{itemize}
+
+\subsubsection{Psychologisch -- Verhaltens-, Gestalt- und Kognitive"-Psychologie}
+\begin{itemize}
+	\item \textbf{Verhaltens-Psychologie:}
+	Verhalten wird durch Beobachtung definiert.
+	Alles wird auf ein Stimulus-Antwort Schema zurückgeführt.
+	\item \textbf{Gestalt-Psychologie:}
+	Einbeziehung der Physik.
+	Verhalten entsteht als direkte Konsequenz aus der Struktur der physischen Umgebung.
+	\item \textbf{Kognitive Psychologie:}
+	Einbeziehung des Wissens.
+	Vereinheitlichte Methode, um die Beziehung von Aktion und Perzeption zu erklären.
+\end{itemize}
+
+\subsubsection{Ethologisch -- Reflexe, Taxe und feste Muster}
+\begin{itemize}
+	\item Ethologie bezeichnet die Beobachtung von tierischem Verhalten in seinem natürlichen Lebensraum.
+	\item Das Tier wird als Teil des Gesamtsystems angesehen, das auch die Umgebung mit einbeziehen muss.
+	\item Klassifizierung in \textbf{Reflexe}, \textbf{Taxe} und \textbf{Feste  Muster}.
+	\item Motivierte Verhalten als Antwort auf interne Stimuli.
+	\item Schematheorie (Lorenz): Zusammenfassung von komplizierten Kombinationen aus Reflexen, Taxen und Mustern zu Schemata.
+	\item Prinzip der \glqq Ökologische Nische \grqq (McFarland). Ein Tier überlebt, weil es eine Nische gefunden hat.
+\end{itemize}
+
+Drei Klassen von Verhalten im Tierreich:
+\begin{itemize}
+	\item \textbf{Reflexe}: schnelle, automatische und unbewusste Reaktionen, die von einem sensorischen Stimulus ausgelöst werden.
+	\item \textbf{Taxe}: Verhalten, die ein Tier in Richtung (attractive) oder entgegen (aversive) eines Stimulus orientieren.
+	\item \textbf{Feste Muster}: Reaktionen auf Stimuli, die länger anhalten als die Stimuli selbst.
+\end{itemize}
+
+\section{Verhaltensbasierte Robotik -- Übersicht  und Einführung}
+
+\subsubsection{Motivation -- Warum verhaltensbasierte Architekturen}
+\begin{itemize}
+	\item Komplexe Verhalten entstehen nicht notwendigerweise aus komplexen Steuerungssystemen
+	\item Die Natur ist das beste Vorbild
+	\item Simplizität ist eine Tugend
+	\item Robustheit bei verrauschten Sensorwerten ist ein Designziel
+	\item Systeme sollten inkrementell aufgebaut werden können
+	\item Alle Berechnungen Onboard
+	\item Roboter sollten billig sein
+\end{itemize}
+
+\subsubsection{Roboter Steuerungs"=Spektrum -- Von reaktiv bis deliberativ}
+\textbf{Roboter Steuerungs-Spektrum:}
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{figures/steuerungs_spektrum.png}
+\end{center}
+
+\textbf{Hierarchische Steuerung:}
+\begin{itemize}
+	\item Hierarchische Anordnung von Steuerungselemente, wobei höhere Ebenen Unterziele für niedrigere erzeugen
+	\item Eigenschaften
+	\begin{itemize}
+		\item Es wird vorausgesetzt, dass die zu erfüllende Aufgabe zerlegbar ist
+		\item Ein Weltmodell auf jedem Level garantiert die korrekte Ausführung
+	\end{itemize}
+\end{itemize}
+
+\textbf{Reaktive Steuerung:}
+\begin{itemize}
+	\item Bedeutet vereinfacht eine enge Kopplung zwischen Perzeption und Aktion
+	\item Definierte Schlüsselelemente:
+	\begin{itemize}
+		\item \textbf{Embodiment:} Der Roboter hat eine physikalische Präsenz
+		\item \textbf{Situatedness:} Der Roboter ist als Einheit in seiner Umgebung eingebunden
+		\item \textbf{Emergence:} Intelligenz entsteht durch Interaktion mit der Umwelt
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Die Anfänge}
+\begin{itemize}
+	\item Walters Machina Speculatrix 1953
+	\item Braitenberg Vehicles 1984
+\end{itemize}
+
+\section{Beispiele für verhaltensbasierte Architekturen}
+
+\subsubsection{Anforderung an die Architektur / Bewertungsschema}
+\begin{itemize}
+	\item Unterstützung der \textbf{Parallelisierung}: Verhalten auf verschiedenen Prozessoren berechnen
+	\item Abstimmung auf die Hardware / \textbf{Hardwareabhängigkeit}: Verhalten speziell auf Hardware abgestimmt
+	\item \textbf{Modularität}: Einfache klare Module, einfache System"=Erweiterbarkeit
+	\item \textbf{Robustheit}: Gesamtsystem sollte stets stabil bleiben
+	\item Fortschritt der \textbf{Umsetzung}: Gibt es eine funktionierende Implementierung?
+	\item \textbf{Flexibilität zur Laufzeit}: Kann sich das System anpassen?
+	\item \textbf{Effektivität} in Hinsicht der Erfüllung der Aufgabe: System Overhead?
+\end{itemize}
+
+\subsubsection{Subsumption (MIT)}
+\begin{itemize}
+	\item Anordnung der Verhalten auf horizontalen Schichten
+	\item Alle Verhalten greifen auf alle Sensordaten zu und generieren Aktionen für alle Aktoren
+	\item Interaktion der einzelnen Verhalten durch Inhibieren von Eingängen und Überstimmen von Ausgängen
+	\item Rückkopplung primär über die Umgebung
+	\item Eigenes C Derivat: Interactive C
+\end{itemize}
+
+\begin{figure}
+\centering
+\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/aufbau_verhaltensebenen.png}}
+\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/aufbau_verhaltensebenen_1.png}}\par\medskip
+\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/subsumption_basiselement.png}}
+\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/verschaltung_basiselement.png}}
+	\caption{\textbf{Subsumption}: a) und b) Aufbau der Verhaltensebenen; c) Subsumption-Basiselement: Blockiere verhindert das ein Signal ausgegeben wird, Unterdrücker unterdrückt ursprüngliches Signal und ersetzt es durch das Unterdrückungssignal, Reset stellt den Ursprungszustand wieder her; d) Verschaltung von Basiselementen}
+\end{figure}
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{figures/subsumption_beispiel.png}
+	\caption{Subsumption Beispiel der MIT Laufroboter Ghengis/Attila -- Ebenen}
+\end{figure}
+
+\textbf{Subsumption Bewertung}
+\begin{itemize}
+	\item Parallelisieren möglich
+	\item Hadwareabhängig
+	\item Modulare erweiterbare Struktur teilweise vorhanden
+	\item Robustheit von Modulen abhängig
+	\item Prototypisch umgesetztes System
+	\item Keine Flexibilität zur Laufzeit
+	\item Teilweise effektive Erfüllung der Aufgabe
+\end{itemize}
+
+\subsubsection{Verhaltensnetzwerke/ Verhaltenssteuerung}
+\textbf{Vorteile}
+\begin{itemize}
+	\item Flexibel, adaptiv
+	\item Robust, Ausfall eines Verhaltens führt nicht zu Totalausfall
+	\item Können auf unvorhergesehene Situationen besser reagieren
+	\item Asynchron, jedes Verhalten kann eigene Zykluszeiten verwenden
+	\item Viele kleine Module, die separat testbar sind
+	\item Unterstützt Parallelisierung
+\end{itemize}
+\textbf{Nachteile}
+\begin{itemize}
+	\item Verhalten des gesamten Systems schwer zu überschauen 
+	\item Viel Aufwand durch Tuning des Systems, speziell der Fusion
+\end{itemize}
+Die Vor- und Nachteile hängen von konkreten Architektur"=Ausprägungen ab. Mögliche Varianten und deren Charakteristika sind:
+\begin{itemize}
+	\item Fusionsprinzip/Coordinator: von Kooperativ bis Konkurrierend
+	\item Abstaktionsniveau/Granularity: von Reaktiv bis Deliberativ
+	\item Datenformat/Action"=encoding: von Diskret bis Kontinuierlich
+\end{itemize}
+
+\textbf{Ausgabe"=Fusion}: die Fusion oder Koordination der Ausgabe der einzelnen Verhalten:
+\begin{itemize}
+	\item \textbf{Cooperative}
+	\begin{itemize}
+		\item Alle Verhalten bestimmen zusammen eine Aktion oder 
+		\item Alle Verhalten bestimmen die Stärke vieler Aktionen 
+		\item[$\Rightarrow$] Sprungfreie Aktionen
+	\end{itemize}
+	\item \textbf{Competitive}
+	\begin{itemize}
+		\item Ein Verhalten bestimmt die zu ausführende Aktion
+		\item[$\Rightarrow$] Einfacher zu überschauen und zu testen
+	\end{itemize}
+\end{itemize}
+Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe \autoref{ch:08:fig:fusion_beispiel}.
+
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics[width=0.8\textwidth]{figures/fusion_beispiel.png}}\par\medskip
+	\subfloat[]{\includegraphics[width=0.8\textwidth]{figures/fusion_methoden.png}}
+	\caption{a) Beispiel: 3 Verhalten: weiche nach links/rechts aus, fahre gerade zum Ziel; b) unterschiedliche Methoden zur Fusion.}
+	\label{ch:08:fig:fusion_beispiel}
+\end{figure}
+
+\textbf{Priorität"=basierte Fusion}
+\begin{itemize}
+	\item Jedem Verhalten wird eine Priorität zugewiesen
+	\item Prioritäten sind (meist) dynamisch
+	\item Zuweisung erfolgt durch höhere Verhalten oder Arbiter, Automaten, Planer, etc.
+	\item Konkurrierend: Verhalten mit höchster Prioriät bestimmt Aktion
+\end{itemize}
+
+\textbf{Aktivität"=basierte Fusion}
+\begin{itemize}
+	\item Jedes Verhalten bestimmt selbst seine Aktivität
+	\begin{itemize}
+		\item Normierte Stellgröße
+		\item Normierte Soll"=Ist Differenz ...
+	\end{itemize}
+	\item Entsprechend der Aktivität wird gewählt
+	\begin{itemize}
+		\item Konkurrierend: Das Verhalten mit der höchsten Aktivität wählt eine Aktion
+		\item Kooperative: Jede Aktion wird mit der Summe der Aktivitäten gewichtet ausgeführt
+	\end{itemize}
+\end{itemize}
+
+\textbf{Fuzzy"=basierte Fusion:}\\
+\includegraphics[width=.8\textwidth]{figures/fuzzy_based.png}
+
+\textbf{Wahl"=basierte Fusion}
+\begin{itemize}
+	\item Endliche Menge definierter Aktionen
+	\item Jedes Verhalten stimmt für eine Aktion
+	\begin{itemize}
+		\item Priority Based: Jedes Verhalten hat ein Stimmrecht gleich seiner Priorität
+		\item Activity Based: Jedes Verhalten hat ein Stimmrecht gleich seiner Aktivität
+	\end{itemize}
+	\item Entsprechend der Stimmen wird ausgewählt
+	\begin{itemize}
+		\item Die Aktivität mit den meisten Stimmen wird ausgeführt
+		\item Alle Aktivitäten werden mit ihren Stimmen gewichtet ausgeführt
+	\end{itemize}
+	\item Variante: Fusion besitzt ein Gedächtnis. Verhalten kann sowohl für als auch gegen eine Aktion stimmen. Die stimmen werden über die Zyklen akkumuliert. Vor- und Nachteil: Schnelle Aktionswechsel können verhindert werden.
+\end{itemize}
+
+\textbf{Status"=basierte Fusion}
+\begin{itemize}
+	\item Ein endlicher Automat kontrolliert die Verhalten
+	\item Je nach Zustand bestimmt der Automat, welches Verhalten die Aktion auswählen kann
+	\item Wird verwendet um Verhalten Prioritäten zuweisen zu können
+	\item Wird verwendet um zwischen verschiedenen Fusionsmethoden zu wechseln
+\end{itemize}
+
+\subsubsection{Verhaltensnetzwerke (FZI)}
+\begin{itemize}
+	\item Einheitliche Schnittstelle der Reflexeinheiten, bestehend aus Sensor- und Steuerungsdaten sowie Aktivierung, Aktivität und Bewertung
+	\item Modularer Aufbau
+	\item Hierarchische Anordnung innerhalb der Architektur abhängig von der Roboter"=Kinematik
+	\item Trennung von Daten- und Kontrollfluss
+	\item Implementierung in MCA2
+\end{itemize}
+
+\textbf{BISAM}:\\
+\begin{center}
+\includegraphics[width=.5\textwidth]{figures/bisam.png}
+\end{center}
