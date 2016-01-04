@@ -239,3 +239,176 @@ Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe 
 \begin{center}
 \includegraphics[width=.5\textwidth]{figures/bisam.png}
 \end{center}
+
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/verhalten_aufbau.png}}
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/verhalten_ausgabefusion.png}}\par\medskip
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/verhalten_kopplung.png}}
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/verhalten_netzwerke.png}}
+	\caption{a) Verhalten -- Aufbau, b) Verhalten -- Ausgabefusion, c) Verhalten -- Kopplung, d) Verhalten -- Netzwerke}
+	\label{ch:08:fig:verhalten_bisam}
+\end{figure}
+
+zu Netzwerken (vgl. \autoref{ch:08:fig:verhalten_bisam}):
+\begin{itemize}
+	\item Verteilung von reaktiv nach deliberativ
+	\item Zustandsbewertung und Aktivität a als virtuelle Sensoren
+	\item Motivation t als virtueller Aktor
+	\item Regionen durch virtuelle Aktoren
+	\item Stress und Angst einer Region
+	\begin{align}	
+		Angst_T(A) &= \int_{t = t_n - T}^{t_n} \left( \sum_{A_t \in R(A)} r_i\left(t\right)\right) dt \\
+		Stress_T(a) &= \int_{t = t_n - T}^{t_n} \left( \sum_{A_t \in R(A)} a_i\left(t\right)\right) dt
+	\end{align}
+\end{itemize}
+
+Verhalten -- Entwurfsverfahren:
+\begin{enumerate}
+	\item Definition der Verhalten und Reflexe
+	\item Finden von kinematischen Gruppen
+	\item Verteilen der Verhalten und Reflexe auf die Gruppen
+	\item Top-Down Sortierung deliberativ nach reaktiv (Regionen)
+	\item Bottom-Up Implementierung und schrittweise Validierung
+\end{enumerate}
+
+Statisch stabiles Laufen:
+\begin{itemize}
+	\item Variabler Untergrund
+	\item Adaption an Hindernisse
+	\item Entlastung des nächsten Schwungbeines
+	\item Stabilität während des Schwungzyklus
+\end{itemize}
+
+BISAM Bewertung:
+\begin{itemize}
+	\item Parallelisieren möglich
+	\item Hardwareunabhängig
+	\item Modulare, erweiterbare Strukturen sind vorhanden
+	\item Robustheit ist abhängig von Einzelverhalten
+	\item System ist prototypisch umgesetzt
+	\item Beschränkte Flexibilität der Laufzeit
+	\item Effektive Erfüllung der Aufgaben
+\end{itemize}
+
+\textbf{InBOT} als Beispiel für verhaltesbasierte Steuerung für Fahrzeuge:
+\begin{figure}
+	\includegraphics[width=\textwidth]{figures/inbot.png}
+	\caption{Verhaltensbasierte Steuerung für Fahrzeuge Beispiel InBOT}
+	\label{ch:08:fig:inbot}
+\end{figure}
+Hierarchisches Modell von Fußgängerbewegungen:
+\begin{itemize}
+	\item Strategische Verhalten:
+	\begin{itemize}
+		\item Grobe Routenplanung
+		\item Basiert auf Vorlieben
+		\item Erzeugt Knotenpunkte (KP)
+	\end{itemize}
+	\item Taktische Verhalten
+	\begin{itemize}
+		\item Erzeugt Unter-KP
+		\item Geometrie der Umgebung
+	\end{itemize}
+	\item Ausführende Verhalten
+	\begin{itemize}
+		\item Bewegungserzeugung
+		\item Pfad wird an Hindernisse und Menschen angepasst
+	\end{itemize}
+\end{itemize}
+
+Vorteile:
+\begin{itemize}
+	\item Nutzen erfolgreicher NAvigationsstrategien
+	\item Geringer A-Priori Informationsbedarf (keine detaillierte Karten)
+\end{itemize}
+Nachteile:
+\begin{itemize}
+	\item Das Verhalten des Roboters ist unscharf
+	\item D.h. schwieriger zu kontrollieren
+\end{itemize}
+%TODO f59,60,62
+
+Welt Modell -- Drei Ebenen:
+\begin{itemize}
+	\item Topologische Karte
+	\begin{itemize}
+		\item Invariant
+		\item Semantische Erweiterung
+	\end{itemize}
+	\item Objekt Datenbank
+	\begin{itemize}
+		\item Segmentierte Hindernisse
+		\item Tracking Informationen
+	\end{itemize}
+	\item Occupancy Maps
+	\begin{itemize}
+		\item Basislevel
+		\item Eignet sich gut für Datenfusion
+		\item Diskretes Welt Modell
+	\end{itemize}
+\end{itemize}
+
+Aufgaben-Orientieres Level:
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/aufgaben_level.png}}
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/aufgaben_level_1.png}}
+	\caption{Aufgaben-Orientiertes Level}
+	\label{ch:08:fig:aufgaben-orientiert}
+\end{figure}
+\begin{itemize}
+	\item Fusion der Task-Orientierten Verhalten
+	\item Auswahl eines Verhaltens durch eine Maximum Fusion (konkurrierend)
+	\item Vorausschauende Hindernis"=Behandlung
+	\item Sub-Ziele werden generiert, wenn der direkte Weg zum Ziel blockiert ist
+	\item Ecken der Hindernisse dienen als Sub-Ziele
+	\item Der Roboter bewegt sich ähnlich zu einem Sichtgraph
+	\item Alle sichtbaren Eckpunkte werden nach ihrer Qualität gewichtet
+	\item Ecke mit bester Qualität wird ausgewählt
+	\item Bei Sackgaseen/Lokalen Minima:
+	\begin{itemize}
+		\item Günstigste Ecke wird als Sub-Ziel gewählt
+		\item Befindet sich der Roboter bereits in der Sackgasse ist das Sub-Ziel hinter ihm
+		\item[$\Rightarrow$] Der Roboter kann um Sackgassen herumfahren oder aus ihnen entkommen
+		\item[$\Rightarrow$] Klassisches Problem der Lokalen Minima der Potentialfeldermethoden wird vermieden
+	\end{itemize}
+\end{itemize}
+
+Objekt-Orientiertes Level:
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/objekt_level.png}}
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/objekt_level_1.png}}
+	\caption{a) Objekt-Orientiertes Level, b) Behandlung statischer Hindernisse}
+	\label{ch:08:fig:objekt-orientiert}
+\end{figure}
+\begin{itemize}
+	\item Fusion der Aktion aus dem Aufgaben-Orientierten Level mit den Ausgaben der Verhaltensgruppen zur Hindernisbehandlung
+	\item Kooperative Fusion (alle drei Aktionen werden gewichtet und gleichzeitig ausgeführt)
+\end{itemize}
+Objekt-Orientiertes Level: Avoid Obstacles
+\begin{figure}
+	\centering
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/objekt_level_hindernis.png}}
+	\subfloat[]{\includegraphics[width=0.5\textwidth]{figures/objekt_level_hindernis_1.png}}
+	\caption{Aufgaben-Orientiertes Avoid Obstacles}
+	\label{ch:08:fig:objekt-orientiert-hindernis}
+\end{figure}
+\begin{itemize}
+	\item Dynamische Vektorfeld Methode
+	\item Erzeugt Vektor, der vom Hindernis"=Schwerpunkt weg zeigt
+	\item Jeweils ein abstoßender Vektor für Links- und Rechtsseitige Hindernisse
+	\item Fusion (kooperativ) dieser beiden Vektoren mit einem anziehenden Vektor Richtung Ziel
+\end{itemize}
+
+Bewertung InBOT:
+\begin{itemize}
+	\item Parallelisieren möglich
+	\item Hardwareunabhängig
+	\item Modulare, erweiterbare Struktur vorhanden
+	\item Robustheit ist abhängig von Einzelverhalten
+	\item System ist sehr weit umgesetzt
+	\item Flexibilität zur Laufzeit
+	\item Effektive Erfüllung der Aufgabe
+\end{itemize}
