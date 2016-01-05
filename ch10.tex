@@ -1,0 +1,309 @@
+\subsection{Übersicht aktueller, humanoider Robotersysteme}
+
+\subsubsection{Fragestellungen bei der Entwicklung Humanoider}
+\begin{itemize}
+	\item Welche physiologischen Eigenschaften braucht ein humanoider Roboter?
+	\item Welche Fähigkeiten müssen existieren um jede Art von Objekt zu manipulieren?
+	\item Wie können wir diese Fähigkeiten finden und optimieren?
+	\item Wie zuverlässig ist das Robotersystem und wie sicher in Kooperation mit dem Menschen?
+	\item Welche Information benötigt man über das Einsatzumfeld des Roboters und den menschlichen Operator?
+	\item Wie kann der Roboter mit dem menschlichen Operator kommunizieren und umgekehrt?
+	\item Wie kann sich der Roboter selbst an neue Anwendungen anpassen?
+\end{itemize}
+
+\subsubsection{Beispiele humanoider Roboter}
+\begin{itemize}
+	\item Honda Asimo, Japan
+	\item HRP4, Japan
+	\item ARMAR III, Deutschland
+	\item Walking Trumpet (Toyota), Japan
+	\item Wabian, Japan
+	\item Shadow Biped, UK
+	\item iCub, Italien, UK, Schweiz
+	\item Rollin' Justin, DLR, Deutschland
+	\item Elvis, Uni Gothenburg, Schweden
+	\item HoLLiE, FZI, Deutschland
+	\item ARMAR 4, KIT, Deutschland
+	\item REEM-C, PAL, Spanien
+	\item TORO, DLR, Deutschland
+	\item SCHAFT, Japan (DARPA)
+	\item ATLAS, USA (DARPA)
+	\item HUBO, Japan (DARPA)
+	\item Valkyrie, USA (DARPA)
+	\item Teilkomponenten:
+	\begin{itemize}
+		\item DLR-Arm II + III
+		\item Fa. Otto Bock, Duderstadt
+		\item Frauenhofer, Magdeburg
+		\item Schunk SVH
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Uncanny Valley}
+Je ähnlicher Roboter dem Menschen werden, desto unheimlicher wirken sie auf uns.
+Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley}.
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/uncanny_valley.png}
+	\caption{Uncanny Valley}
+	\label{ch:10:fig:uncanny-valley}
+\end{figure}
+
+\subsection{ARMAR der humanoide Roboter aus Karlsruhe}
+\begin{itemize}
+	\item ARMAR, 2000
+	\item ARMAR-II, 2002
+	\item ARMAR-IIIa, 2006
+	\item ARMAR-IV, 2012
+\end{itemize}
+
+\subsubsection{Zielsetzung des ARMAR Projekts}
+\begin{itemize}
+	\item Humanoide Roboter als Service-Roboter
+	\item Niedrige Herstellungskosten, Leichtbaukonstruktion mit niedrigem Energieverbrauch
+	\item Programmierung von Manipulationsaufgaben
+	\item Direkte Mensch-Roboter-Interaktion
+	\item Einfacher, direkter Transfer von menschlichen Fertigkeiten
+	\item Adäquate Benutzerschnittstelle
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\textwidth]{figures/armar.png}
+	\caption{ARMARx}
+\end{figure}
+
+\subsubsection{ARMAR-III} %TODO wichtig?!
+\begin{itemize}
+	\item 7 DOF Lightweight arms
+	\begin{itemize}
+		\item Position, velocity and torque controlled
+		\item Force-Troque Sensors
+		\item Sensitiv Skin
+	\end{itemize}
+	\item 7 DOF robot head
+	\begin{itemize}
+		\item 2 cameras in each eye
+		\item 6 microphones
+	\end{itemize}
+	\item 3 DOF torso
+	\begin{itemize}
+		\item 2 embedded PCs
+		\item 10 DSP/FPGA Units
+	\end{itemize}
+	\item Holonomic mobile platform
+	\begin{itemize}
+		\item 3 laser scanner
+		\item 3 embedded PCs
+		\item 2 batteries
+	\end{itemize}
+	\item Head
+	\begin{itemize}
+		\item 3 DOF eyes (Pan left, Pan right, Tilt)
+		\item 3 DOF neck (roll, pitch, yaw)
+		\item incremental encoders for all DOF
+		\item 6 microphones
+		\item 2 stereo camera pairs
+	\end{itemize}
+	\item Cameras
+	\begin{itemize}
+		\item PointGrey DragonFly
+		\item Connection: Firewire 400
+		\item Framerate: 30fps max.
+		\item Resolution: 640x480 max.
+		\item Focal length foveal pair: 12mm
+		\item Focal length perspective pair: 2,9mm
+	\end{itemize}
+	\item Mechatronics and Control
+	\begin{itemize}
+		\item Speech input and output
+		\item Collision-free navigation
+		\item Acoustic localization
+		\item Visual user tracking
+		\item Visual color-based object
+		\item Redundancy resolving
+		\item Hybrid force position control
+		\item Coordination of tast execution
+	\end{itemize}
+\end{itemize}
+
+\subsection{Programmieren humanoider Roboter}
+
+\subsubsection{Einführung}
+\begin{itemize}
+	\item Artifical Skin for the Support of Save MMI
+	\begin{itemize}
+		 \item Multimodale künstliche Haut mit Distanzsensoren
+		 \item Beschleunigungssensoren
+		 \item Kraft-Moment-Messung
+		 \item Finger mit speziellen Tastsensoren
+	\end{itemize}
+	\item Inverse Kinematik
+	\begin{itemize}
+		\item Keine Invertierung der Jacobi-Matrix
+		\item Redundanz ist parametrisiert als Kreis im kartesischen Raum
+		\item Direkte Kontrolle von allen Punkten im Arbeitsraum
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/flexible_greifersysteme.png}
+		\caption{Flexible Greifersysteme mit geringem Gewicht}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/regelungsansatz.png}
+		\caption{Regelungsansatz}
+	\end{subfigure}\\
+	\begin{subfigure}{.7\textwidth}
+		\includegraphics[width=\textwidth]{figures/regelung_humanoider.png}
+		\caption{Regelung des Humanoiden Systems -- Konzept des Neuro-Fuzzy-basierten Überwachungs- und Regelungskonzepts}
+	\end{subfigure}
+\end{figure}
+
+\subsubsection{Programmierung von Manipulationsaufgaben}
+\begin{itemize}
+	\item Adaption von humanoiden Armbewegungen
+	\begin{itemize}
+		\item Vermessung von Position und Orientierung von Ellbogen und Handgelenk
+		\item Simulation der natürlichen Armbewegung mit 3D-Model des menschlichen Arms
+		\item Transfer der Bewegungen
+		\item Inverse Kinematik
+	\end{itemize}
+	\item Adaption von Arm- und Körperbewegung basierend auf Manipulationsaufgabe und Umweltsituation
+\end{itemize}
+Human detection in Smart rooms:
+\begin{itemize}
+	\item Sensors:
+	\begin{itemize}
+		\item On-board: Stereo-camera + $2 \ldots 8$ microphones
+		\item Extern: $2 \ldots n$ monocular cameras + 4-channel microphone arrays
+	\end{itemize}
+	\item Features:
+	\begin{itemize}
+		\item Individual color models, detectors for head and upper body, difference images
+	\end{itemize}
+	\item Method:
+	\begin{itemize}
+		\item Shared particle filter for A/V featurs, local calculation of features achieving real-time computation
+	\end{itemize}
+\end{itemize}
+\textbf{Programmieren durch Vormachen}:\\
+Demonstration Environment und Execution Environment. Multimodale Perzeption: mit Kameras, Kinects, Datenhandschuh usw.\\
+\textbf{Interaktives Lernen von humanoiden Robotern}\\
+Menschlicher Operator als Lehrer: Demonstration, Kontrollabsichten, Kommentare zu ausgeführten Aktionen\\
+Roboter: Hypothesen bilden, Nachfragen von Hypothesen\\
+\textbf{Simulation eines humanoiden Roboters}\\
+VR für Roboter"=Mensch Interaktion. Simulation eines komplexen mechatronischen Systems mit unterschiedlichen Sensoren.
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{figures/pdv.png}
+	\caption{Programmieren durch Vormachen}
+\end{figure}
+
+\subsection{Perzeption für humanoide Roboter}
+
+\subsubsection{Detektion und Modellierung menschlicher Operator und Umwelt}
+\begin{itemize}
+	\item Entwicklung eines erweiterten Umfeldmodels, mit interaktiven Mechanismen
+	\item Kontextsensitives Model für die Beschreibung und Voraussage von menschlichen Operator Bewegungen
+	\item Präzise Modelle menschlicher Handbewegungen für die Manipulation
+	\item Unterstützung von Mensch-Roboter-Interaktionen basierend auf einem umfassenden Grundwissen der Umweltsituation und der Intention des menschliche Operators
+	\item Robuste Detektion und Segmentierung
+	\item Audio-visuelles Tracking des menschlichen Operators
+	\item Detektion von bestimmten Körperteilen
+	\item Bestimmung des \glqq focus of attention\grqq	 des menschlichen Operators
+	\item Audio-visuelle Kontrolle des \glqq focus of attention\grqq
+\end{itemize}
+
+\subsubsection{Akustische Szenen-Analyse und Stereo Vision}
+Akustische Szenen-Analyse:
+\begin{itemize}
+	\item Reduktion von Lärm zwecks Spracherkennung
+	\item Lokalisation und Segmentierung von Lärmquellen
+	\item Identifikation von Lärmquellen
+	\item Erweiterung des Umweltmodells
+\end{itemize}
+Stereo Vision:
+\begin{itemize}
+	\item Correlation based depth reconstruction
+	\item Texture mapping
+	\item Color based object recognition methods
+	\item Stereo based object localization methods
+\end{itemize}
+
+\subsubsection{Modeling of Scenes and Objects}
+\begin{itemize}
+	\item Development of a flexible environment model database
+	\item Generic object and scene representations
+	\item Interactive object modelling methods and tools
+	\begin{itemize}
+		\item high accuracy 3D laser scanner
+		\item rotation joint with camera bracket
+		\item turn table
+		\item high resolution stereo camera system
+		\item software controlled lights for environment variation
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Colored Object Recognition}
+\begin{itemize}
+	\item Segmentation by color
+	\item Appearance-based recognition using a global approach
+	\item Model-based generation of viewsets
+	\item Combination of stereo vision and stored orientation information for 6D-localization (with resprect to a given 3D model)
+\end{itemize}
+\begin{align*}
+	\text{Object Recognition} + \text{Scene} & \text{ Representation} + \text{Perception of Humans} \\
+	& \Downarrow \\ \text{Human Activity Reco} & \text{gnition and Understanding}
+\end{align*}
+
+
+
+\subsection{Anwendungen und Einsatz}
+\begin{itemize}
+	\item DESIRE -- Functions and components for everyday use
+	\begin{itemize}
+		\item Perception
+		\begin{itemize}
+			\item Safe and fast detection and modeling of objects and obstacles in 3D
+			\item Module for the analysis of everyday scenes
+			\item Algorithms for the robust recognition and identification of people and interaction partners
+		\end{itemize}
+		\item Mobile Manipulation
+		\begin{itemize}
+			\item Safe and adaptive grasping and manipulation of everyday items
+			\item Robust, collision-free control of highly complex kinematics
+		\end{itemize}
+		\item Mechatronic Components
+		\begin{itemize}
+			\item Hardware for the technology platform and the specific service robots and applications
+			\item Modules for multimodal commands, navigation and localization components for both the indoor and outdoor navigation of mobile robots
+		\end{itemize}
+	\end{itemize}
+	\item Car-O-Bot -- Assistenz und Pflegeroboter
+	\begin{itemize}
+		\item Mobile Roboterbasis mit 1 bzw.\ 2 Leichtbauarmen des Frauenhofer IPA, Stuttgart
+		\item Transportaufgaben im Haushalt und Pflegeeinrichtungen
+		\item Unterstützung im Alltag
+		\item Fokus: Mensch-Maschine Interaktion
+		\item Mittlerweile 4. Generation (4. Generation: komplett modulares Design)
+	\end{itemize}
+	\item Rollin Justin
+	\item AIS Rob
+	\item HoLLiE (House of Living Labs intelligent Escort) -- Service Roboter
+	\begin{itemize}
+		\item Kombination industrieller Komponenten zu innovativen Roboter
+		\item Zwei 6 DOF Arme
+		\item Zwei 5 Finger Hände
+		\item Omnidirektionale Basis
+		\item 2 Knickgelenke im Torso
+		\item 2 Freiheitsgrade im Kopf
+		\item Großer Arbeitsraum (erreicht Fußboden)
+	\end{itemize}
+	\item Asimo
+	\item Wabian-2R (Zweibeiner)
+	\item 5-Finger Hand an 6-Achs Arm
+	\item Petman -- boston Dynamics 2009, 2011, 2013
+\end{itemize}
