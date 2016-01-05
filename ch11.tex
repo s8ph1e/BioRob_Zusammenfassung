@@ -1,0 +1,398 @@
+\subsection{Vererbung und Evolution in der Biologie}
+
+\subsubsection{Die Mendelschen Gesetze}
+
+\textbf{Nomenklatur}
+\begin{itemize}
+	\item Homozygotie: Reinerbigkeit im Bezug auf ein genetisches Merkmal
+	\item Heterozygotie: Mischerbigkeit im Bezug auf ein genetisches Merkmal
+	\item Allel: mögliche Ausprägung eines Gens, das sich an einem bestimmten Ort auf einem Chromosom befindet
+	\item Gen: Abschnitt auf der DNA
+	\item Chromosom: Strukturen, die Gene und damit Erbinformationen enthalten. Sie bestehen aus DNA, die mit vielen Proteinen verpackt ist
+	\item Genom (Erbgut): Gesamtheit der vererbbaren Informationen einer Zelle oder die Gesamtheit der materiellen Träger der vererbbaren Informationen, also die Gesamtheit der Chromosomen, der Gene oder DNA
+	\item Diploider Organismus: besitzt von jedem Gen, das z.B.\ die Blutgruppe oder Haarfarbe kodiert, zwei Kopien, im Normalfall eine von jedem Elternteil (Mensch ist diploid)
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/nomenklatur.png}
+	\caption{Vererbung Nomenklatur}
+\end{figure}
+
+\textbf{Vererbung von Merkmalen in der Natur -- Mendelsche Gesetzte}
+\begin{enumerate}
+	\item Uniformitätsgesetz:
+	Kreuzt man zwei homozygote Linien, die sich in einem oder mehreren Allelpaaren unterscheiden, so sind alle F1-Hybriden uniform.
+	\begin{itemize}
+		\item Es werden zwei reinerbige (homozygote) Eltern verpaart
+		\item Die Eltern unterscheiden sich
+		\item Die Nachkommen der ersten Generation (F1-Hybriden) sind dann gleich (uniform) bezogen auf das untersuchte Merkmal
+		\item Unterscheidung je nach Erbgang:
+		\begin{itemize}
+			\item dominant-rezessiv: ein Merkmal dominant, ein Merkmal rezessiv
+			\item intermediär: Merkmale bilden Mischform
+			\item Kodominant: beide Merkmale separat ausgebildet
+		\end{itemize}
+	\end{itemize}
+	\item Spaltungsgesetz:
+	Kreuzt man (F1-)Hybriden, die in einem Allelpaar heterozygot sind, so ist die F1-Generation nicht uniform.
+	\begin{itemize}
+		\item Es werden zwei mischerbige (heterozygote) Eltern verpaart
+		\item Die Eltern besitzen beide die gleichen Merkmalsanlagen
+		\item Die Nachkommen der ersten Generation (F1-Hybriden) sind dann nicht gleich bezogen auf das untersuchte Merkmal
+		\item Auswirkung durch Erbgang: dominant-rezessive Vererbung:
+		\begin{itemize}
+			\item $\frac{1}{4}$ rein rezessive
+			\item $\frac{2}{4}$ mischerbig
+			\item $\frac{1}{4}$ rein dominant
+		\end{itemize}
+	\end{itemize}
+	\item Unabhängigkeitsregel (gilt eingeschränkt):
+	Kreuzt man zwei hohozygote Linien untereinander, die sich in zwei oder mehreren Allelpaaren voneinander unterscheiden, so werden die einzelnen Allele unabhängig voneinander, entsprechend den beiden ersten Mendelschen Gesetzen vererbt.
+\end{enumerate}
+
+\subsubsection{Zellteilung, Vererbung und Mutation}
+\textbf{Zellteilung}
+\begin{itemize}
+	\item \textbf{Meiose} = Reifeteilung = Reduktionsteilung
+	\begin{itemize}
+		\item besondere Art der Zellkernteilung
+		\item Zahl der Chromosomen halbiert sich
+		\item vollzieht sich immer in zwei Teilungsschritten
+		\item Rekombination der elterlichen Chromosomen
+		\item Grundlage der geschlechtlichen Fortpflanzung (Säugetiere, Fische, Vögel..)
+		\item Haploidie: Chromosomensatz einer Zelle nur einfach vorhanden, Zellkern enthält von allen Chromosomentypen nur ein einziges Exemplar.
+		Typischerweise sind die Chromosomensätze der Eizellen und Spermien haploid. Ihre haploiden Chromosomensätze verschmelzen bei der Befruchtung zum doppelten Chromosomensatz einer diploiden Zelle.
+		\item Homolog: zwei Chromosomen enthalten gleiche Gene.
+	\end{itemize}
+	\item \textbf{Mitose} = Karyokinese = indirekte Kernteilung
+	\begin{itemize}
+		\item gewöhnliche Kernteilung
+		\item Keine Rekombination der Chromosomen
+		\item Beispiele: Bakterien, manche Pflanzen, Gewebe, ...
+	\end{itemize}
+\end{itemize}
+%
+\begin{figure}
+	\centering
+	\begin{subfigure}{\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{figures/meiose.png}
+	\end{subfigure}
+	\begin{subfigure}{.6\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{figures/meiose_1.png}
+	\end{subfigure}
+	\caption{Meiose -- Zellteilung}
+\end{figure}
+%
+\textbf{Mutationen}
+\begin{itemize}
+	\item Genommutationen (Monosomie, Trisomie)
+	\item Chromosommutation (Verlust, Verdopplung, Hinzufügung, Drehung $180°$)
+	\item Genmutationen (ähnlich wie Chromosommutation nur auf Genbasis)
+\end{itemize}
+
+\subsection{Genetische Algorithmen -- \glqq Evolution im Rechner\grqq}
+
+\subsubsection{Genetische Algorithmen -- Motivation und Nomenklatur}
+Biologisches Evolutionsmodell nach Darwin: \emph{survival of the fittest}, \emph{natural selection}; Selektion als treibende Kraft\\
+Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $\Rightarrow$ hoch komplexe und and die Arbeits- bzw.\ Lebensumgebung hervorragend angepasste Systeme erzeugen lassen \\\\
+\textbf{Nomenklatur}
+\begin{itemize}
+	\item Fitnessfunktion $\triangleq$ zu optimierende Bewertungsfunktion
+	\item Individuum oder Hypothese $\triangleq$ Einzelne Lösung
+	\item Population und Generation $\triangleq$ Lösungsmenge
+	\item Erzeugung von Nachkommen $\triangleq$ Generierung neuer Lösungen
+	\item Genetische Operationen $\triangleq$ Rekombination, Mutation
+	\item Veränderter Nachfolger, Kind, Nachkomme $\triangleq$ neue Lösung
+	\item Selektion der Besten $\triangleq$ Auswahl der Lösungen, welche die beste Optimierung erzeugen
+\end{itemize}
+
+\subsubsection{Grundalgorithmus}
+\includegraphics[width=.7\textwidth]{figures/grundalgorithmus.png}
+
+\subsubsection{Generierung von Nachkommen}
+\begin{align*}
+	\text{Exploration} & \Leftrightarrow \text{Exploitation} \\
+	\text{Untersuchen des Raumes} & \Leftrightarrow \text{lokale Optimierung}
+\end{align*}
+
+\begin{itemize}
+	\item Je stärker und zufälliger Änderungen sind, desto geringer ist die Wahrscheinlichkeit, einen besseren Nachkommen zu erzeugen.
+	\item Bei lokalen Verbesserungsmethoden ist die Gefahr der lokalen Minima gegeben.
+	\item Explorationsfaktor muss gemäß der aktuellen Fitness der Generation ausgewählt werden.
+\end{itemize}
+%
+\textbf{Kodierung der Individuen}
+\begin{itemize}
+	\item Wissen/Information muss strukturiert repräsentiert werden
+	\begin{itemize}
+		\item Wie viel von dieser Strukturinformation soll genutzt werden?
+		\begin{itemize}
+			\item kein Einsatz, ausschließlich Anwenden der Algorithmen auf den Binärsequenzen
+			\item volle Ausnutzung der Strukturinformation $\Rightarrow$ Spezielles Zuschneiden des Optimierungsalgorithmus
+		\end{itemize}
+	\end{itemize}
+	\item Kodieren der Gene
+	\begin{itemize}
+		\item Binärcodierung $\Leftarrow$ Genetische Algorithmen
+		\item Reelle Zahlen, Vektoren $\Leftarrow$ Evolutionäre Strategien (Beispiel: $1010|1110|1111|1010|1000|1010$)
+	\end{itemize}
+\end{itemize}
+%
+\textbf{Mutation:} Der Nachkomme stammt von einem Elternteil ab
+\begin{itemize}
+	\item Mutation einzelner Bits: Bitinversion
+	\begin{align*}
+		\text{Elternteil: } & 1010110 \\
+		\text{Nachkomme: } & 1011110
+	\end{align*}
+	\item Konzepte:
+	\begin{itemize}
+		\item Alle Bits einer Sequenz werden unabhängig voneinander mit einer bestimmten Wahrscheinlichkeit invertiert
+		\item Für eine bestimmte (oder zufällige) Anzahl von Bits werden die Indizes zufällig ausgewählt
+		\item Stochastisch bei kontinuierlicher Repräsentation
+		\begin{equation*}
+			x_i := x_i + z
+		\end{equation*}
+		wobei $z$ eine Zufallsvariable  (z.B.\ Nach $N(0,\sigma)$ Normalverteilung um $0$ mit Varianz $\sigma$		
+	\end{itemize}
+	\item Mutationsoperator bei Sequenzen
+	\begin{itemize}
+		\item Herausnehmen einer Teilsequenz und Einfügen an anderer Stelle
+		\item Invertiertes Einfügen der Teilsequenz
+		\item Spezielle Mutationsoperationen  anwendungsspezifisch
+	\end{itemize}
+\end{itemize}
+%
+\textbf{Rekombination:} Der Nachkomme stammt von zwei oder mehr Eltern ab
+\begin{itemize}
+	\item Diskrete Rekombination
+	\begin{center}
+	\includegraphics[width=.6\textwidth]{figures/diskrete_rekombination.png}
+	\end{center}
+	\item Intermediäre Rekombination: Sei $x := \text{Elternteil}_1$ und $y := \text{Elternteil}_2$, dann ist Nachkomme $z$ definiert durch
+	\begin{equation*}
+		z_i := (x_i + y_i) / 2
+	\end{equation*}
+	\item Crossover
+	\begin{center}
+	\includegraphics[width=.5\textwidth]{figures/crossover.png}	
+	\end{center}
+\end{itemize}
+
+\subsubsection{Selektion}
+\textbf{Herausforderung einer guten Selektion}
+\begin{itemize}
+	\item Selektion:
+	\begin{itemize}
+		\item der Population in jeder Iteration
+		\item der Eltern für jeweilige Erzeugung von Nachkommen (Mating)
+	\end{itemize}
+	\item Problem:
+	\begin{itemize}
+		\item Genetische Drift: Individuen vermehren sich zufällig mehr als andere
+		\item Crowding, Ausreißerproblem: fitte Individuen und ähnliche Nachkommen dominieren die Population
+		\item Vielfalt der Population wird eingeschränkt
+		\item Entwicklung der Individuen (Konvergenz) wird verlangsamt
+	\end{itemize}
+	\item Lösung:
+	\begin{itemize}
+		\item Unterschiedliche Populationsmodelle und Selektionsmethoden
+		\item Populationsgröße optimieren
+	\end{itemize}
+\end{itemize}
+%
+\textbf{Populationsmodelle}
+\begin{itemize}
+	\item Eine einfache Menge: die global Besten entwickeln sich rasch weiter, andere Entwicklungslinien werden unterdrückt
+	\item Inselmodell: die Evolution läuft weitgehend getrennt, nur manchmal werden Individuen ausgetauscht
+	\item Nachbarschaftsmodell: Nachkommen dürfen nur von Individuen erzeugt werden, die in ihrer Nachbarschaft die beste Fitness besitzen
+	\item Nomenklatur
+	\begin{itemize}
+		\item $\lambda$ Anzahl von Nachkommen
+		\item $\mu$ Populationsgröße
+		\item $f$ Fitness-Funktion
+	\end{itemize}
+\end{itemize}
+%
+\textbf{Populationsmitglieder}
+\begin{itemize}
+	\item Populationsgrößer
+	\begin{itemize}
+		\item Soll sie konstant bleiben? $\mu$
+		\item Wie viele neu erzeugte Nachkommen? $\lambda$
+	\end{itemize}
+	\item Mitgliederselektion: stochastisch ausgewählt $\Rightarrow$ die besten $\mu$ Individuen
+	\begin{itemize}
+		\item $(\mu, \lambda)$ Strategie: Auswahl bezieht sich nur auf die Nachkommen (bessere Exploration)
+		\item $(\mu + \lambda)$ Strategie: Auswahl zieht auch Eltern mit ein (die Besten werden berücksichtigt, geeignet für gut berechenbare Fitness)
+	\end{itemize}
+	\item Ersetzungsregel für Mitglieder:
+	\begin{itemize}
+		\item Nachkommen ersetzen alle Eltern (Generationen-Modus)
+		\item Nachkommen ersetzen einen Teil der Eltern
+		\item Nachkommen ersetzen die ihnen am ähnlichsten Eltern
+		\item Geographische Ersetzung
+		\item Bestes Elternindividuum überlebt (Elitist-Modus)
+	\end{itemize}
+	\item Daumenregel: Das beste Viertel der Population sollte drei Viertel der Nachkommen erzeugen
+\end{itemize}
+%
+\textbf{Selektionsmethoden}
+\begin{itemize}
+	\item Fitness Based Selection
+	\begin{equation*}
+		P(x) \approx \frac{f(x)}{\sum_{x' \in Pop} f(x')} \text{ mit}
+	\end{equation*}
+	\begin{align*}
+		P(x): & \text{Wahrscheinlichkeit der Auswahl von Individuum x} \\
+		\lambda: & \text{Anzahl von Nachkommen} \\
+		\mu: & \text{Populationsgröße} \\
+		f: & \text{Fitness-Funktion}
+	\end{align*}
+	abhängig von der Fitnessfunktion z.B.\ im Laufe der Evolution nur noch geringe Änderungen in $f(x)$ und damit in $P(x)$
+	\item Ranking Based Selection
+	\begin{equation*}
+		P(x) \approx \frac{g(r(x))}{\sum_{x' \in Pop} g(r(x'))} \text{ mit}
+	\end{equation*}
+	\begin{align*}
+		P(x): & \text{Wahrscheinlichkeit der Auswahl von Individuum x} \\
+		r(x): & \text{Ranking von x in der aktuellen Population gemäß Fitnessfunktion} \\
+		g: & \text{mit der Güte des Ranges monton steigende Funktion größer 0}
+	\end{align*}
+	\begin{itemize}
+		\item Exponentiell: $g(x) = a^{-x}$
+		\item Hyperbolisch: $g(x) = x^{-a}$
+		\item Die besten k: $g(x) := 
+		\begin{cases}
+			\frac{1}{k} &, x \leq k \\
+			0 &, sonst
+		\end{cases}$
+	\end{itemize}
+	weniger abhängig von dem Betrag der Fitness
+	\item Tournament Selection (Tunier)
+	\begin{itemize}
+		\item wähle für jedes zu erzeugende Individuum $n (=2)$ Individuen
+		\item belohne davon, gemäß der Fitness das beste Individuum
+		\item wähle Individuen mit höchster Bewertung
+	\end{itemize}
+	wenig abhängig von dem Betrag der Fitness; Wahl der Selektionsmethode oft anwendungsspezifisch
+\end{itemize}
+%
+\textbf{Evolutionstheorien in der Biologie}
+\begin{itemize}
+	\item Lamarksche Evolution
+	\begin{itemize}
+		\item Individuen ändern sich (lernen) nach der Erzeugung
+		\item Genotyp wird verändert und anschließend vererbt
+	\end{itemize}
+	\item Baldwinsche Evolution
+	\begin{itemize}
+		\item Individuen ändern sich (lernen) nach der Erzeugung
+		\item Genotyp bleibt unverändert
+	\end{itemize}
+	\item Hybride Verfahren
+	\begin{itemize}
+		\item es gibt veränderbare und fixe Phänotypen
+	\end{itemize}
+	\item Anwendung: Suche nach optimalen neuronalen Netzen
+\end{itemize}
+
+\subsubsection{Anwendungen}
+\begin{itemize}
+	\item Cybermotten: Wer sich tarnt, wird nicht gefressen
+	\begin{itemize}
+		\item Konstante Population 200
+		\item Fitness -- Zeit in der die Motten vom Vogel entdeckt werden
+		\item Rekombination und Mutation (auf dem Graycode der Grauwertpixel)
+		\item Eltern erzeugen mehrere Nachkommen
+		\item Eltern überleben nur eine Generation
+	\end{itemize}
+	\begin{center}
+	\includegraphics[width=.5\textwidth]{figures/cybermotten.png}
+	\end{center}
+	\item Optionale Steuerung von Laufmaschinen
+	\begin{itemize}
+		\item Unterschiedliche Morphologie
+		\item Beispiel -- Erzeugung von Beinsteuerung
+		\item Steuerungsparameter
+		\begin{itemize}
+			\item Gelenknummer: integer $[0;3]$
+			\item Startzeitpunkt: real $[0;t]$
+			\item Dauer: real $[0;t]$
+			\item Kräfte: real $[-max;max]$
+		\end{itemize}
+		\item Individuum = Sequenz von Instruktionen variabler Länge
+		\item Mutation
+		\begin{itemize}
+			\item Micro-Mutation (Veränderung einzelner Werte einer Instruktion)
+			\item Macro-Mutation (Austausch ganzer Instruktionsblöcke)
+		\end{itemize}
+		\item Operatoren (Anpassung)
+		\begin{itemize}
+			\item Crossover
+			\item Micro-Crossover (Änderung eines Parameters einer Instruktion)
+			\item Macro-Crossover (Austausch einer Instruktion)
+			\item Homologes-Crossover (Austausch von Instruktionen eines speziellen Gelenks)
+		\end{itemize}
+		\item Fitness = Abweichung von einer vorgegebenen Trajektorie
+	\end{itemize}
+	\item AIBO -- Autonomous Evolution of Dynamic Gaits
+	\begin{itemize}
+		\item Ähnlicher Ansatz 
+		\item Fitness = Mittelwert aus drei Läufern; Funktion aus Richtung und Geschwindigkeit
+	\end{itemize}
+	\item Snakebot
+	\begin{itemize}
+		\item Biologische Inspiration: Seidenwinder Klapperschlange: $5 km/h$, und die schnellste Schlange, die Schwarze Mamba: bis $16 km/h$
+		\item Individuum = Steuerung
+		\item Fitness = Geschwindigkeit in Fortbewegung und Klettern, Befreien aus Hindernissen etc.\
+		\item Adaption: ein oder zwei Gelenke unbeweglich
+		\item Hinderniserkennung
+	\end{itemize}
+\end{itemize}
+
+\subsection{Künstliche Ontogenese: Entwicklung von Agenten durch künstliche Zellen}
+\textbf{Ontogenese:}
+struktureller Wandel einer Einheit ohne Verlust ihrer Organisation, Entwicklung des einzelnen Lebenswesens von der befruchteten Eizelle zu erwachsenen Lebewesen.\\
+\textbf{Ziel:}
+Entwicklung von Agenten durch künstliche Zellen\\\\
+%
+\textbf{Methode}
+\begin{itemize}
+	\item Repräsentation einer Zelle durch Kugel
+	\item Operatoren 
+	\begin{itemize}
+		\item Wachsen der Kugel im Durchmesser
+		\item bei Erreichen der maximalen Größen -- Teilen in zwei Kugeln, die durch Rotationsgelenk oder ein starres Element verbunden sind
+	\end{itemize}
+	\item Jede Kugel besitzt ein neuronales Netz mit Motoneuronen, Interneuronen und Perzeptionsneuronen
+	\item Kodierung als Gleitkomma Genom
+\end{itemize}
+%
+\textbf{Genobots} -- Automatisches Modulares Design
+\begin{itemize}
+	\item Individuen = Regeln und Algorithmen für die Erzeugung (Generative Repräsentation)
+\end{itemize}
+%
+\textbf{Golem} -- life as it could be
+\begin{itemize}
+	\item Individuum = Repräsentation der Morphologie
+	\item Roboter: Stangen (Länge, D, Steifigkeit), Aktuatoren, Gelenktypen, Neuronen (threshold, synaptische Verbindung)
+	\item Beschränkungen 
+	\begin{itemize}
+		\item Komplexe Strukturen (wie Muskeln) nicht möglich
+		\item Design Beschränkung
+		\item Evaluation (Fitness)
+		\item Übertragbarkeit in die Realität
+	\end{itemize}
+\end{itemize}
+
+\subsection{Selbstkonfigurierende Systeme -- Mutierende Roboter}
+siehe ab Folie 73
+\subsubsection{Kurzer Überblick (AIST, Japan) -- Selbstkonfiguration = Evolution? Mutation?}
+\subsubsection{Reales 2D System}
+\subsubsection{3D Selbstkonfigurierendes Robotersystem}
+
