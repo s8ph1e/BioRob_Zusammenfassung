@@ -1,0 +1,361 @@
+\subsection{Motivation und Einführung in lernende Systeme}
+%
+%\subsubsection{Warum/Wieso/Wann sollte man lernen?}
+Wenn kein Modell des zu steuernden Prozesses vorhanden ist, die Modellberechnung sehr komplex oder schwierig ist und/oder nicht modellierbare Umwelteinflüsse existieren.
+Dann muss der Zustands-/Aktionsraum experimentell erforscht werden.
+Im Falle eines Roboters muss dies zwangsläufig (oder zumindest größtenteils) online sein.\\
+%
+Sumsymbolische Lernverfahren:
+\begin{itemize}
+	\item Echtzeit Verarbeitung
+	\item Hohe Fehlertoleranz und Generalisierung
+	\item Leichte Erweiterbarkeit
+	\item Integration sensorischer Massendaten
+	\item Direkte Generierung kontinuierlicher Steuersignale
+	\item Neuronale Netze sind als Lösungsansatz geeignet
+	\item online/offline Lernen
+	\item überwachtest/unüberwachtes Lernen
+\end{itemize}
+
+\subsubsection{Gradientenabstieg}
+\begin{center}
+	\includegraphics[width=.7\textwidth]{figures/gradientenabstieg.png}
+\end{center}
+
+\subsubsection{Reinforcement Learning -- Zuckerbrot und Peitsche in der Robotik}
+\begin{itemize}
+	\item Online-Lernen
+	\item Inkrementelles Lernen
+	\item Sicherheits- und Robustheitsaspekte
+	\item Lernen von Aktionssequenzen
+	\item Kontinuierliche Aktionen
+\end{itemize}
+Unter verschiedenen Reaktionen, die auf dieselbe Situation hin ausgeführt werden, werden -- bei Gleichheit anderer Bedingungen -- diejenigen stärker mit der Situation verknüpft, die von einem für das Tier befriedigenden Zustand begleitet oder innerhalb kurzer Zeit gefolgt werden ... ; diejenigen Reaktionen, die von einem für das Tier unangenehmen Zustand begleitet oder dicht verfolgt werden, werden dagegen -- wiederum bei Gleichheit anderer Bedingungen -- in ihrer Verknüpfung mit der gegebenen Situation geschwächt.\\
+%
+\textbf{Formalisierung}:\\
+Betrachte Zustände $s$, Aktionen $a$, Übergänge und Bewertung $r$
+\begin{equation}
+	S_1 \overset{a_1}{\underset{r_1}{\rightarrow}} S_2 \overset{a_2}{\underset{r_2}{\rightarrow}} \ldots \overset{a_{n-1}}{\underset{r_{n-1}}{\rightarrow}} S_n
+\end{equation}
+\begin{align}
+	\delta &: \left(S \times A \right) \rightarrow S ; \delta \left(s_t, a_t\right) = s_{t + 1} \\
+	r &: \left(S \times A \right) \rightarrow R ; r\left(s_t, a_t\right) = r_t
+\end{align}
+Lernen entspricht dem Finden der (optimalen) Zielfunktion $\tau:S\rightarrow A, \tau(s_t)=a_t$ wobei $\tau:=$ optimale Handlungsstrategie, sodass die akkumulierte Bewertung (zum Ziel hin) 
+\begin{equation}
+V^{\tau}(s_t) = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \ldots = \sum_{i = 0}^\infty \gamma^i r_{t+i}
+\end{equation}
+maximiert wird, mit $V:=$ Value Function, $s_t:=$ aktueller Zustand, $r_t:=$ erhaltende Bewertung beim Übergang zu $s_{t+1}$ und Gewichtung der Bewertung (Diskontierungsfaktor) $0 \leq \gamma \leq 1$ ($0:$ aktuelle Aktionsbewertung ist wichtig, $>0:$ zukünftige (letzte) Bewertungen werden bevorzugt.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.7\textwidth]{figures/lernarchitektur.png}
+\end{figure}
+
+\subsection{Verschiedene Möglichkeiten der Wissensrepräsentation}
+
+\subsubsection{Cerebellar Model Articulation Controller (CMAC)}
+Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter sind die Anzahl der Gitter (Netze) und die Auflösung der Kacheln (Neuronen pro Netz).
+
+\subsubsection{Radial Basis FUnctions (RBF)}
+\begin{itemize}
+	\item Lokale rezeptive Felder
+	\begin{align}
+		a_i(\overset{\rightarrow}{s}) &= e^{- \frac{\parallel \overset{\rightarrow}{s} -  \overset{\rightarrow} {c_i}\parallel^2}{\sigma_i^2}} \\
+		out_j &= \sum_i a_i w_{ij}
+	\end{align}
+	\item Dynamische Ausbildung
+	\begin{itemize}
+		\item Einfügestrategien: Aktivitätskriterium, Fehlerkriterium
+		\item Überlappung beim Einfügen
+	\end{itemize}
+\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{figures/rbf_vs_cmac.png}
+	\caption{CMAC vs. RBF-Netze}
+	\label{ch:09:fig:cmac-vs-rbf}
+\end{figure}
+
+\subsection{Algorithmen zum Online-Lernen}
+
+\subsubsection{Adaptive Heuristic Critic (AHC) mit Stochastic Real Value Exploration (SRV)}
+
+\textbf{Aktor/Kritiker--Ansatz} siehe \autoref{ch:09:fig:aktor-ansatz}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/kritiker_ansatz.png}
+	\caption{Aktor/Kritiker--Ansatz}
+	\label{ch:09:fig:aktor-ansatz}
+\end{figure}
+
+\textbf{Real-Valued Reinforcement Learning} (\autoref{ch:09:fig:srvrl})
+\begin{figure}[h!]
+	\label{ch:09:fig:srvrl}
+	\begin{minipage}{0.5\linewidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/srvrl.png}
+	\end{minipage}
+	\begin{minipage}{0.5\linewidth}
+		\begin{enumerate}
+			\item Berechne Zustand $s(t)$
+			\item Aktion: $u(t) = N(\nu (t), \sigma(\overset{\wedge}{r}(t))$
+			\item Zustandsübergang $s(t + 1) = \delta (s(t),u(t))$
+			\item $\Delta = r(t) - \overset{\wedge}{r}(t)$
+			\item Adaption von $W$ mit $\Delta$
+			\item Adaption von $V$ mit $\Delta$
+			\item Iteration: $t = t + 1$
+		\end{enumerate}	
+	\end{minipage}
+\end{figure}
+\begin{itemize}
+	\item Netzausgabe W -- prototypische Aktion
+	\begin{equation*}
+		\mu(t) = \sum_{i = 1}^{n} w_i(t) x_i(t) + w_{thres}(t)
+	\end{equation*}
+	\item Netzausgabe V -- interner Kritiker
+	\begin{equation*}
+		\overset{\wedge}{r}(t) = \sum_{i = 1}^{n} v_i(t) x_i(t) + v_{thres}(t)
+	\end{equation*}
+	\item Explorationsvarianz -- erwartete Bewertung
+	\begin{align*}
+		\sigma(t) &= f(\overset{\wedge}{r}(t)) \\
+		f(\overset{\wedge}{r}(t)) &= \max \left(\left( \frac{1.0 - \overset{\wedge}{r}(t)}{5.0}\right), 0.0\right)
+	\end{align*}
+	\item Stochastische Aktionsauswahl
+	\begin{equation*}
+		u(t) \leftarrow N (\mu (t), \sigma (t))
+	\end{equation*}
+	\item \textbf{Adaption der Aktionsgewichte abhängig von Aktionen und Zustand}
+	\begin{align*}
+		w_t(t+1) &= w_t(t) + \alpha \Delta_w (t) s_t (t) \\
+		\Delta_w(t) &= \left(r(t) - \overset{\wedge}{r}(t)\right)\left(\frac{a(t) - \mu (t)}{\sigma (t)}\right)
+	\end{align*}
+	\item \textbf{Adaption der Kritikergewichte}
+	\begin{align*}
+		v_t(t+1) &= v_t(t) + \beta \Delta_v (t) s_t(t) \\
+		\Delta_v(t) &= r(t) - \overset{\wedge}{r}(t)
+	\end{align*}
+\end{itemize}
+
+\subsubsection{Zustandsrum Randwertkontrolle mit Boundary Controllern (BC)}
+\textbf{Problematik:} Der Zustandsraum eines realen Roboters ist begrenzt. Die stochastische Exploration führt zum Verlassen des erlaubten Zustandsraumes
+\begin{itemize}
+	\item Basissteuerung des Roboters verhindert Aktion
+	\item Zustand des Roboters ändert sich nicht
+	\item kein $\Delta$ mehr
+	\item kein Lernen mehr möglich
+\end{itemize}
+\textbf{Lösung:} Aktive Kontrolle des Randbereiches und Eingriff in den Lernvorgang mit Hilfe eines \emph{Boundary Controller}:
+\begin{itemize}
+	\item Randbereichsbewertung $b(s_t)$:
+	\begin{align*}
+		r_{t_{gesamt}} &= r_{t_{sensor}} - b(s_t) \\
+		b &: S \Rightarrow R \\
+		s_t & \in S \text{Zustandsraum}
+	\end{align*}
+	\item Identifikation der für das Verlassen des Aktionsraumes verantwortlichen Stellgrößen $u_k$
+	\begin{align*}
+		b_k^r &=
+		\begin{cases}
+			1 &: u_k \text{verantwortlich für Randaufenthalt} \\
+			0 &: \text{sonst}
+		\end{cases} \\
+		b_r & \in R^k \\
+		k &= dim(u)
+	\end{align*}
+	\item Modifikation der Stochastischen Exploration
+	\begin{equation*}
+		(b_r^k == 1) \wedge ((u_k - \overset{-}{u_k}) > 0) \Rightarrow u_k := u_k - |u_k - u_k^{\mu}|
+	\end{equation*}
+	\item Modifikation der Adaption der Aktionsgewichte
+	\begin{equation*}
+		w_t(t+1) =
+		\begin{cases}
+			w_t(t) + \alpha \Delta_w(t)s_t(t) &: \forall b_r^k : b_r^k \neq 1 \\
+			w_t(t) &: \text{sonst}
+		\end{cases}
+	\end{equation*}
+\end{itemize}
+
+\subsection{Anwendung}
+
+
+\subsubsection{Zweibeiniges Laufen mit Hilfe von CMAC und SRV}
+
+\textbf{Biped dynamic walking using Reinforcement Learning}:\\
+\begin{itemize}
+	\item Ziele
+	\begin{itemize}
+		\item Experimentelles Lernen bzw. Optimieren der Bewegungsabläufe	
+	\end{itemize}
+	\item Roboter
+	\begin{itemize}
+		\item 6 aktive Freiheitsgrad in der Sagitalebene: Hüfte, Knie, Knöchel
+		\item Passive Freiheitsgrade in Schulter und Händen
+		\item Wagen zur Restriktion in der Sagitalebene
+	\end{itemize}
+	\item Ziele für das Gehen
+	\begin{itemize}
+		\item Aufrecht
+		\item Elegant, flüssig
+		\item kein Schlurfen oder Nachziehen der Beine
+	\end{itemize}
+	\item Vorgaben für die Steuerung
+	\begin{itemize}
+		\item Körperhöhe und -neigung innerhalb fester Grenzen
+		\item Anheben des Schwingbeines über eine vorgeschriebene Höhe
+		\item periodische Bewegungen
+		\item Energieeffizienz
+	\end{itemize}
+	diese Vorgaben spezifizieren das Laufmuster nicht vollständig, legen aber die Bereiche fest, in denen das Lernen der Bewegungsmuster stattfinden soll
+	\item Steuerungsstrategien
+	\begin{itemize}
+		\item 1 Hauptgangregler
+		\item verschiedenen Regler, die situationsabhängig ausgewählt werden
+		\item Melting Pot
+	\end{itemize}
+	\item Zentraler Mustergenerator \autoref{ch:09:fig:zentraler-mustergenerator}
+	\begin{itemize}
+		\item Realisiert mit CMAC
+		\item Adaption durch die Kritikerbewertungen der peripheren Controller
+	\end{itemize}
+	\item Haltungskontrolle \autoref{ch:09:fig:haltungskontrolle}
+	\begin{itemize}
+		\item Sehr wichtige Steuerungskomponente, da kleine Neigungen im Körper schon zu großen Momenten auf das tragende Bein führen können
+		\item Nur bei kleinen Abweichungen ist die Beeinflussung z.B.\ durch Knöchel und Hüfte möglich
+		\item Bei größeren Abweichungen müssen Zwischenschritte eingefügt werden
+	\end{itemize}
+	\item Körperhöhe \cref{ch:09:fig:koerperhoehe} %TODO reference
+	\item Zusammensetzung \cref{ch:09:fig:zusammensetzung}
+	\item Lernarchitektur \autoref{ch:09:fig:bdw-lernarchitektur}
+	\item Gesamtübersicht Aktor \autoref{ch:09:fig:gesamtuebersicht-aktor}
+	\item CPG Kritiker \autoref{ch:09:fig:cpg-kritiker}
+	\begin{itemize}
+		\item Die einzelnen peripheren Kritiker erzeugen eigene Reinforcement Signale, die dann gewichtet zusammengefasst werden
+	\end{itemize}
+	\item Pre-training
+	\begin{itemize}
+		\item Vorgabe geeigneter Fußtrajektorien \autoref{ch:09:fig:fusspunkttrajektorien}
+		\item Konstante Körperhöhe, so dass am Ende der Schritte die Beine ausgestreckt sind
+		\item Der CPG CMAC wird mit den so erzeugten Gelenkwinkelsequenzen für verschiedene Schrittlängen und Schrittdauern eintrainiert
+		\item Für das Einlernen der Haltungskontrolle  werden 2 PD Regler eingesetzt
+		\item Kritiker-Vorlernen
+		\item Einlernen der Kritiker ohne Aktionsvarianz
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/zentraler_mustergenerator.png}
+		\label{ch:09:fig:zentraler-mustergenerator}
+		\caption{Zentraler Mustergenerator}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/haltungskontrolle.png}
+		\label{ch:09:fig:haltungskontrolle}
+		\caption{Haltungskontrolle}
+	\end{subfigure} \\
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/koerperhoehe.png}
+		\label{ch:09:fig:koerperhoehe}
+		\caption{Körperhöhe}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/zusammensetzung.png}
+		\label{ch:09:fig:zusammensetzung}
+		\caption{Zusammensetzung}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/bdw_lernarchitektur.png}
+		\label{ch:09:fig:bdw-lernarchitektur}
+		\caption{Biped dynamic walking -- Lernarchitektur}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/gesamtuebersicht_aktor.png}
+		\label{ch:09:fig:gesamtuebersicht-aktor}
+		\caption{Gesamtübersicht Aktor}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/cpg_kritiker.png}
+		\label{ch:09:fig:cpg-kritiker}
+		\caption{CPG Kritiker}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/fusspunkttrajektorien.png}
+		\label{ch:09:fig:fusspunkttrajektorien}
+		\caption{Fußpunkttrajektorien}
+	\end{subfigure}
+\end{figure}
+
+
+\subsubsection{Online-Lernen auf der vierbeinigen Laufmaschine BISAM}
+\textbf{Ziele}:
+Experimentelles Lernen zur Optimierung der Haltung (Schwerpunkt) im Kreuzgang\\
+\textbf{BISAM:}
+21 aktive Freiheitsgrade (4 pro Bein, 5 im Körper), 2 Achsen Lagesensor, 3 Achsen Winkelbeschleunigung, 3 Komponenten Kraftsensor pro Fuß, Onboard PC\\
+%
+\textbf{BISAM -- Lernen Gewichtsverlagerung im Schritt}
+\begin{itemize}
+	\item Problemstellung: Optimierung der Schwerpunktsverschiebung zur Unterstützung des Schritts
+	\item Bewertungskriterien: Lage des Schwerpunktes (SSM)
+	\item Netzeingaben: SSMx, SSMy, letzte Verschiebung x, Verschiebung y
+	\item Netzausgaben: Kritiker, Verschiebung x, Verschiebung y
+\end{itemize}
+\textbf{BISAM -- Lernen der Schwerpunktsverschiebung im Kreuzgang}
+\begin{itemize}
+	\item Problem: Lernen der Schwerpunktsverschiebung, SSMy (links/rechts)
+	\item Netzeingabe: SSMy(k-1), SSMy(k), shift Y(k)
+	\item Netzausgabe: interner Kritiker, shift Y(k+1)
+	\item Inkrementelles Lernen: Stehen/Laufen, Ohne/mit Exploration
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{figures/bisam_steuerungsarchitektur.png}
+	\caption{BISAM -- Steuerungsarchitektur}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/bisam_gewichtsverlagerung_schritt.png}
+		\caption{BISAM -- Lernen der Gewichtsverlagerung im Schritt}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/bisam_gewichtsverlagerung_schritt_1.png}
+		\caption{BISAM -- Lernverlauf im Schritt: Bewertung und Exploration}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/bisam_schwerpunktverlauf_kreuzgang.png}
+		\caption{BISAM -- Schwerpunktverlauf Kreuzgang}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/bisam_schwerpunktverlauf_kreuzgang_1.png}
+		\caption{BISAM -- Bewertung des Schwerpunktverlaufes im Kreuzgang}
+	\end{subfigure}
+\end{figure}
+
+\subsubsection{Diskussion}
+\begin{itemize}
+	\item Ist experimentelles Lernen bei relevanten (technischen) Problemstellungen anwendbar?
+	\begin{itemize}
+		\item sehr lange Lernprozesse
+		\item kaum verlässliche Aussagen über den Lernprozess
+	\end{itemize}
+	\item Wenn hinreichendes Prozessmodell vorhanden ist, kann RL erfolgreich eingesetzt werden (z.B.\ Fahrstuhlsteuerung)
+	\item Ohne Prozessmodell sind Optimierungsaufgaben denkbar, wobei beim Lernen nicht optimale aber keine gefährlichen oder schädlichen Prozesszustände eingenommen werden
+	\item Bei Robotern noch aktuelle Grundlagenforschung
+\end{itemize}
