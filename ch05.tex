@@ -1,0 +1,243 @@
+\emph{Nichts ist so komplex wie die Bewegungssteuerung in der Biologie... und doch auch so einfach.}
+\subsection{Neuronale Kontrolle in der Natur}
+\subsubsection{Struktur vs. Parametrisierung}
+Grundsätzlich zwei Teile bei einer Steuerung:
+\begin{itemize}
+\item[1.] Der Aufbau, bzw. das Steuerungsparadigma
+z.B. Verhaltensbasiertes System, KNN
+\item[2.] Die Methode zum Parametrisieren des Systems
+z.B. Empirisch, Reinforcement Learning,
+\item[$\rightarrow$] Leider nicht immer eindeutig trennbar!
+\end{itemize}
+Beispiel: PID - proportional–integral–derivative controller
+\begin{itemize}
+\item Reglerstruktur:
+\begin{itemize}
+\item Differentialgleichung: $u(t) = K_P\left[e(t) + \frac{1}{T_N}\int_0^te(\tau)d\tau + T_V\frac{d}{dt}e(t)\right]$
+\item Übertragungsfunktion: $\frac{U}{E}(s) = K_P + \frac{K_P}{T_N \cdot s}+K_P\cdot T_V\cdot s = K_P(1 + \frac{1}{T_N \cdot s} + T_V) \cdot s$
+\end{itemize}
+Parametrisierung: Bestimmen der Werte $K_P, T_V, T_N$
+\begin{itemize}
+\item Empirisch / Einstellen durch Ausprobieren
+\item Einstellregel nach Ziegler/Nichols
+\item Einstellregel nach Chien, Hrones und Reswick
+\end{itemize}
+\end{itemize}
+Elementare Bewegungsteuerung in der Natur: Bewegungsabläufe
+\begin{itemize}
+\item Willkürmotorik
+\item Rhythmische Bewegungsabläufe
+\item Reflexe
+\end{itemize}
+Elementare Bewegungsteuerung in der Robotik: Verhaltensbasierte Steuerung der sechsbeinigen Laufmaschine LAURON
+\begin{itemize}
+\item Höhere Verhalten
+\item Haltungskontrolle
+\item Reflexe
+\end{itemize}
+\subsubsection{Zentraler Mustergenerator vs. Reflexe}
+Als \textbf{zentraler Mustergenerator} (Central Pattern Generator - CPG) wird
+ein neuronales Netzwerk verstanden, welches bei isoliertem zentralen
+Netzwerk (also ohne jede Art Sensorfeedback) die zeitlichen Impulse der
+rhythmischen Motoraktionen liefert (nach Baessler86). Der Begriff des
+(rhythmischen) Mustergenerators schließt darauf aufbauend den zentralen
+Mustergenerator sowie die modulierende Sensorinformation ein.\\
+\textbf{Reflexe} sind zielgerichtete, sensorgekoppelte Verhaltensweisen, bei
+denen motorische sowie vegetative Prozesse ablaufen können. Die
+Reflexantwort ist dabei hinsichtlich Latenz, Stärke und Muster eng an die
+Intensität der Sensorerregung gekoppelt (nach Schmidt95).\\ 
+Beispiele für Mustergeneratoren und Reflexe:
+\begin{itemize}
+\item Rhythmogenese der Atmung (Respiratory CPG)
+\begin{itemize}
+\item respiratorische Neuronen in verlängerten Rückenmark
+\item 3 rhythmische Aktivitäten
+\item Inspirationsphase: Einatmungsmuskulatur wird durch Nervenimpulse zur Kontraktion veranlasst
+\item Postinspirationsphase: Neuronale Aktivierung der Einatmungsmuskulatur lässt nach. Somit wird eine passive Ausatmung ermöglicht.
+\item Aktive Exspirationsphase: Die Ausatmungsmuskulatur aktiviert.
+\end{itemize}
+\item Pupillenlichtreflex 
+\begin{itemize}
+\item Veränderung der Weite der Iris in Abhängigkeit vom Lichteinfall
+\item Beide Augen reagieren auch auf einseitigen Reiz
+\end{itemize}
+\end{itemize}
+\subsubsection{Das Neuron: Funktionale Approximation, KNN}
+\begin{itemize}
+\item Eingabe durch eine Propagierungsfunktion mit Gewichten verknüpft
+\item Aktivierungsfunktion definiert Reaktion auf Eingabe
+\end{itemize}
+Künstliche Neuronale Netze - Historischer Abriss
+\begin{itemize}
+\item 1943: McCulloch und Pitts beschreiben erstes neurologisches Netz
+\item 1949: Hebb'sche Lernregel: aktivierende oder hemmende Wirkung einer Synapse lässt sich als Produkt der prä-
+und postsynaptischen Aktivität berechnen
+\item 1958: Frank Rosenblatt präsentiert das Perzeptron, welches die Grundlage der heutigen KNNs bildet
+\item Heute: Große Vielfalt an Topologien (Strukturen der Netze) und Verbindungsarten (z.B. \glqq spiking neural networks\grqq), spezialisierte Netze
+\end{itemize}
+Anwendungsgebiete von KNNs in biologisch motivierter Robotik:
+\begin{itemize}
+\item Robotersteuerungen
+\item Regelung komplexer Bewegungsabläufe
+\item Sprachgenerierung (Beispiel: NETtalk)
+\item Bildverarbeitung und Mustererkennung
+\item Spracherkennung
+\item virtuelle Agenten
+\end{itemize}
+KNNs -- Prinzipien:
+\begin{itemize}
+\item Einfaches Einzelneuron – komplexes Gesamtsystem
+\item Hohe Fehlertoleranz
+\item Integration sensorischer Massendaten
+\item Lernvorgang (bestärkendes, (un)-überwachtes, stochastisches Lernen)
+\item Direkte Generierung kontinuierlicher Steuersignale
+\item Komplizierte nichtlineare Funktionen erlernbar
+\end{itemize}
+Netztopologien:
+\begin{itemize}
+\item Einschichtiges Feed-Forward-Netzwerk (azyklischer gerichteter Graph): eine Eingabeschicht, eine Ausgabeschicht (azyklischer gerichteter Graph)
+\item Mehrschichtiges Feed-Forward Netzwerk: 1-$n$ verdeckte Schichten, verbesserte die Abstraktionsfähigkeit, z.B. XOR Problem lösbar
+\item Rekurrentes (rückgekoppeltes Netz):
+\begin{itemize}
+\item direkte Rückkopplungen (\textit{direct feedback})
+\item indirekte Rückkopplungen (\textit{indirect feedback})
+\item seitliche Rückkoppelungen (\textit{lateral feedback})
+\item vollständige Verbindungen (jedes Neuron ist mit jedem anderen Neuron verbunden)
+\end{itemize}
+\end{itemize}
+Neuro-Oszillatoren:
+\begin{itemize}
+\item Paare aus sich gegenseitig hemmenden und erregenden Neuronen
+\item Der Antagonistische Aufbau der Muskeln setzt sich in der Steuerung fort
+\item Dienen auf höheren Ebenen als Mustergeneratoren
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{figures/ch05_NeuroOs.png}
+	\caption{Neuro-Oszillator}
+\end{figure}
+Verhaltensbasierte Systeme
+\begin{itemize}
+\item Komplexe Verhalten entstehen nicht notwendigerweise aus komplexen Steuerungssystemen
+\item Kein Modell sondern direkte Interaktion mit der Umwelt
+\item Charakteristika
+\begin{itemize}
+\item Situatedness: Der Roboter ist als Einheit in seiner Umgebung eingebunden
+\item Embodiment: Der Roboter hat eine physikalische Präsenz
+\item Emergence: Intelligenz entsteht durch Interaktion mit der Umwelt
+\end{itemize}
+\end{itemize}
+Hierarchie biologisch motivierter Steuerstrukturen (zunehmende Abstraktion und Komplexität)
+\begin{itemize}
+\item[0.] Mustergeneratoren $\rightarrow$ CPGs, zyklische Bewegungen
+\item[1.] Reflexe $\rightarrow$ reaktive Systeme in Robotern
+\item[2.] Neuronen $\rightarrow$ KNNs
+\item[3.] Verhalten $\rightarrow$ verhaltensbasierte Systeme (vgl. Kap. 9)
+\item[$\rightarrow$] es werden aber auch mehr und mehr Parameter!
+\end{itemize}
+Steuerungsstrukturen parametrieren: Parameteridentifikation und Tuning stellt bei komplexen
+Robotern und anspruchsvollen Aufgaben eine zentrale Herausforderung der Entwicklung dar. 
+Es gibt verschiedene Verfahren und Methoden:
+\begin{itemize}
+\item Modellbasierte Parametrierung – \glqq Regler Einstellregeln\grqq
+\item Biologische Untersuchungen (z.B. KNN bei Insekten)
+\item Empirisches Parametrieren anhand von umfangreichen Versuchen und Expertenwissen
+\item Systematische, lernende Ansätze: 
+\begin{itemize}
+\item Maschinelles Lernen: finde iterativ Optimum im Parameterraum über mehrdimensionalen Gradientenabstieg; verschiedene Verfahren zum Beschleunigen des Lernvorgangs
+\item Genetische Algorithmen: Problemrepräsentation durch \glqq Genom\grqq, Mutation und Rekombination
+\end{itemize}
+\end{itemize}
+\subsection{Neuronale Steuerung der Stabheuschrecke}
+\subsubsection{Warum Stabheuschrecke als Vorbild?}
+Stabheuschrecke (carausius morosus):
+\begin{itemize}
+\item großer 6-Beiner $\rightarrow$ Statisch stabiles Laufen, Überwinden komplexer Hindernisse, läuft auch Wände hoch, sehr robust
+\item Langsam $\rightarrow$ Realisierbar mit verfügbarer Aktorik (z.B. Elektromotoren)
+\item Einfacher kinematischer Aufbau $\rightarrow$ Einfache, gut beherrschbare mechanische Konstruktion
+\item Trotzdem sehr flexibel $\rightarrow$ Viele Forschungsbereiche und Herausforderungen
+\item Weitreichende biologische Untersuchungen vorhanden (z.B. Prof. H. Cruse, Prof. A. Büschges) $\rightarrow$ Koordinationsmechanismen (\glqq Cruse Regeln\grqq)
+\item Verteilte dezentrale Steuerung $\rightarrow$ Verteile Hardware
+\end{itemize}
+\subsubsection{Laufmuster und Cruse-Regeln}
+Mehrbeinige Laufmuster werden oft durch die Anzahl der
+am Boden verbleibenden (tragenden) Beine klassifiziert:
+\begin{itemize}
+\item Tripod: zu jedem Zeitpunkt mind. 3 Bein auf Boden
+\item Tetrapod: zu jedem Zeitpunkt mind. 4 Beine auf Boden
+\item Pentapod: zu jedem Zeitpunkt mind. 5 Beine auf Boden
+\item[$\rightarrow$] Verwendung der Begriffe Tetrapod und Tripod
+verleitet zu der Annahme der Existenz \textit{fester Gangmustern}.
+\item[$\rightarrow$] Es ist aber bekannt, dass Insekten einen \textit{freien
+Gang} verwenden.
+\end{itemize}
+Koordinationsregen nach Cruse:
+\begin{itemize}
+\item[1.] Hintere Schwingphase hemmt Start vorderer Schwingphase: wenn hinteres Bein in der Luft ist soll Vorderes nicht auch in der Luft sein (vgl. Abb. \ref{CR1})
+\item[2.] Beginn der Stemmphase löst vorderes Schwingen aus (vgl. Abb. \ref{CR2})
+\item[3.] Beinposition während der Stemmphase reizt Start der Schwingphase: je weiter das Bein sich am Ende seines Arbeitsraumes befindet, desto stärker wird der Start der Schwingphase des Vorderbeins motiviert (vgl. Abb. \ref{CR3})
+\item[4.] Position beeinflusst die Position am Ende der Schwingphase (\glqq targeting\grqq)
+\item[5.] Erhöhter Widerstand erfordert erhöhte Kraft (Stemmen)
+\item[6.] Tread-On-Tarsus Reflex: wenn man der Heuschrecke über den Fuß streift hebt sie ihn, was verhindern soll, dass sie sich selbst auf den Fuß tritt
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch05_CR1.png}
+		\caption{Regel 1}
+		\label{CR1}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch05_CR2.png}
+		\caption{Regel 2}
+		\label{CR2}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch05_CR3.png}
+		\caption{Regel 3}
+		\label{CR3}
+	\end{subfigure}
+	\caption{Cruse-Regeln 1 - 3}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/ch05_Cruse.png}
+	\caption{Cruse-Regeln}
+	\label{Cruse}
+\end{figure}
+\subsection{Oszillatoren als Grundbausteine für natürliche Bewegungssteuerung}
+\subsubsection{Rhythmusgeneratoren, Erweiterung des Neuronen Modells}
+Als \textbf{zentraler Mustergenerator} (Central Pattern Generator - CPG)
+wird ein neuronales Netzwerk verstanden, welches bei isoliertem
+zentralen Netzwerk (also ohne jede Art Sensorfeedback) die zeitlichen
+Impulse der rhythmischen Motoraktionen liefert (nach Baessler86). Der
+Begriff des (rhythmischen) Mustergenerators schließt darauf
+aufbauend den zentralen Mustergenerator sowie die modulierende
+Sensorinformation ein.
+\begin{itemize}
+\item neuronales Netz ohne externe Sensorinformation
+\item in der Lage rhythmische Muster zu generieren
+\item genutzt um rhythmische Motoransteuerungen zu erzeugen
+\end{itemize}
+\textbf{Reflexe} sind schnelle, automatische und unbewusste Reaktionen,
+die von einem sensorischen Stimulus ausgelöst werden. Es sind zielgerichtete, sensorgekoppelte Verhaltensweisen,
+bei denen motorische sowie vegetative Prozesse ablaufen können.
+Die Reflexantwort ist dabei hinsichtlich Latenz, Stärke und Muster
+eng an die Intensität der Sensorerregung gekoppelt (nach Schmidt95).
+\begin{itemize}
+\item Beispiel: Muskelkontraktion bei Hitze (taktil), Ausweichen vor einem Ball (visuell)
+\end{itemize}
+\textbf{Taxen} (\textit{sg. Taxis}) sind Verhalten, die ein Tier in Richtung (attraktive) oder
+entgegen (aversive) eines Stimulus orientieren.
+\begin{itemize}
+\item Beispiel: Orientierung von Bienen nach Sonnenstand, Bewegung von Lichtquelle weg bei Asseln
+\end{itemize}
+\textbf{Feste Muster} sind Reaktionen auf Stimuli, die länger anhalten als die Stimuli selbst.
+\begin{itemize}
+\item Fluchtreflex hält länger an als Stimulus selbst (\glqq Reflex\grqq{} ist hier eine irreführende Bezeichnung)
+\end{itemize}
+
+\subsubsection{Oszillatormodelle: Leaky Integrator, Matsuoka}
+\subsection{Anwendungsbeispiele für Oszillatoren}
+\subsubsection{Neunauge, Salamander – Schwimmen und Laufen, Tekken – Vierbeiniges Laufen}
+\subsubsection{Zusammenfassung \& Diskussion}
