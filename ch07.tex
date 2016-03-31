@@ -1,0 +1,128 @@
+\emph{The last Frontier of the biological science: Understanding the biological basis of consciousness!}
+\subsection{Neuronen, Synapsen und Nervenfasern}
+\subsubsection{Das Neuon als Basisrecheneinheit}
+\begin{itemize}
+\item Zellkörper: enthält Zellkern und biochemischen Apparat (Versorgung der Zelle), von Zellhaut/Membran umgeben
+\item Dendriten: (altgr. Dendron = \glqq Baum\grqq) kurze, rohrförmige, stark verzweigte Fortsätze des Zellkörpers zum Empfang von Signalen
+\item \textbf{Nervenfaser}: langer, dünner Nerven-
+fortsatz, meist nur eine Nervenfaser pro
+Nervenzelle (bis zu 1m lang sein beim
+Menschen), Weiterleiten der Signale
+\item \textbf{Myelin}: besteht aus fettartiger Substanz und Proteinen,
+dient zur Beschleunigung des Signal-Transports
+\item \textbf{Mitochondrien}: erzeugen die benötigte Energie
+\item \textbf{Endoplasmatische Retikulum}: synthetisiert die benötigten Eiweißstoffe
+\end{itemize}
+\textbf{Rezeptoren und Reizverarbeitung}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_sensinput.png}
+	\caption{Aufnahme, Bewusstmachung und Abgabe von Information}
+	\label{sensinput}
+\end{figure}
+\textbf{Reizverarbeitung und Informationskodierung}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_reizverarbeitung.png}
+	\caption{Reizverarbeitung}
+	\label{reizverarbeitung}
+\end{figure}
+\textbf{Signale auf Nervenfasern}
+\subsection{Hierarchien der Informationsverarbeitung im Gehirn}
+\subsubsection{Das Zentrale Nervensystem}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_zns.png}
+	\caption{ZNS}
+	\label{zns}
+\end{figure}
+\subsubsection{Aufteilung der Rindenfeldes}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_rindenfeld.png}
+	\caption{Rindenfeld}
+	\label{rindenfeld}
+\end{figure}
+\subsubsection{Aufteilung der Großhirnhälften}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_grosshirn.png}
+	\caption{Grosshirn}
+	\label{grosshirn}
+\end{figure}
+\subsubsection{Stabheuschrecke – Abstraktion des Steuerungskonzeptes}
+\begin{itemize}
+\item Intelligente Einheiten
+\item Definition der Einheiten über gefordertes Steuerungsverhalten
+\item Adaptivität auf den Verhaltensebenen
+\item Kommunikation der Einheiten auf einer Verhaltensebene
+\item Hierarchische, verteilte Steuerung
+\end{itemize}
+\subsection{Rechnerarchitektur für biologisch motivierte Roboter}
+\subsubsection{Anforderungen an die Rechnerarchitektur}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_arch.png}
+	\caption{Anforderungen an die Rechnerarchitektur}
+	\label{arch}
+\end{figure}
+Probleme bei der Umsetzung:
+\begin{itemize}
+\item Platzmangel
+\item Gewicht der Komponenten
+\item Energieversorgung
+\item Energieeffizienz
+\item Resistenz gegen elektromagnetische Störungen
+\end{itemize}
+Energieversorgung:\\
+Energieversorgung im Falle von Rechnerbauteilen durch elektrische Energie\\
+$\rightarrow$ Problem: elektrische Energie lässt sich schlecht kompakt speichern
+\begin{itemize}
+\item Batterien:
+\begin{itemize}
+\item  Schwer, Groß
+\item Kurze Laufzeit, lange Ladezeit
+\item Verbesserung durch LiPo-Akkus, Grundproblem bleibt bestehen
+\end{itemize}
+\item Brennstoffzellen:
+\begin{itemize}
+\item werden zunehmend interessanter
+\item noch kein breiter kommerzieller Einsatz
+\item noch in der Erprobung
+\end{itemize}
+\end{itemize}
+Vergleich – Energiebedarf:
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{5cm}|p{11cm}|}
+\hline
+\textbf{Herkömmlicher PC} & \textbf{Im Vergleich dazu} \\
+\hline
+\hline
+\begin{itemize}
+\item PC-System Intel Core i3, 3 GHz mit Monitor ca. 300 Watt
+\item Pentium M ohne Monitor ca. 150 Watt
+\item Intel Core i5-3450 (3,1 GHz) ca. 77 Watt
+\end{itemize} &
+\begin{itemize}
+\item Mikrocontroller ca. 0,4 Watt (C167 Infineon)
+\item DSP ca. 0,55 Watt (DSP56F803 Motorola)
+\item CPLD / FPGA ca. 0,7 Watt (Altera Flex 10k10)
+\item PC/104-System (Pentium M @1 GHz) ca. 20 Watt (DigitalLogic)
+\item PC/104-System (Core 2 Duo @ 2×1,5 GHz) ca. 25 Watt
+\item Raspberry Pi (ARM @700 Mhz) 3,5 Watt
+\item BeagleBoard (ARM Cortex A8 @1 GHz) 6–10 Watt
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Vergleich – Energiebedarf}
+\label{tab:energie}
+\end{table}
+\subsubsection{Systemkomponenten – die einzelnen Bausteine}
+\subsubsection{Kopplung – Bus-Systeme}
+\subsection{Beispielarchitekturen}
+
+
+
+
+
