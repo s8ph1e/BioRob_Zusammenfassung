@@ -71,13 +71,15 @@ Der Begriff des Sensors (lateinisch \glqq sensus\grqq{} der Sinn) leitet sich ab
 \end{itemize}
 IEC-Definition für technische Sensoren:
 \glqq Ein Sensor ist das primäre Element in einer Messkette, das eine variable Eingangsgröße in ein geeignetes Messsignal umsetzt.\grqq \\
-\textbf{Sensoren in der Robotik}:
+\textbf{Sensoren in der Robotik}:\\
+Siehe Abbildungen \ref{klassfkt} bis \ref{intextbsp}.
 \begin{figure}[h!]
 	\centering
-	\begin{subfigure}{.5\textwidth}
-		\includegraphics[width=\linewidth]{figures/ch04_sensrob.png}
-		\caption{Klassifikation von Sensoren nach ihrer Funktionsweise}
-	\end{subfigure}
+	\includegraphics[width=0.5\linewidth]{figures/ch04_sensrob.png}
+	\caption{Klassifikation von Sensoren nach ihrer Funktionsweise}
+	\label{klassfkt}
+\end{figure}
+\begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
 		\includegraphics[width=\linewidth]{figures/ch04_intern.png}
 		\caption{Interne Sensoren}
@@ -86,13 +88,17 @@ IEC-Definition für technische Sensoren:
 		\includegraphics[width=\linewidth]{figures/ch04_extern.png}
 		\caption{Externe Sensoren}
 	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
-		\includegraphics[width=\linewidth]{figures/ch04_intext.png}
-		\caption{Beispiel Interne vs. Externe Sensoren}
-	\end{subfigure}
 	\caption{}
+	\label{intext}
+\end{figure}\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/ch04_intext.png}
+	\caption{Beispiel Interne vs. Externe Sensoren}
+	\label{intextbsp}
 \end{figure}
-\textbf{Sensoren und Perzeption}:
+\textbf{Sensoren und Perzeption}:\\
+Siehe \autoref{sensperz}.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/ch04_sensperz.png}
@@ -126,7 +132,7 @@ IEC-Definition für technische Sensoren:
 \begin{itemize}
 \setlength\itemsep{0em}
 \item[...] hoch spezialisiert auf ihren Anwendungsbereich,
-\item[...] hoch miniaturisiert,
+\item[...] hoch miniaturisiert \& parallel,
 \item[...] in großen \glqq Stückzahlen\grqq{} in Sensorfeldern angeordnet.
 \end{itemize}
 \item Schwerpunkte für eine technische Umsetzung:
@@ -135,10 +141,29 @@ IEC-Definition für technische Sensoren:
 \item Sensorprinzip
 \item Datenauswertung
 \end{itemize}
-\item Kopieren der Natur an dieser Stelle (noch) unmöglich!
+\item Kopieren der Natur an dieser Stelle (noch) unmöglich! (Parallelität, Datenrate wäre zu hoch für Verarbeitung)
 \end{itemize}
 \subsection{Sensorsysteme in Biologie und Technik – Eine vergleichende Einführung}
 \subsubsection{Hören – Von der Fledermaus zum Ultraschallsensor}
+\textbf{Menschliches Gehör}:
+hat sehr guten Frequenzbereich, aber spezialisiert:
+\begin{itemize}
+\item Ohrmuschel: unterstützt räumliche Ortung
+\item Mittelohr: Impedanzwandlung
+\item Innenohr: Umwandlung von Schallsignalen in Neuronenimpulse; med. Konstruktion von Knöchelchen
+\end{itemize}
+\begin{figure}[h!]
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch04_schall.png}
+		\caption{Schallaufnahme und -weiterleitung}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch04_cochlea.png}
+		\caption{Cochlea (H\"{o}rschnecke) Details}
+	\end{subfigure}
+	\caption{}
+	\label{hoeren}
+\end{figure}
 \textbf{Ultraschall – Die Fledermaus als Vorbild:}
 \begin{itemize}
 \setlength\itemsep{0em}
@@ -190,6 +215,12 @@ IEC-Definition für technische Sensoren:
 \end{itemize}
 \end{itemize}
 \subsubsection{Gelenkwinkel – Wie ist die Extremität orientiert?}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch04_gelenkwink.png}
+	\caption{Geschwindigkeit/Winkel der Gelenkbeugung beim Menschen}
+	\label{gelwink}
+\end{figure}
 \textbf{Gelenkwinkelsensoren}
 \begin{enumerate}
 \setlength\itemsep{0em}
@@ -259,12 +290,53 @@ IEC-Definition für technische Sensoren:
 \end{itemize}
 \end{itemize}
 \subsubsection{Temperatur – Wo ist es warm?}
+\textbf{Temperaturmessung beim Menschen}
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Die Haut hat spezifische Kalt- und Warmpunkte
 \item Pro cm2 Haut 1-4 Kaltpunkte und 0,4 Warmpunkte
 \item Kalt- und Warmsinn haben unterschiedliche statische und dynamische Empfindlichkeiten
 \item Empfindlichkeit steigt mit der Geschwindigkeit von Temperaturänderungen
+\end{itemize}
+
+\textbf{Der Feuerkäfer}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item wird vom Feuer angezogen und legt Eier in verbrannte Bäume wwelche nach Brand \glqq wehrlos\grqq{} sind; kann beim Anflug heiße von kühlen Stellen unterscheiden
+\item Besitzt \textbf{photomechanische Rezeptoren}
+\begin{itemize}
+\item winzige Sinnesborsten auf dem Chitinpanzer
+\item Auftreffen von Wärmestrahlung bewirkt Bewegung von Kügelchen durch physikalische Resonanz-Effekt $\Rightarrow$ Nervenimpuls
+\item Sinnesorgane reagieren über viele km auf kleinste Temperaturunterschiede
+\end{itemize}
+\end{itemize}
+
+\textbf{Temperaturmessung in der Technik}
+\begin{itemize}
+\item Thermoresistive Sensoren:
+\begin{itemize}
+\item Metalle
+\begin{itemize}
+\item Temperaturabhängigkeit des Widerstands zur Messung der Temperatur
+\item bereichsweise linear
+\item häufig wird Platin als Messwiderstandsmaterial verwendet
+\item Platin wird im Bereich -200°C bis +500°C eingesetzt
+\item als Drähte oder als Metallschichtwiderstände in Dünnfilmtechnik ausgeführt
+\item Messstrom nimmt Einfluss auf die Genauigkeit
+\end{itemize}
+\item Keramikwerkstoffe
+\begin{itemize}
+\item Nichtlinear
+\item PTC-Widerstände (Kaltleiter, dotierter polykristalliner Titanatkeramik)
+\item NTC-Widerstände (Heißleiter, polykristalline Mischoxidkeramik)
+\end{itemize}
+\end{itemize}
+\item Thermoelektrische Sensoren:
+\begin{itemize}
+\item zwei verschiedene Metalle in innigen Kontakt
+\item zwischen Enden kann eine Spannung (Thermospannung) gemessen werden
+\item Thermospannung ist proportional zur Temperatur des Kontaktes
+\end{itemize}
 \end{itemize}
 \subsubsection{Tasten – Schreibtischplatte oder Kaktus...}
 \subsubsection{Riechen – Chemie der Stoffe}
