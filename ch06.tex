@@ -1,0 +1,516 @@
+\emph{Kaum etwas sieht so einfach aus und ist im Detail doch so komplex}
+\subsection{Lokomotionsarten}
+\emph{Lokomotion beschreibt die aktive Fortbewegung eines Lebewesens}
+\begin{itemize}
+\item \textbf{Kriechen}: Fortbewegungsart, bei der die Körperunterseite immer Bodenkontakt hat\\
+Natürliche Vertreter:
+(beinlose) Vertebrate (Schlangen, Reptilien, Amphibien,...)
+\item \textbf{Hüpfen}: Fortbewegungsart mit vollständiger Flugphase (keinerlei Bodenkontakt), typischerweise ergibt sich eine ballistische Flugbahn, lange Flugphase\\
+Natürliche Vertreter: (eher selten) z.B. Känguru, Frosch
+\item \textbf{Laufen}: Fortbewegungsart mit wiederkehrendem Wechsel des Bodenkontakts, Unterscheidung zwischen \glqq Gehen\grqq{} und \glqq Rennen\grqq, Unterschiedliche
+Laufmuster (je nach Anzahl der Beine)\\
+Natürliche Vertreter: Invertebrate, Vertebrate, eigentlich alle
+\end{itemize}
+\subsection{Stabilität beim Laufen}
+\begin{itemize}
+\item Laufroboter müssen in der Regel AKTIV stabilisiert werden
+\begin{itemize}
+\item Nicht zu viele Beine anheben
+\item Körperschwerpunkt ausregeln
+\end{itemize}
+\item Stabilität wird maßgeblich von Laufmuster beeinflusst
+\item Unterscheidung: Statische Stabilität vs. Dynamische Stabilität
+\item Faustregel: Je mehr Beine ein Roboter hat, desto einfacher ist es diesen stabil zu halten
+\end{itemize}
+\subsubsection{Statische Stabilität}
+\begin{itemize}
+\item Laufbewegung kann zu JEDEM Zeitpunkt angehalten werden $\rightarrow$ System bleibt stehen
+(z.B. ein rennender Gepard ist also NICHT statisch stabil)
+\item Mindestens 3 Beine haben Bodenkontakt
+\item Beine mit Bodenkontakt bilden Aufstandspolygon (stark abhängig von der Geometrie des Roboters, z.B. lange Beine = großes AP)
+\item Projizierter Schwerpunkt (CoM = Center of Mass) muss innerhalb des Aufstandspolygons liegen $\rightarrow$ 6-beinige sind statisch stabil
+\item Stabilitätsmaße definieren Wert für Stabilität:
+\begin{itemize}
+\item \textbf{Stability Margin}: Minimaler Abstand zum Support-Polygon Rand (vgl. \autoref{StabMarg})
+\item \textbf{Longitudinal Stability Margin}: Minimaler Abstand zum Rand in Laufrichtung (vgl. \autoref{LongStabMarg})
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_supppoly.png}
+		\caption{Support Polygon}
+		\label{SP}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_stabmarg.png}
+		\caption{Stability Margin}
+		\label{StabMarg}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_longstabmarg.png}
+		\caption{Longitudinal Stability Margin}
+		\label{LongStabMarg}
+	\end{subfigure}
+	\caption{Stabilitätsmaße}
+\end{figure}
+\end{itemize} 
+\end{itemize}
+\subsubsection{Dynamische Stabilität}
+\begin{itemize}
+\item Zyklische Bewegung ohne umzufallen
+\item Deutlich komplexere Stabilität, da dynamische Effekte (Geschwindigkeiten, Trägheitsmomente) berücksichtigt werden
+\item Bei fortschreitender Bewegung bleibt das System aufrecht/stabil
+\item Zahlreiche (komplexe) Stabilitätskriterien:
+\begin{itemize}
+\item Center of pressure method (EMC)
+\item Dynamic stability margin (DSM)
+\item Tumble stability margin (TSM)
+\item Force-angle stability margin (FASM): \textit{A new measure of tipover stability margin for mobile manipulators}, Papadopoulos1996
+\item Zero Moment Point (ZMP): \textit{Zero-moment point -- Thirty five years of its life}, Vukobratovic2005
+\item Normalized dynamic energy stability margin (NDESM)
+\end{itemize}
+\end{itemize}
+\subsubsection{Stabilitätskriterien}
+\textbf{Vukobratovic - Zero Moment Point (ZMP)}
+\begin{itemize}
+\item Punkt, in dem sich, wenn er auf den Boden projiziert wird, alle Kräfte auslöschen
+\begin{itemize}
+\item[$\rightarrow$] anschaulich: ZMP $\approx$ \glqq Drehpunkt\grqq{} auf dem Boden
+\item[$\rightarrow$] Wenn der ZMP innerhalb des Aufstandspolygons / Fußfläche liegt ist der Roboter stabil
+\item[$\rightarrow$] Fußgröße ist hier wichtig; Bodenkontaktkräfte verteilen sich anteilig über den gesamten Fuß \footnote{Daher ist es so beachtlich, dass \textit{Pacman} von Boston Dynamics normale Menschen-Turnschuhe trägt; viele 2-beinige Roboter haben sehr große Füße.}
+\end{itemize}
+\item flächiger Bodenkontakt: alle punktuellen Kontakte können zu einem zentralen Kontaktpunkt zusammengefasst werden, gewichtet anhand der Abstände und der Kräfte
+\begin{itemize}
+\item $\mathbf{p}_i$: Gewichte der $yxz$-Position auf der Ebene
+\item $\mathbf{f}_i$: Kraftvektoren (ergeben sich aus Sensorwerten, normal jeweils vier Kraftsensoren vorne und hinten auf Fußfläche)
+\end{itemize}
+\item Seien $\mathbf{p}_i$ die Fußpunkte, mit den Kräften $f_i = [f_{ix}, f_{iy}, f_{iz}]$, dann ist der ZMP definiert als\\
+\begin{center}
+$\mathbf{p} := \frac{\sum_{i=1}^N \mathbf{p}_if_{iz}}{\sum_{i=1}^N \mathbf{p}_if_{iz}}$
+\end{center}
+\item Drehmomente berechenbar durch \\
+\begin{center}
+$\mathbf{\tau} = \sum_{i=1}^N (\mathbf{p}_i - \mathbf{p}) \times \mathbf{f}_i$
+\end{center}
+\item Anhand der Definitionen werden die Drehmomente in $x$- und $y$-Achse jeweis Null: $\mathbf{\tau}_x = \mathbf{\tau}_y = 0$ [Zero Moment Point]
+\begin{align*}
+\mathbf{\tau}_x &= \sum\limits_{i=1}^N(p_{iy}-p_y)f_{iz} - \sum\limits_{i=1}^N(p_{iz}-p_z)f_{iy} &\text{zweiter Term wird 0}\\
+\mathbf{\tau}_y &= \sum\limits_{i=1}^N(p_{iz}-p_z)f_{ix} - \sum\limits_{i=1}^N(p_{ix}-p_x)f_{iz} &\text{erster Term wird 0}\\
+\mathbf{\tau}_x &= \sum\limits_{i=1}^N(p_{ix}-p_x)f_{iy} - \sum\limits_{i=1}^N(p_{iy}-p_y)f_{ix}\\
+\end{align*}
+\item Im statischen Fall kann der Schwerpunkt einfach auf den Boden projiziert werden
+\item Über Roboterdynamik kann ein virtueller / computed ZMP berechnet werden
+\item ZMP bereits 1968 von Vukobratovic in Moskau präsentiert
+\item ZMP macht recht starke Annahme: finde den Punkt, an dem sich alle Kräfte  ausgleichen $\rightarrow$ Kriterium funktioniert im Grunde nur auf flachem Boden, in unebenem Gelände nicht so gut anwendbar
+\item Dennoch weitverbreitetes dynamisches Stabilitätskriterium insbesondere für zweibeinige Laufroboter und weltweit angewandtes Konzept in der humanoiden Robotik (z.B. laufender \textit{ASIMO} von Honda beweist, dass ZMP ein gutes Kriterium ist)
+\end{itemize}
+\textbf{Force-Angle Stability Measure (FASM)}
+\begin{itemize}
+\item Ursprünglich für Baufahrzeuge entwickelt
+\item Winkel zur Kippachse als Stabilitätsmaß\\
+\begin{align*}
+\mathbf{x}_{cog} &= \frac{1}{\sum_{i=1}^N M_i} \sum\limits_{n=0}^N m_i \cdot \mathbf{x}_{cog}\\
+\alpha &= min(\theta_i)||\mathbf{f}_r||
+\end{align*}
+\begin{itemize}
+\item Wenn Winkel $\theta = 0$ wird kippt man um
+\item Berücksichtigt die Höhe
+\item Kann die externe Störkräfte berücksichtigen
+\item schnell und effektiv berechenbar
+\item Eingangsgrößen:CoM, Gewichtskraft auf CoM, externe Kräfte und Momente (auf CoM), Fußpunkte
+\end{itemize}
+\end{itemize}
+\subsection{Laufmuster}
+\textbf{Gait-Diagramme} (siehe z.B. \autoref{symmetry})
+\begin{itemize}
+\item Zur übersichtlichen Darstellung von Laufmustern
+\item Weit verbreitet: sowohl in Biologie wie Robotik
+\item $X$-Achse: zeitlicher Verlauf
+\item $Y$-Achse (pro Bein): Darstellung der Schwing- bzw. Stemmphase\\
+(meist: schwarzer Balken = Bodenkontakt/Stemmphase)
+\item Laufmuster aus Gait-Diagramm \glqq ablesbar\grqq
+\end{itemize}
+\textbf{Phase-Shift}
+\begin{itemize}
+\item Phase-Shift des $Bein_i$ (Phasenverschiebung):
+Laufmuster können über Phasenverschiebung zwischen den Beinen beschrieben/definiert werden\\
+\begin{center}
+$\phi_i = \frac{Beginn Stemmphase Bein_i}{T}$
+\end{center}
+\end{itemize}
+\textbf{Duty-Factor}
+\begin{itemize}
+\item Duty-Factor des $Bein_i$ (Belastungsfaktor):
+Beschreibt den relativen Anteil der Stemmphase zu der Gesamtzykluszeit ($T = Schwingzeit + Stemmzeit$)\\
+\begin{center}
+$\beta_i = \frac{Stemmzeit Bein_i}{T}$
+\end{center}
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_PS_DF.png}
+	\caption{Phase-Shift und Duty-Factor}
+	\label{PS_DF}
+\end{figure}
+\subsubsection{Unterscheidungskriterien für Laufmuster}
+Laufmuster haben wesentlichen Einfluss auf die Leistungsfähigkeit von Laufrobotern:
+\begin{itemize}
+\item Stabilität
+\item Geschwindigkeit
+\item Effizienz
+\end{itemize}
+Wenn man über Laufmuster spricht sind de folgenden Kriterien in dieser Reigenfolge anzugeben:
+\begin{itemize}
+\item[1.] \textbf{Anzahl der Beine}: vgl. \autoref{Laufarten}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/ch06_beinanzahl.png}
+	\caption{Laufarten}
+	\label{Laufarten}
+\end{figure}
+\item[2.] \textbf{Symmetrie der Beinpaare}: Wie ist die Phasenverschiebung innerhalb eines Beinpaares? (vgl. \autoref{symmetry})
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/ch06_symmetry.png}
+	\caption{Symmetrie der Beinpaare: Beim asymmetrischen Gang schwingen RH und LH in Phase (gleichzeitig), während beim symmetrischen Gang eine klare Phasenverschiebung von 0.5 auftritt.}
+	\label{symmetry}
+\end{figure}
+\item[3.] \textbf{Zyklisches Laufmuster}: Ist ein wiederkehrendes Muster erkennbar? (vgl. \autoref{pattern})
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/ch06_pattern.png}
+	\caption{Zyklen}
+	\label{pattern}
+\end{figure}
+\item[] Bemerkung: Wie unterscheiden sich Kriterien 2 und 3?
+\begin{itemize}
+\item Kriterium 2 bezieht sich auf die Phasenverschiebung innerhalb der Beinpaare (z.B. vordere Beine: LF, RF);  symmetrisch: 0.5, ansonsten asymmetrisch
+\item Bei Kriterium 3 bleiben die Phasenverschiebung zwischen den Beinen und der Duty-Factor konstant; Muster (kann aus mehreren Schrittfolgen bestehen) bleibt gleich
+\end{itemize}
+\item[4.] \textbf{Anzahl der Bodenkontakte/Beine auf dem Boden}:
+\begin{itemize}
+\item Laufmuster wird über die Mindestzahl an Beinen mit Bodenkontakt definiert
+\item Mehr Beine im Kontakt mit Boden $\rightarrow$ größere Stabilität
+\item Meist handelt es sich um zyklische Laufmuster
+\item Typische Beispiele sind: Tripod (immer mind. 3 Beine auf dem Boden), Tetrapod (immer mind. 4 Beine auf dem Boden), Pentapod (immer mind. 5 Beine auf dem Boden)
+\end{itemize}
+\end{itemize}
+\subsubsection{Sechsbeinige, vierbeinige, zweibeinige Laufmuster}
+\textbf{Hexapod/6-Beiner}:
+\begin{itemize}
+\item Schnellstes statisch stabiles Laufmuster: Tripod (abwechselnd 3 Beine auf Boden, zu jedem Zeitpunkt statisch stabil), siehe \autoref{hexapod} A
+\item Weitere typische Laufmuster: Tetrapod, Pentapod (4 bzw. 5 Beine auf dem Boden, zu jedem Zeitpunkt statisch stabil), siehe \autoref{hexapod} B
+\item Cruse-Regel basiertes Laufmuster (Mix aus den obigen), siehe \autoref{hexapod} Mischung aus A und B
+\item Free-Gait -- \glqq Freies Laufmuster\grqq{}: große Flexibilität, besonders für schwieriges Terrain gut geeignet, siehe \autoref{hexapod} C
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_hexapod.png}
+	\caption{Gangarten 6-beiniger Insekten}
+	\label{hexapod}
+\end{figure}
+\end{itemize}
+\textbf{Free Gait am Beispiel der Stabheuschrecke}
+Die Verwendung der Begriffe Tetrapod und Tripod verleitet zu der Annahme der Existenz fester Gangmustern.
+Es ist aber bekannt, dass Insekten einen freien Gang verwenden. Die Koordination der Beine erfolgt durch mehrere Koordinationsregeln (vgl. \autoref{LM und CR}). Bei der Stabheuschrecke 
+gilt die einfache Regel: \textit{Wenn der linke und rechte Nachbar auf dem Boden sind, dann darf das Bein anfangen zu schwingen} (vgl. \autoref{stabi}). 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/ch06_stabi.png}
+	\caption{Gang der Stabheuschrecke. Die Konstellation im dritten Bild ist durch die Cruse-Regeln eigentlich nicht erlaubt.}
+	\label{stabi}
+\end{figure}
+Es ist ein Wechsel/Übergang zwischen verschiedenen Laufmustern möglich:\\
+\begin{center}
+Tripod: $\beta \approx 0.65$, Tetrapod: $\beta \approx 0.80$, Pentapod: $\beta \approx 0.9$\\
+($\beta$ := Schwing- zu Stemmzeit Verhältnis)
+\end{center}
+\textbf{Quadruped/4-Beiner}:
+\begin{itemize}
+\item Zahlreiche, sehr unterschiedliche Laufmuster
+\item Laufende Muster (Walking Gaits)
+\begin{itemize}
+\item Mind. 1 Bein immer auf dem Boden
+\item Walk, Passgang (Amble)
+\item Trott - Walking
+\item Creeping Gait (immer nur 1 Bein schwingt)
+\item Crawl Gait (Creeping Gait mit max. Stabilität)
+\end{itemize}
+\item Rennende Muster (Running Gaits)
+\begin{itemize}
+\item Flugphase vorhanden (kein Bein auf Boden)
+\item Passgang (Pace)
+\item Leichter Galopp (Canter)
+\item Galopp (Gallop)
+\item Trab (Trot - Running)
+\end{itemize}
+\end{itemize}
+\textbf{Zweibeinige Laufmuster/Menschliches Laufen}:
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{10cm}|p{10cm}|}
+\hline
+\textbf{\glqq Laufen\grqq{} (run)} & \textbf{\glqq Gehen\grqq{} (walk)} \\
+\hline
+\hline
+\begin{itemize}
+\item Schneller als \glqq Gehen\grqq{}
+\item Mit Flugphase
+\item Duty-Factor $<= 0.5$
+\end{itemize} &
+\begin{itemize}
+\item Langsamer \glqq Laufen\grqq{}
+\item Keine Flugphase
+\item Duty-Factor $> 0.5$
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Wichtigste Unterscheidung: \glqq Laufen\grqq{} vs. \glqq Gehen\grqq}
+\label{tab:2Beiner}
+\end{table}
+\subsection{Mehrbeiniges Laufen}
+\subsubsection{Zentrale Muster Generatoren (CPG)}
+\begin{itemize}
+\item Bio-inspirierte Mechanik und bio-inspirierte Steuerung (CPGs)
+\item Vier gekoppelte Oszillatoren erzeugen unterschiedliche Laufmuster (vgl. \autoref{cpg})
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.6\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_cpg1.png}
+		\caption{}
+		\label{cpg1}
+	\end{subfigure}
+	\begin{subfigure}{.6\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_cpg2.png}
+		\caption{}
+		\label{cpg2}
+	\end{subfigure}
+	\caption{Beispiel CPGs}
+	\label{cpg}
+\end{figure}
+%\subsubsection{Reaktive Ansätze}
+\subsubsection{Verhaltens- und regelbasierte Steuerung}
+\textbf{Beispiel: LAURON 4/5}
+\begin{itemize}
+\item Modulare Architektur: Wart- und erweiterbar
+\item Verschiedene Laufmuster: Tripod, Tetrapod, Pentapod sowie Free-Gait
+\item Schrittgrößen und Zykluszeiten werden automatisch angepasst (z.B. bei Gang über Rampe)
+\item Hierarchische Verhaltsarchitektur
+\begin{itemize}
+\item Koordinierte Verhalten (langsam)
+\item Reaktive Verhalten (schnell)
+\item Hardware Abstraction Layer (schnell)
+\end{itemize}
+\end{itemize}
+\textbf{Passive Walking}:\\
+Rein mechanisches Laufen (kein Strom etc.) durch simple Regelungslgorithmen und intelligente Mechanik (z.B. \textit{Cornell Biped})
+\subsection{Zweibeiniges Laufen}
+\subsubsection{Biomechanische Ansätze menschliches Laufen zu beschreiben}
+\textbf{Selbststabilisierende Systeme beim Laufen}
+\begin{itemize}
+\item Informationsfluss auf Nervenbahnen deutlich kleiner als Schallgeschwindigkeit\\
+$\Rightarrow$ Säugetiere tasten etwa mit $50ms - 100ms$ ab.
+\item Trotzdem kann sich z.B. ein Gepard mit über $80 km/h$ bewegen,
+das bedeutet, dass er sich pro \glqq Abtastschritt\grqq{} etwa $1-2 m$ bewegt.\\
+$\Rightarrow$ Informations-Vorverarbeitung in der \glqq Mechanik\grqq{}
+\end{itemize}
+Daraus lassen sich biomechanisch folgende Schlüsse ziehen:
+\begin{itemize}
+\item[a.] Bei schneller Lokomotion kann das Muskel-Skelett-System den Schwerpunkt nicht mehr kontinuierlich stabilisieren.
+\item[b.] Die \glqq Bein-Mechanik\grqq{} muss so eingestellt werden, dass ein so genannter \textit{Selbststabilisierender Zyklus} eingestellt wird.
+\item[c.] Das Nervensystem stellt die \glqq Mechanik\grqq{} anhand eines \textit{kinematischen Programms} immer wieder neu ein (Reflex-Preflex)
+\end{itemize}
+Beispiele:
+\begin{itemize}
+\item detailliertes neuronales Muskel-Skelett-Modell nach Hatze
+\item verallgemeinertes mechanisches Modell nach Günther
+\item \glqq Virtual Model Control\grqq{} nach Henze bzw. Pratt
+\item Feder-Masse-System nach Blickhan
+\item Erweiterte Untersuchungen des Feder-Masse-Systems nach Seyfarth/Geyer/Blickhan
+\end{itemize}
+
+\textbf{Bewegungsbereich und Selbststabilisation}\\
+Bewegungsbereich und Selbststabilisation sind beschreibende Attribute der energetischen Topographie (siehe Abbildungen \ref{bew_stab} und \ref{stab}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_bew_stab.png}
+	\caption{Bewegungsbereich und Selbststabilisation}
+	\label{bew_stab}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch06_selbststab.png}
+	\caption{Selbststabilität}
+	\label{stab}
+\end{figure}
+
+\textbf{Feder-Masse-System nach Blickhan}\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_blickhan1.png}
+	\caption{Starke Vereinfachung als Punktmasse an Feder}
+	\label{blick}
+\end{figure}
+Modellierung selbststabilisierender Systeme:  
+\begin{itemize}
+\item Modellierung menschlichen Laufens durch sehr einfache physikalische Modelle; Modellierung nähert das Feder-Dämpfer Verhalten
+der biologischen Muskeln an
+\item Abstraktion des gesamten muskulären Apparates auf eine Feder
+\item Schwerpunkt bewegt sich auf sinoider Bahn. Bein \glqq federt ein\grqq{} beim Auffußen und \glqq federt aus\grqq{} beim Abfußen
+\end{itemize}
+\autoref{blick2} zeigt die Modellierung, hierbei ist:
+\begin{itemize}
+	\item $l_0$: Initiale Beinlänge (Beim Auffußen und Abfußen)
+	\item $\alpha_0$: \textit{Angle of Attack} (Aufsetzwinkel)
+	\item $m$: Systemmasse
+	\item $k_{leg}$: Federkonstante des Beines
+	\item $y_i$: Apexhöhe (max. Schulterhöhe)
+	\item $v_{x,0}$: Geschwindigkeit in $x$-Richtung
+	\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_blickhan2.png}
+	\caption{Modellierung Selbststabilisierender Systeme}
+	\label{blick2}
+\end{figure}
+\autoref{mf} zeigt ein attraktives Masse-Federsystem. Dieses Modell kann 1:1 auf den Menschen übertragen werden. In der rechten Abbildung sieht man den stabilen Zyklus. Hierbei ist der Aufsetzwinkel $\alpha$ als aktiv zu regelnde Stellgröße besonders wichtig. 69° sind zu groß und der stabile Zyklus wird verlassen. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_masse-feder.png}
+	\caption{Attraktives Masse-Feder-System}
+	\label{mf}
+\end{figure}
+\autoref{al} zeigt den Ablauf. Hierbei ist:
+\begin{itemize}
+\item Konstante Geschwindigkeit $\omega_R$
+\item Start am Apex mit Angriffs-winkel $\alpha_R$
+\item Aufsetzwinkel $\alpha_0$
+\item Anpassen von $\alpha$ als Funktion über die Flugzeit: $\alpha=\alpha(t)$
+\item Konstante Steifheit $k$ im Bein
+\item[$\Rightarrow$] Verschiedene \glqq Kinematische Programme\grqq{} im ZNS
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_ablauf.png}
+	\caption{Selbststabilisierende Systeme -- Ablauf}
+	\label{al}
+\end{figure}
+
+\textbf{Rennen und Gehen}\\
+In \autoref{er} ist elastisches Rennen dargestellt. Hierbei zeigt die linke Abbildung das Kraftprofil mit Laufrichtung als $x$-Komponente und Kraft als $z$-Komponente. Stabile Winkel sind 67° und 68°, nicht aber 66° und 69°. Bei letzteren kommt es zum Aufschwingen bzw. Abbruch.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/ch06_rennen.png}
+	\caption{Elastisches Rennen}
+	\label{er}
+\end{figure}
+\autoref{rg} zeigt Unterschiede zwischen Rennen und Gehen:
+\begin{itemize}
+\item Verhältnis Schwingen/Stemmen <0.5 $\leftrightarrow$ >0.5
+\item single-support $\leftrightarrow$ double-support
+\item Einhügliches $\leftrightarrow$ zweihügliches Kraftmuster
+\item Kurzer $\leftrightarrow$ langer Bodenkontakt
+\item hüpfende $\leftrightarrow$ glatte Bewegung
+\item Elastische $\leftrightarrow$ steife Beine
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_uebergang1.png}
+	\caption{Rennen vs. Gehen}
+	\label{rg}
+\end{figure}
+
+\autoref{uebergang} zeigt den Übergang vom Rennen zum Gehen. Auffällig ist die große Lücke zwischen Gehen und Rennen, es gibt keinen kontinuierlicheren Übergang sondern der Geschwindigkeitswechsel verändert die Laufmuster grundlegend.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_uebergang2.png}
+	\caption{Übergang vom Rennen zum Gehen}
+	\label{uebergang}
+\end{figure}
+Abbildungen \ref{eg} und \ref{erg} geben Informationen über elastisches Gehen.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_gehen.png}
+	\caption{Ablauf des elastischen Gehens}
+	\label{eg}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch06_rennen-gehen.png}
+	\caption{Elastizität beim Rennen und Gehen}
+	\label{erg}
+\end{figure}
+
+
+\subsubsection{Technische Umsetzung dieser Prinzipien auf reale Systeme}
+\autoref{umsetzung} stellt die Schritte zur Technischen Umsetzung dar.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/ch06_umsetzung.png}
+	\caption{Vorgehen bei der technischen Umsetzung}
+	\label{umsetzung}
+\end{figure}\\
+\textbf{1. Analyse, Übertragung und Adaption der biomechanischen Laufmodelle}\\
+Siehe \autoref{s1}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/ch06_tu1.png}
+	\caption{Schritt 1}
+	\label{s1}
+\end{figure}\\
+\textbf{3. Entwurf eines Algorithmus zur elastischen Beinlängen-Schwingungsregelung}
+Siehe \autoref{s3}.
+\begin{itemize}
+\item Adaptives Einstellen der Eigenfrequenz über Systemgrößen
+\item Kontrolliertes Anregen mit Resonanzfrequenz
+\item[$\rightarrow$] Optimale energieeffiziente Bewegung
+\item[$\rightarrow$] Unterschiedliche Lauffrequenzen durch Modifikation von Systemgrößen
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_tu31.png}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch06_tu32.png}
+		\caption{}
+	\end{subfigure}
+	\caption{Schritt 3}
+	\label{s3}
+\end{figure}
+Ein-Dimensionaler Versuchsstand (EDV): 
+\begin{itemize}
+\item Entwurf eines Versuchsstandes zur Entwicklung der Beinlängen Regelung
+\item Flexibler Aufbau - Tests mit unterschiedlichen Muskellängen, Gewichten, Untergründen
+\item Aufzeichnung aller relevanten Größen des Muskels und der Bewegung des Gesamtsystems
+\end{itemize}
+\textbf{4. Modellierung und Analyse der dynamischen Eigenschaften des gesamten Beins\\
+5. Übertragung der elastischen Beinlängen-Regelung auf Mehrsegmentbein;\\
+Kopplung und Synchronisation des Hüftantriebs mit der Beinlängenschwingung}
+\begin{itemize}
+\item 4 DOF pro Bein (2 DOF pro Hüfte) für erste Tests
+\item Auslegung für Geschwindigkeiten von bis zu $3m/s$
+\item Integrierte Winkel-, Drehmomentsensorik
+\item Beinlänge ca. $1m$
+\item Gesamtgewicht Unterkörper ca. $20kg$
+\item Winkelbereich Hüfte: Vorwärts 135°, Rückwärts 45°, Seitwärts je 30°
+\end{itemize}
+Regelungsansatz: Virtual Model Control (VMC) – nach Pratt ‘95
+\begin{itemize}
+\item Kontrolle durch \glqq Virtual Components\grqq{} (VC)
+\item Mit Hilfe virtueller externer Kräfte
+\item Meist virtuelle Feder-Dämpfer-Systeme
+\item Transformation auf Gelenkmomente mittels Jakobi Matrix
+\item Keine inverse Kinematik
+\item Keine Matrixinversion
+\item Intuitive Kontrollmethode
+\item Komplex wenn viele VCs von Nöten
+\item[$\rightarrow$] Kontrolle ähnelt Marionettenspiel
+\item Virtuelle Komponenten für Zweibeiniges System:
+\begin{itemize}
+\item Ähnelt reaktivem Ansatz
+\item Es werden 23 VCs benötigt
+\item Abhängig von Ereignissen werden VCs aktiviert, deaktiviert oder neu parametrisiert
+\item Drei Grundlegende Zustände der Muskelgetriebenen Gelenke: Aktiv, Passiv, Frei
+\end{itemize}
+\end{itemize}

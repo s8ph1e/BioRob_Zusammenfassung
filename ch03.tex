@@ -2,7 +2,6 @@
 
 \subsection{Der biologische Muskel – das Wirkprinzip}
 \subsubsection{Muskelaufbau und unterschiedliche Muskelformen}
-\textbf{Allgemeines:}
 \begin{itemize}
 	\item Der Muskel ist nur ein Teil des Bewegungsapparates (Sehnen, Muskelfaszien, Sehnenscheiden, Gleitbeutel, Sesambeine und Sehnenknorpel).
 	\item Muskeln können nur ziehen, deshalb Gegenspieler (antagonistisches Prinzip).
@@ -14,27 +13,40 @@
 	\item Skelettmuskulatur (quergestreifte Muskulatur): für aktive Körperbewegungen; Trizeps, Bizeps
 	\item Glatte Muskulatur: vor allem Eingeweidemuskulatur, z.B. Darm; keine willkürliche Kontrolle
 \end{itemize}
-\textbf{Muskelformen (Skelettmuskulatur):}
-\begin{enumerate}
-	\item Spindelförmig
-	\item Ringförmig
-	\item Ringförmig, glatt
-	\item Zweiköpfig
-	\item Doppelt gefiedert
-	\item Einfach gefiedert
-	\item Zweibauchig
-	\item Platter Muskel
-	\item Mehrbauchiger Muskel
-\end{enumerate}
-\textbf{Muskelaufbau (Skelettmuskulatur):}
+\textbf{Muskelformen (Skelettmuskulatur):} siehe \autoref{Formen}\\
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.7\linewidth]{figures/ch03_muskeln.png}
+		\caption{Formen der Skelettmuskulatur: a. Spindelförmig, b. Ringförmig, c. Ringförmig, glatt, d. Zweiköpfig, e. Doppelt gefiedert, f. Einfach gefiedert, g. Zweibauchig, h. Platter Muskel, i. 					Mehrbauchiger Muskel}
+	\label{Formen}
+\end{figure}\\
+\textbf{Muskelaufbau (Skelettmuskulatur):} siehe Abbildungen \ref{Aufbau} und \ref{Fkt}
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.5\linewidth]{figures/ch03_musclefibres.png}
+		\caption{Muskelaufbau des Skelettmuskels}
+	\label{Aufbau}
+\end{figure}\\
 \begin{itemize}
 	\item Muskelfasern verlaufen fast parallel in Längsrichtung
 	\item Fiederung für Blutversorgung und Raum bei Dickenzunahme
 	\item Volumen bleibt während der Kontraktion konstant 
 	\item Dickenzunahme durch Vergrößerung des Faserwinkels
 \end{itemize}
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.5\linewidth]{figures/ch03_muskelfkt.png}
+		\caption{Muskelaufbau des Skelettmuskels}
+	\label{Fkt}
+\end{figure}
 \subsubsection{Prinzipielle Funktionsweise}
-vgl. Abbildung
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.1\linewidth]{figures/ch03_muskelaufbau.png}
+		\caption{Funktionsweise des Skelettmuskels}
+	\label{Fkt1}
+\end{figure}
+\autoref{Fkt1} stellt die Funktionsweise dar, hierbei gilt:
 \begin{itemize}
 	\item Gedehnter Zustand (schwarz)
 	\item Kontrahiert Zustand (gestrichelt)
@@ -49,6 +61,12 @@ vgl. Abbildung
 	\item Faustregel: Je größer der Querschnitt, desto größer die Kraft
 \end{itemize}
 \textbf{Geschwindigkeit - Last Beziehung (Hillsche Beziehung)}
+\begin{figure}[h!]
+	\centering
+		\includegraphics[width=0.2\linewidth]{figures/ch03_hill.png}
+		\caption{Hillsche Beziehung}
+	\label{hill}
+\end{figure}
 \begin{itemize}
 	\item geringe Last $\rightarrow$ Verkürzungsgeschwindigkeit maximal
 	\item mit zunehmender Last $\rightarrow$ nimmt Geschwindigkeit ab
@@ -70,16 +88,37 @@ informieren:
 	\item Synergisten: Muskeln mit gleicher Wirkrichtung
 	\item Antagonisten: Muskeln mit gegensinniger Wirkrichtung
 	\item Durch die Kombination beider Wirkprinzipien: Bremsende, gezügelte, harmonische und genau dosierte Bewegung möglich
-	\item Einfacher Aufbau von einachsigen Gelenken, aber kompliziertes Zusammenwirken bei komplexeren Gelenken!
+	\item Einfacher Aufbau von einachsigen Gelenken, aber kompliziertes Zusammenwirken bei komplexeren Gelenken (z.B. Kugelgelenke)!
 \end{itemize}
 \subsection{Klassische Antriebe in der Robotik}
-\subsubsection{Pneumatische Antriebe}
-\subsubsection{Hydraulische Antriebe}
-\subsubsection{Elektrische Antriebe}
-\subsubsection{Leistungsgewichtsvergleich unterschiedlicher Antriebe}
+\begin{itemize}
+	\item \textbf{Pneumatische Antriebe}: Einsatz häufig bei Explosionsgefährdung oder Reinraumerfordernissen 
+	\item \textbf{Hydraulische Antriebe}: ab gewissem Gewicht besser, aber durch Linearachse Rotationsbewegungen schwierig
+	\item \textbf{Elektrische Antriebe}: am weitesten verbreitet  da günstig, hochpräzise Getriebeübersetzung
+\end{itemize}
+\textbf{Leistungsgewichtsvergleich unterschiedlicher Antriebe in Natur und Technik}:
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_klassische-antriebe.png}
+		\caption{Technik}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_klassische-antriebe1.png}
+		\caption{Natur}
+	\end{subfigure}
+	\caption{}
+\end{figure}
+\newpage
 \subsection{Künstliche Muskelsysteme}
 \emph{Von drehender Mechanik zu selbstverformenden Polymeren}
 \subsubsection{Mechanischer Muskel}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{figures/ch03_mech-muskel.png}
+	\caption{Typen mechanischer Muskeln}
+	\label{mechmus}
+\end{figure}
 \begin{itemize}
 	\item Linear to Angle Displacement Device (LADD)
 	\item Concentric LADD (CLADD)
@@ -94,24 +133,72 @@ informieren:
 	\item Electronic EAP: Ferroelectric, Dielectric, Electrostrictive
 	\item Ionic EAP: Ionic Polymer Gels, Ionometric Polymer-Metal Composites, Conductive Polymers
 	\item Anwendungen: Greifer, Lobster
+	\item [$\rightarrow$] eher Grundlagenforschung, mann kann keine großen Kräfte aufbringen, aber: kann sogar Schwimmbewegunen erzeugen; eher für sehr feine Bewegungen geeignet
 \end{itemize}
 \subsubsection{Piezoelektrische Antriebe}
 \subsection{Fluidische Muskeln}
-\emph{Fluidik ist die Wissenschaft, die sich mit
-flüssiger oder gasförmiger Materie befasst.}
+\emph{Fluidik ist die Wissenschaft, die sich mit flüssiger oder gasförmiger Materie befasst.}
 \subsubsection{Spinnenprinzip}
 z.B. \glqq Black Spider\grqq : pneumatische mehrbeinige Laufmaschine
 \subsubsection{Weitere Muskeln}
-z.B. Pleated Pneumatic Artificial Muscle
+z.B. Pleated Pneumatic Artificial Muscle (siehe \autoref{ppam}) 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.3\linewidth]{figures/ch03_ppam.png}
+	\caption{}
+	\label{ppam}
+\end{figure}
+\begin{itemize}
+\item Steifigkeit künstlich vorgegeben (Feder-Masse-System, Federkonstante zur Laufzeit veränderbar durch Aufblasen)
+\item Vorteile:
+\begin{itemize}
+\item Elastizität, fließende Bewegungen, Steifigkeit einstellbar
+\item Energie im System speicherbar
+\item schnelle Bewegung, passive Dämpfung gegenüber Stößen
+\item[$\rightarrow$] spannend für Laufbewegungen
+\end{itemize}
+\item Nachteile:
+\begin{itemize}
+\item sehr komplex, pro Gelenk mindestens zwei  Antriebe, alle müssen mit Zu- und Ableitungen/Ventilen versorgt  werden
+\item Kompressor mit Druckluft nötig, schwierig unterzubringen
+\end{itemize}
+\end{itemize}
 \subsubsection{McKibben-Muskel}
-z.B. Shadow-Muskel, FESTO-Muskel
+z.B. Shadow-Muskel (schnell konfektionierbar), FESTO-Muskel (Industrienorm)
 \subsection{McKibben Prinzip}
 \subsubsection{Aufbau und Funktionsweise am Beispiel FESTO-MAS}
-Innendruck im Muskel bewirkt Längskontraktion, bzw. eine Zugkraft in axialer Richtung, da sich die Länge der einzelnen Gewebefasern nicht verändern kann. Dieses Prinzip funktioniert nur für einen Grundfaserwinkel von weniger als ca. 55°.
-Abb: Zusammenhang zwischen Kontraktion, Druck und Kraft des Muskels
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.6\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_mckibben1.png}
+		\caption{Gewebe mit gewissen Winkeln zwischen einzelnen Fasern: Bei Druck möchte sich das System ausbreiten. Durch Faserwinkel entsteht Kontraktion in der Längsrichtung.}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_mckibben.png}
+		\caption{}
+	\end{subfigure}
+	\caption{McKibben-Prinzip}
+	\label{mck}
+\end{figure}
+\noindent
+Der Innendruck im Muskel bewirkt Längskontraktion, bzw. eine Zugkraft in axialer Richtung, da sich die Länge der einzelnen Gewebefasern nicht verändern kann. Dieses Prinzip funktioniert nur für einen Grundfaserwinkel von weniger als ca. 55°.\\
+\autoref{fm} zeigt die Kennkurve für den FESTO Fluidic-Muscle unter verschiedenen Drücken. Auf der $x$-Achse ist die Längenänderung $h$ in \% abgetragen, die $y$-Achse zeigt die Kraft $F$. Es entstehen verschiedene Kurven durch unterschiedliche Kräfte je nach Längenänderung.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/ch03_festo-muskel.png}
+	\caption{Zusammenhang zwischen Kontraktion, Druck und Kraft des Muskels}
+	\label{fm}
+\end{figure}
+\newpage
 \subsubsection{Verschiedene Muskelmodelle – Simplizität vs. Präzision}
 \textbf{Statisches Muskelmodell:} Das Modell basiert auf der Annahme, dass sich
-der Muskel wie ein idealer Zylinder verhält!\\
+der Muskel wie ein idealer Zylinder verhält (vgl. \autoref{statmod})!\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figures/ch03_stat-modell.png}
+	\caption{}
+	\label{statmod}
+\end{figure}
 Kraft hängt von Kontraktion und Druck ab:\\
 \begin{align*}
 	F(\kappa, P) = (\pi \cdot r_0^2) \cdot P \cdot \left[a \cdot (1 - \kappa)^2 - b\right]
@@ -125,6 +212,7 @@ mit
 	F_{max} &= (\pi \cdot r_0^2) \cdot P \cdot \left[a - b\right] \text{ mit} \kappa = 0\\
 	\kappa_{max} &= 1 - \sqrt{\frac{b}{a}} \text{ mit} F = 0
 \end{align*}
+Der Faktor $\kappa$ ist die relative Längenänderung, für 0 Kontraktion wird Term maximal, für Kraft = 0 maximale Kontraktion in Abhängigkeit vom Faserwinkel.\\
 Erweiterung des Modells durch Einführung eines Parameters $\varepsilon$:
 \begin{itemize}
 	\item Berücksichtigung der Einschnürung an den Enden des Muskels
@@ -134,28 +222,179 @@ Erweiterung des Modells durch Einführung eines Parameters $\varepsilon$:
 \begin{align*}
 	F(\kappa, P) = (\pi \cdot r_0^2) \cdot P \cdot \left[a \cdot (1 - \varepsilon \cdot \kappa)^2 - b\right] \text{ mit} \varepsilon = c_1 \cdot e^{-P} + c_2
 \end{align*}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_stat-mod0.png}
+		\caption{Originalkurven vs. gefilterte Modellkurven}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_stat-modell1.png}
+		\caption{Besserer Schätzer nach Einführung des Korrekturfaktors: jetzt wird berücksichtigt, dass der Zylinder keine gleichmäßige Ausdehnung, Einschnürungen und Wölbungen aufweist}
+	\end{subfigure}
+	\caption{Statisches Muskel-Modell}
+	\label{mck}
+\end{figure}\\
 \noindent
-\textbf{Dynamisches Muskelmodell:}
+\textbf{Dynamisches Muskel-Modell:}
 Kraftgleichung:
 \begin{align*}
 	F_{Mus} = F_{Feder}(P, \kappa) + F_{Daempfer}(P, \dot{\kappa})   
 \end{align*}
-Mechanisches Ersatzschaltbild siehe Abbildung\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.25\linewidth]{figures/ch03_dyn-modell.png}
+	\caption{Mechanisches Ersatzschaltbild}
+	\label{dm}
+\end{figure}
+\newpage
 \noindent
 \textbf{Quick-Release Test Umgebung}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.3\linewidth]{figures/ch03_testumgebung.png}
+	\caption{Test-Umgebung}
+	\label{tu}
+\end{figure}
 \begin{itemize}
 	\item Erfassung der dynamischen Eigenschaften des Muskels
 	\item Aufzeichnung aller relevanten Muskelkenngrößen
 	\item Vergleich des Verhaltens mit biologischem Muskel: Validierung des Muskelmodells z.B. durch Vergleich zwischen aufgezeichneten Daten und Matlab-Simulation
+	\item $P_{mech} = F \cdot v$
+	\item Validierung des Muskelmodells durch realen mechanischen Aufbau: Bis auf die Anfangsbereiche sehr gute Ännäherung an Simulation, daher nutzbar für die Regelung
 \end{itemize}
 
 \textbf{Kraft-Geschwindigkeits-Zusammenhang}
-vgl. Abbildung
-\subsubsection{Beispiele und Anwendungen}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{figures/ch03_pv-zshang.png}
+	\caption{Kraft-Geschwindigkeits-Zusammenhang: vgl. Hiller'sches Prinzip, genau die gleiche Kurve in technischem System implementiert, biologisches Verhalten schön nachgebildet}
+	\label{tu}
+\end{figure}
+
+%\subsubsection{Beispiele und Anwendungen}
 \subsection{Antagonistische Regelung}
 \subsubsection{Antagonistisches Gelenk}
+\textbf{Gelenkregelung Stabheuschrecke}:
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_Gelenkregelung-Stabheuschrecke.png}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_Gelenkregelung-Stabheuschrecke1.png}
+		\caption{Interneurone zur Verstärkung zur Regelung der Tibia-Stellung}
+	\end{subfigure}
+	\caption{Statisches Muskel-Modell}
+	\label{grhs}
+\end{figure}\\
+\newpage
+\noindent
+\textbf{Kräfteverhältnis in einem Gelenk} (vgl. \autoref{ar}):\\
+$(F_A - F_B)\cdot r = M_S$ mit
+\begin{itemize}
+\item $F_{A(B)}$: Muskelkraft in Muskel $A(B)$
+\item $r$: Radius der Gelenktrommel
+\item $M_S$ Störmoment, bzw. äußeres Moment
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/ch03_antagonistische-regelung.png}
+	\caption{technische Umsetzung als klassisches Rotationsgelenk über Seil/Draht, zwei Muskeln zusammen schalten, in Abhängigkeit von Hebelarm (Durchmesser der Scheibe)
+und $F_A, F_B$,  Regelung der Steifigkeit durch Zug auf Seil}
+	\label{ar}
+\end{figure}
+\textbf{Modellbildung -- Aufbau eines Gelenks} (vgl. \autoref{ar1}): gut mathematisch modellierbar\\
+Gelenk-Bewegungsgleichung: $J\ddot{\varphi} = -rF_{A}(\kappa_A, \dot{\kappa}_A, p_A)+rF_B(\kappa_B, \dot{\kappa}_B, p_B)-\frac{1}{2}cos(\varphi - \varphi_0)F_g+lF_s$
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/ch03_antagonistische-regelung1.png}
+	\caption{}
+	\label{ar1}
+\end{figure}
+\newpage
+\textbf{Modellbildung -- Festlegung der Zustandsgrößen} (vgl. \autoref{zm}): 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/ch03_zwei-muskeln.png}
+	\caption{}
+	\label{zm}
+\end{figure}
+\begin{itemize}
+\item Zustandsgrößen $\underline{x}$
+\begin{itemize}
+\item Druck Muskel $A$
+\item Druck Muskel $B$
+\item Gelenkwinkel $\varphi$
+\item Winkelgeschwindigkeit $\dot{\varphi}$
+\item Winkelbeschleunigung $\ddot{\varphi}$
+\end{itemize}
+\item Eingangsgrößen $\underline{u}$
+\begin{itemize}
+\item Öffnungsfläche $A_V$ von Ventil $A$
+\item Öffnungsfläche $A_V$ von Ventil $B$
+\end{itemize}
+\item nichtlineare DGL (kann zur Regelung benutzt werden):
+\begin{itemize}
+\item[] $\underline{\dot{x}} = \underline{f}(\underline{x}, \underline{u}, t)$
+\item[] $\underline{y} = \underline{g}(\underline{x}, \underline{u}, t)$
+\end{itemize}
+\end{itemize}
 \subsubsection{Zusammenspiel zweier Fluidischer Muskeln}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_zusammenspiel.png}
+		\caption{In neutraler Gelenkposition stark kontrahiert; je nach gewünschter Längenänderung Veränderung der maximalen möglichen Kraft; Schnittstelle: Neutrale Gelenkposition, bereits starke Kontraktion (etwa 12-13\%)}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_zusammenspiel1.png}
+		\caption{In neutraler Gelenkposition wenig kontrahiert; dichtere Anordnung: höhere Kräfte möglich aber kleinerer Gelenkwinkelbereich, daher viele Möglichkeiten, System einzustellen}
+	\end{subfigure}
+	\caption{}
+	\label{zsspiel}
+\end{figure}
+\textbf{Pneumatischer Muskel -- Robotergelenke} (vgl. \autoref{zm1}):
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{figures/ch03_zwei-muskeln1.png}
+	\caption{}
+	\label{zm1}
+\end{figure}
+\begin{itemize}
+	\item Einstellbare Steifigkeit
+	\item flexibles Gelenk durch passive Nachgiebigkeit
+	\item Schonung und Reduktion der Mechanik
+	\item Inhärente Gelenkanschläge
+	\item Gelenkeigenschaften über Motorgrößen einstellbar (mit Elektromotoren undenkbar)
+\end{itemize}
 \subsubsection{Regelungsbeispiel für ein flexibles Gelenk}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_gelenksteuerung.png}
+		\caption{Steuerung eines Gelenkes: Nur möglich wenn keine Störungen $\rightarrow$ Regelung}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_gelenkregelung.png}
+		\caption{Einfache PID-P-Regler: soll Regelfaktor des Sollgelenkwinkels anpasssen; funktioniert nicht wirklich}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch03_gelenkregelung1.png}
+		\caption{Regelung mit Muskelmodell}
+		\label{rmm}
+	\end{subfigure}
+	\caption{}
+	\label{gbsp}
+\end{figure}
+Zu \autoref{rmm}:
+\begin{itemize}
+	\item Regelung eines künstlichen Muskels nach McKibben-Prinzip: hochkomplziert, trotz vieler Vorteile hochgradig nicht-linear auch wenn Grundtechniken nicht so schwer
+	\item Vorgabe der Sollposition und der Gelenksteifigkeit
+	\item Berücksichtigung des am Gelenk angreifenden Störmomentes
+	\item Berücksichtigung der maximal mögichen Kraft in allen möglichen Gelenkstellungen
+\end{itemize}
 \subsection{Anwendungsbeispiele}
 \emph{There is no business like show business}\\ \\
 \textbf{Motivation – Muskel als Antrieb von Laufmaschinen:}
@@ -176,7 +415,7 @@ Mechanische Parameter:
 	\item Aufstandsfläche (mm): 1800 (width) $\times$ 1500 (length)
 	\item Bein-Länge (mm): $100 \times 472 \times 560$
 	\item Muskel-Längen (mm): $\alpha: 160, \beta: 240, \gamma 260$
-	\item Winkelbereich: $\alpha: 55°; \beta: 90°; \gamma: 75°$
+	\item Winkelbereich: $\alpha: 55°; \beta: 90°; \gamma: 75°$ (sehr ähnlich wie bei der Stabheuschrecke)
 	\item Max. Drehmoment: $\alpha: 26.4Nm, \beta: 48.6Nm, \gamma: 31.3Nm$
 	\item Winkelgeschwindigkeit: $60°/s$
 	\item Max. Geschwindigkeit: $10cm/s$
@@ -220,3 +459,4 @@ Linearbetrieb & ja & ja\\
 \caption{Biologischer vs. fluidischer Muskel}
 \label{tab:Vergleich}
 \end{table}
+\newpage

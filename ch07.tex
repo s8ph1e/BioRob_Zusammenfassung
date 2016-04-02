@@ -13,21 +13,23 @@ dient zur Beschleunigung des Signal-Transports
 \item \textbf{Mitochondrien}: erzeugen die benötigte Energie
 \item \textbf{Endoplasmatische Retikulum}: synthetisiert die benötigten Eiweißstoffe
 \end{itemize}
-\textbf{Rezeptoren und Reizverarbeitung}
+\textbf{Rezeptoren und Reizverarbeitung}\\
+Siehe \autoref{sensinput}\\
+\textbf{Reizverarbeitung und Informationskodierung}\\
+Siehe \autoref{reizverarbeitung}\\
+
+
+
+\textbf{Signale auf Nervenfasern}\\
+\autoref{sign} zeigt die Zellmembran eines \textbf{Axons} (Nevenfaser). In der Fasermembran (1) befinden sich Ionenpumpen (2), welche für den aktiven Transport von Ionen entgegen ihrer elektrischen Gradienten zuständig sind. Desweiteren enthält die Membran spezifische Ionenkanäle für Kalium ($K^+$)-Ionen (3) und Natrium ($Na^+$)-Ionen (4). Im Ruhezustand ist die Innenseite der Membran um $70mV$ negativer als die Außenseite.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.4\textwidth]{figures/ch07_sensinput.png}
-	\caption{Aufnahme, Bewusstmachung und Abgabe von Information}
-	\label{sensinput}
+	\includegraphics[width=0.6\textwidth]{figures/ch07_signale.png}
+	\caption{Signale auf Nervenfasern}
+	\label{sign}
 \end{figure}
-\textbf{Reizverarbeitung und Informationskodierung}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.4\textwidth]{figures/ch07_reizverarbeitung.png}
-	\caption{Reizverarbeitung}
-	\label{reizverarbeitung}
-\end{figure}
-\textbf{Signale auf Nervenfasern}
+
+\textbf{Synapsen} sind Verbindungsstellen einer Nervenfaser (Sender) und Dendriten (Empfänger). Man unterscheided erregende und hemmende Synapsen. Erstere depolarisieren die postsynaptische Membran (d.h. die Wahrscheinlichkeit für das Auslösen eines Aktionspotentials wird erhöht) und zweitere hyperpolarisieren sie.
 \subsection{Hierarchien der Informationsverarbeitung im Gehirn}
 \subsubsection{Das Zentrale Nervensystem}
 \begin{figure}[h!]
@@ -66,7 +68,7 @@ dient zur Beschleunigung des Signal-Transports
 	\caption{Anforderungen an die Rechnerarchitektur}
 	\label{arch}
 \end{figure}
-Probleme bei der Umsetzung:
+\textbf{Probleme bei der Umsetzung}:
 \begin{itemize}
 \item Platzmangel
 \item Gewicht der Komponenten
@@ -74,7 +76,7 @@ Probleme bei der Umsetzung:
 \item Energieeffizienz
 \item Resistenz gegen elektromagnetische Störungen
 \end{itemize}
-Energieversorgung:\\
+\textbf{Energieversorgung}:\\
 Energieversorgung im Falle von Rechnerbauteilen durch elektrische Energie\\
 $\rightarrow$ Problem: elektrische Energie lässt sich schlecht kompakt speichern
 \begin{itemize}
@@ -119,10 +121,218 @@ Vergleich – Energiebedarf:
 \label{tab:energie}
 \end{table}
 \subsubsection{Systemkomponenten – die einzelnen Bausteine}
+\textbf{Mikrocontroller}:\\ Ein Mikrocontroller besteht aus (vgl. \autoref{micon})
+\begin{itemize}
+\item Mikroprozessor
+\item Speicher
+\item Ein-/Ausgabe-Schnittstellen
+\item Peripheriegeräten
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_microcon.png}
+	\caption{Komponenten eines Mikrocontrollers}
+	\label{micon}
+\end{figure}
+
+\textbf{Digitale Signalprozessoren (DSP)}
+\begin{itemize}
+\item Die Mikrorechnerarchitektur von DSPs ist auf die Verarbeitung digitaler Signale optimiert
+\item DSPs sind im Bereich der Arithmetik, speziell bei der Multiplikation, leistungsfähiger als Mikrocontroller
+\item Anwendungsbereiche für Signalprozessoren: Digitale Filter, Signalaufbereitung (Bsp. Sensordaten), Spracherkennung, Audio-/Videokompression
+\end{itemize}
+
+\textbf{Programmable Logic Device (PLD)}
+\begin{itemize}
+\item Im allgemeinen zweistufige Logik (Und/Oder-Gatter)
+\item Programmierbare Logik-Operationen
+\item Sehr schnell bei parallelen Prozessen
+\end{itemize}
+
+\textbf{Universal Controller Module (UCoM)}
+\begin{itemize}
+\item Regelung von bis zu drei Motoren
+\item Auslesen von verschiedenen Sensoren
+\item Echtzeitfähig
+\item Größe: $80mm \times 70mm \times 20mm$
+\item $80MHz$ DSP: Motorola
+\item Externes RAM
+\item FPGA: Altera
+\item Interfaces: CAN, SCI, SPI, JTAG
+\item DSP programmierbar über CAN-Bus
+\item Bis zu 3 Motoren (24 V) bis zu 5 A
+\item 6 Encoder-Ports (6-pin; 2 Spannungsversorgung, 4 IO)
+\item Differenzielle Motorstrommessung für jeden Motor
+\end{itemize}
+
+\textbf{Formfaktoren}
+\begin{itemize}
+\item Netbook- und Multimedia-PC-Boom führt zur Verkleinerung der PC-Formfaktoren
+\item Früher:
+\begin{itemize}
+\item Consumer: ATX ($305\times 244mm$), Micro-ATX ($244\times 244mm$)
+\item Roboter/Industrie: PC/104 ($90\times 96mm$) dafür aber höher!
+\end{itemize}
+Aktuell:
+\begin{itemize}
+\item Consumer: Mini-ITX ($170\times 170mm$) weit verbreitet
+\item Roboter/Industrie: Pico-ITX ($100\times 72mm$), ETX ($114\times 95mm$), PC/104 ($90\times 96mm$)
+\end{itemize}
+\end{itemize}
+\textbf{PC/104}
+\begin{itemize}
+\item Modulares Stecksystem
+\item PCI-Bus bei PC/104-Plus Systemen
+\item PCI/104-Express: x16 PCI-Express-Bus
+\item Basisplatine mit Prozessor (bis 2 GHz)
+\item Erweiterungsplatinen: Framegrabberkarten, CAN-Schnittstellenkarte, Karte für PCMCIA-Steckplatz (WLAN, Speicherkarten-Slots), ...
+\end{itemize}
+\textbf{Raspberry Pi 2}
+\begin{itemize}
+\item Kompakte, kleine Größe (Kreditkarte)
+\item Prozessor: Quad-Core ARM Cortex-A7 mit 900 MHz
+\item RAM: 1024MB
+\item Schnittstellen: USB, LAN, HDMI, I2C, SPI, ...
+\item Erweiterungskarten: Kamera, WLAN, NFC, GPIO,...
+\item Versorgung: 5V
+\item Kostenlose Betriebssysteme
+\item Preis: nur ca. 40 Euro
+\end{itemize}
+
 \subsubsection{Kopplung – Bus-Systeme}
+\textbf{Topologien von Bus-Systemen}: Siehe \autoref{topo}.\\  
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch07_bus-topo.png}
+	\caption{Topologien von Bus-Systemen}
+	\label{topo}
+\end{figure}
+
+\textbf{Übertragungsarten}
+\begin{itemize}
+\item Elektrisch: Signale werden durch elektrische Impulse über Kabel übertragen
+\begin{itemize}
+\item Vorteile: Einfache Verkabelung, flexible Leitungen
+\item Nachteile: Anfälligkeit gegen elektromagnetische Störung
+\end{itemize}
+\item Optisch: Signale werden über Lichtwellenleiter durch gepulstes Licht übertragen
+\begin{itemize}
+\item Vorteile: Unempfindlichkeit gegenüber elektromagnetischen Störungen, geringes Gewicht der Lichtwellenleiter
+\item Nachteile: Aufwendiges Konfektionieren und Verlegen der Lichtwellenleiter, begrenzter Biegeradius der Lichtwellenleiter
+\end{itemize}
+\end{itemize}
+
+\textbf{Beispiele für serielle Bus-Systeme}:
+\begin{itemize}
+\item \textbf{CAN – Controller Area Network} (elektrisch):
+\begin{itemize}
+\item Asynchrones, serielles Bussystem (1983 von Bosch entwickelt)
+\item Vernetzung von Steuergeräten in Automobilen
+\item Zweidrahtleitung $\rightarrow$ einfache Verkabelung
+\item Linientopologie
+\item Multimaster-Netzwerk mit Broadcastübertragung
+\item Sehr robust, geringe Störanfälligkeit, daher auch weite Verbreitung in der Industrie
+\item Echtzeitfähig -- es kann eine maximale Latenzzeit angegeben werden
+\item Bandbreite maximal $1Mbit/s$
+\item Leitungslänge beträgt bei $1Mbit/s 40m$ und bei $125kbit/s 500m$
+\end{itemize}
+\item \textbf{IEEE1394} oder \textbf{FireWire} oder iLink (elektrisch oder optisch)
+\begin{itemize}
+\item serielles Bussystem (von Apple entwickelt)
+\item asynchrone oder isochrone Datenübertragung: Paketlänge variabel mit Empfangsbestätigung; Broadcast-Pakete variabler Länge in festen Intervallen ohne Empfangsbestätigung)
+\item Integrierte Spannungsversorgung ($8V ... 33V$ bei max. $1,5A$)
+\item Firewire 400 / IEEE1394a: 100, 200 oder 400$Mbit/s$ Übertragungsbandbreit
+\item Firewire 800 / IEEE1394b: 800$Mbit/s$ Übertragungsbandbreite
+\item Multimedia-Anwendung (Video-Kamera)
+\item Shielded Twisted Pair $\rightarrow$ Komplexe Verkabelung: vier Adern für Daten, zwei für Versorg.-Spannung
+\item IEEE1394a: Beliebige Topologie außer Ring, IEEE1394b: auch Ringtopologie
+\item \glqq Daisy Chain\grqq{} möglich
+\end{itemize}
+\item \textbf{USB 1.1, 2.0, 3.0}
+\begin{itemize}
+\item Universal Serial Bus: serielles Bussystem (1996 von Intel entwickelt)
+\item Zweidrahtleitung $\rightarrow$ Einfache Verkabelung
+\item Zusätzliche $5V$ Versorgungsspannung (max. $500mA$)
+\item USB-Host für Kommunikation erforderlich
+\item Baumtopologie
+\item Robust und weit verbreitet (Festplatten, Tastatur, Maus, ...)
+\item NICHT echtzeitfähig
+\item USB 1.1: $12MBit/s$, USB 2.0: $480MBit/s$, USB 3.0: $5Gbit/s$
+\item Maximale Leitungslänge $5m$ und mit Repeatern max. $25m$
+\end{itemize}
+\item \textbf{Thunderbolt}
+\begin{itemize}
+\item parallele Kanälen zur seriellen Datenübertragung (2011 von Intel und Apple entwickelt)
+\item Aktive Kabel mit integrierter Elektronik
+\item Elektrische wie später optische Übertragung geplant
+\item Unterstützung mehrerer Busprotokolle: PCI Express, DisplayPort
+\item Direkte Konkurrenz zu USB 3.0
+\item Maximal 7 Busteilnehmer in Daisy chain verbindbar
+\item Erste Kabel-Version mit 20 Pins: Zwei Kanäle je $10GBit/s$
+\item Max. Leitungslänge $3m$ elektrisch, mind. $10m$ optisch möglich
+\end{itemize}
+\item Industrial Ethernet (elektrisch)
+\item Profibus (elektrisch)
+\item FlexRay (elektrisch)
+\item SERCOS – Serial Realtime Communication System (optisch)
+\end{itemize}
 \subsection{Beispielarchitekturen}
-
-
-
-
-
+\emph{It‘s alive! It‘s alive!!!}
+\subsubsection{Rechnerarchitektur von LAURON IVc}
+Siehe \autoref{lauron1}.
+\begin{itemize}
+\item Autonom
+\item Steuerung auf LAURON
+\item Erfassung und Verarbeitung der Sensorwerte
+\item 7 UCoMs
+\item 2×PC/104 System
+\item CAN-Bus
+\item MCA2
+\end{itemize}  
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch07_lauron-ivc.png}
+	\caption{Rechnerarchitektur auf LAURON IVc}
+	\label{lauron1}
+\end{figure}
+\subsubsection{Rechnerarchitektur von LAURON V}
+Siehe \autoref{lauron2}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch07_lauron-v.png}
+	\caption{HW-Architektur auf LAURON V}
+	\label{lauron2}
+\end{figure}
+\subsubsection{Rechnerarchitektur von KAIRO 3}
+Siehe \autoref{kairo}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch07_kairo-3.png}
+	\caption{Verteilte SW/HW-Rechnerarchitektur auf KAIRO 3}
+	\label{kairo}
+\end{figure}
+\begin{itemize}
+\item Modularer schlangenartiger Roboter
+\item Inspektion von unzugänglichen Bereichen
+\item Veränderliche Konfiguration
+\item 3 bis 11 UCoMs (je nach Konfiguration)
+\item Bussysteme: 2$\times$CAN, I2C, Ethernet
+\item Embedded PC: ARM Prozessor-Board
+\item MCA2: adaptive Steuerung
+\end{itemize}
+\textbf{Eigenschaften der SW/HW-Architektur}:
+\begin{itemize}
+\item Modularität
+\item Flexibilität
+\item Effizienz
+\item Ressourcen
+\item Re-Konfigurierbarkeit
+\end{itemize}
+\subsection{Gegenüberstellung Rechnerarchitektur in Natur un Technik}
+Siehe \autoref{rarch}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch07_rechnerarchitektur.png}
+	\caption{}
+	\label{rarch}
+\end{figure}

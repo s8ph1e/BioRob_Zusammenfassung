@@ -6,25 +6,25 @@
 \subsubsection{Biologische Grundprinzipien und typische Merkmale}
 10 Grundprinzipien natürlicher Konstruktion:
 \begin{enumerate}
-	\item Hohe Funktionsintegration statt Funktionstrennung
+	\item Hohe Funktionsintegration statt Funktionstrennung (z.B. zahlreiche Funktionen menschlicher Haut)
 	\item Ganzheitliche Optimierung
 	\item Multifunktionalität statt Monofunktionalität 
-	\item Minimaler Einsatz von Energie
-	\item Nutzung von Fremdenergie
-	\item Zeitliche Limitierung statt Langlebigkeit
+	\item Minimaler Einsatz von Energie (Ökologische Nische muss durch bestmöglichen Energieeinsatz ausgefüllt werden)
+	\item Nutzung von Fremdenergie (z.B. Nutzung von Sonnenlicht durch Poikilotherme)
+	\item Zeitliche Limitierung statt Langlebigkeit (z.B. Eintagsfliegen; ständig nachwachsende Hautschichten)
 	\item Hohe Vernetzung / Wechselwirkung
-	\item Veränderungen in kleinen Schritten
+	\item Veränderungen in kleinen Schritten (z.B. Wachstum bei Kindern; inkrementelle Änderung von Generation zu Generation $\rightarrow$ ganz anders in der Robotik)
 	\item Feinabstimmung gegenüber der Umwelt
-	\item Totales Recycling
+	\item Totales Recycling (z.B. Häutung von Reptilien)
 \end{enumerate}
 Typische Merkmale biologischer Materialien:
 \begin{enumerate}
-	\item Materialschichtung während des Entstehens
-	\item Streng funktionell
+	\item Materialschichtung während des Entstehens (z.B. Chitinpanzer bei Insekten: zwischen Elementen elastisch/weniger Schichten, außen hart/mehr Schichten)
+	\item Streng funktionell (genaue Abstimmung auf Umweltanforderungen)
 	\item Funktionelle Kompartimente
-	\item Häufig Ultraleicht
+	\item Häufig Ultraleicht (Verhältnis Kraft/Gewicht)
 	\item Sandwich-Bauweise
-	\item Selbstreparabel
+	\item Selbstreparabel (z.B. nachwachsende Beine der Stabheuschrecke; wäre tolles Feature für LAURON)
 	\item Terminierte Lebensdauer
 \end{enumerate}
 
@@ -35,7 +35,7 @@ Typische Merkmale biologischer Materialien:
 		\item Menge (Volumen) des eingesetzten Materials minimieren:
 		\begin{itemize}
 			\item Materialdicken reduzieren
-			\item Aussparungen einfügen
+			\item Aussparungen einfügen (Materialmenge solange reduzieren, dass Funktion gerade noch erhalten wird; z.B. Spaichen beim Fahrrad)
 		\end{itemize}
 		\item Gewichte (Dichte) des eingesetzten Materials reduzieren
 		\begin{itemize}
@@ -48,10 +48,10 @@ Typische Merkmale biologischer Materialien:
 \subsubsection{Konstruktionsprinzipien}
 \begin{itemize}
 	\item Hohe Stabilität bei geringem Gewicht durch Netzwerk aus Knochenlammellen
-	\item Hohlbauweise
-	\item Extrem stabil (ein menschlicher Oberschenkelknochen kann ca. 1t Längsbelastung aushalten)
+	\item Hohlbauweise (Rohr mechanisch viel stabiler als ein Volleisenstab)
+	\item Extrem stabil (ein menschlicher Oberschenkelknochen kann ca. 1$t$ Längsbelastung aushalten)
 \end{itemize}
-Innenskelett:
+\textbf{Innenskelett}:
 \begin{itemize}
 	\item CFE -- Rohre als Knochen
 	\begin{itemize}
@@ -61,11 +61,11 @@ Innenskelett:
 		\item Sehr leicht ($1,5 g/cm^3$)
 	\end{itemize}
 \end{itemize}
-Exoskelett
+\textbf{Exoskelett}:
 \begin{itemize}
 	\item Chitin
 	\begin{itemize}
-		\item Exoskelett ist Stützstruktur für Organismen mit stabiler äußeren Hülle
+		\item Exoskelett ist Stützstruktur für Organismen mit stabiler äußerer Hülle
 		\item Stickstoffhaltiges Polysaccharid
 		\item Primärer Baustoff der Insekten
 		\item Unterschiedliche Einlagerungen führen zu unterschiedlichen Härtegraden
@@ -73,24 +73,25 @@ Exoskelett
 	\end{itemize}
 	\item Glasfaser Verbundstoffe
 	\begin{itemize}
-		\item Verbundwerkstoff aus Gewebematten (Glasfaser, Kohlenfaser) und Harz (Epoxyd, Aramid)
+		\item Verbundwerkstoff aus Gewebematten (Glasfaser, Kohlefaser) und Harz (Epoxyd, Aramid)
 		\item Freie Formen möglich
 		\item Dicke lässt sich an kritischen Stellen erhöhen an unkritischen senken
 		\item Relativ leicht ($2,52 g/cm^3$)
+		\item Genutzt z.B. zur Gewichtsoptimierung bei Formel1; aber: viel Handarbeit/teuer
 	\end{itemize}
 \end{itemize}
 
 \subsubsection{Technische Materialien -- Werkstoffe im Roboterbau}
-Begriffe und Definitionen
+Begriffe und Definitionen:
 \begin{itemize}
 	\item Dichte $\rho = \frac{m}{V} = \frac{\text{Masse}}{\text{Volumen}}$
 	\item Zugfestigkeit $R = \frac{F_{MAX}}{A} = \frac{Kraft_{MAX}}{Flaeche}$
 	\item mechanische Spannung $\sigma = \frac{F}{A} = \frac{Kraft}{Flaeche}$
 	\item Dehnung $\epsilon = \frac{\Delta l}{l_o} = \frac{Laengenaenderung}{urspruengliche Laenge}$
-	relative Längenänderung
-	\item Elastizitätsmodul/E-Modul $E = \frac{\sigma}{\epsilon} = \frac{Spannung}{Dehnung} = const$
-	Materialkennwert beschreibt Zusammenhang zwischen Spannung und Dehnung
-	\item Bruchfestigkeit: mechanische Spannung, die unter gleichmäßiger Steigerung der Belastung bei einem Bauteil zum Bruch führt
+	\textit{relative Längenänderung}
+	\item Elastizitätsmodul/E-Modul $E = \frac{\sigma}{\epsilon} = \frac{Spannung}{Dehnung} = const$\\
+	\textit{Materialkennwert beschreibt Zusammenhang zwischen Spannung und Dehnung}
+	\item Bruchfestigkeit: \textit{mechanische Spannung, die unter gleichmäßiger Steigerung der Belastung bei einem Bauteil zum Bruch führt}
 \end{itemize}
 Unterschiedliche Anwendungen benötigen unterschiedliche Werkstoffe. Häufig ist auch ein Materialmix notwendig.
 
@@ -114,13 +115,13 @@ Unterschiedliche Anwendungen benötigen unterschiedliche Werkstoffe. Häufig ist
 		\item Gewicht $4950$kg
 		\item Kraft/Gewicht $0.2$
 	\end{itemize}
-	\item Mariusz Pudzianowski (stärkster Mensch der Welt)
+	\item Mariusz Pudzianowski (\glqq stärkster Mensch der Welt\grqq)
 	\begin{itemize}
 		\item Traglast $415$kg
 		\item Gewicht $138$kg
-		\item Kraft/Gewicht ca. $3.0$ (nur kurzfristig)
+		\item Kraft/Gewicht ca. $3.0$ (nur kurzfristig!)
 	\end{itemize}
-	\item Ameise
+	\item Ameise (hier: \textit{Formica polyctena - Waldameise}
 	\begin{itemize}
 		\item Traglast $350$mg
 		\item Gewicht $9$ mg
@@ -128,8 +129,8 @@ Unterschiedliche Anwendungen benötigen unterschiedliche Werkstoffe. Häufig ist
 	\end{itemize}
 	\item Hauspferd
 	\begin{itemize}
-		\item Leistung $0.4 -- 1.2$ PS (bis zu $20$PS)
-		\item Gewicht $200--800$kg
+		\item Leistung $0.4 - 1.2$ PS (kurzfristige Spitzenleistung bis zu $20$PS)
+		\item Gewicht $200-800$kg
 		\item Kraft/Gewicht $0.16$
 	\end{itemize}
 \end{itemize}
@@ -149,16 +150,18 @@ Unterschiedliche Anwendungen benötigen unterschiedliche Werkstoffe. Häufig ist
 	\begin{itemize}
 		\item Selbstschmierend (Knorpel, Gelenkflüssigkeit)
 		\item Gekapselt (Kapsel, Muskelgewebe, Haut, Chitinpanzer)
-		\item Optimierte Geometrie für die Anwendung (z.B.\ menschliches Knie)
+		\item Optimierte Geometrie für die Anwendung (z.B.\ menschliches Knie: geringer Reibwert aber hoher Wirkungsgrad; aber Kugelgelenke in Robotik schwer anzutreiben)
 	\end{itemize}
 \end{itemize}
-\textbf{Kugelgelenk: Technische Approximation}:
+\textbf{Kugelgelenk -- Technische Approximation}:
 Kugelgelenk der Stabheuschrecke wird durch drei Rotationsgelenke approximiert \\
-\textbf{Gelenkskapselung}: Klassische mechanische Kapselung durch Simmer- oder Wellendichtringe meist zu schwer; Gummimembrane nur begrenzt haltbar
+\textbf{Gelenkskapselung}: Klassische mechanische Kapselung durch Simmer- oder Wellendichtringe meist zu schwer; Gummimembrane nur begrenzt haltbar, daher regelmäßige Wartung erforderlich
 
 \subsubsection{Multisegmentsysteme}
 Die \textbf{Wirbelsäule} als Beispiel für ein biologisches Multisegmentsystem ist ein flexibles System mit vielen gekoppelten Einzelelementen.
-Ein Beispiel für einen Multisegmentarm ist der \textbf{Festo Rüssel}, ein bionischer Handling Assistent mit 13 pneumatischen Aktuatorn, 11 Freiheitsgraden, $1.8$kg Gewicht und $0.5$kg Traglast. %TODO Folie 43-45?
+Ein Beispiel für einen Multisegmentarm ist der \textbf{Festo Rüssel}, ein bionischer Handling Assistent mit 13 pneumatischen Aktuatorn, 11 Freiheitsgraden, $1.8$kg Gewicht und $0.5$kg Traglast.
+Er enthält Elastizitäten und durch den Luftdruck zusätzliche Nicht-Linearitäten.
+%TODO Folie 43-45?
 
 \subsubsection{Laufmaschine (Invertebrate, Vertebrate)}
 Warum die Stabheuschrecke als Vorbild?
@@ -168,15 +171,14 @@ Warum die Stabheuschrecke als Vorbild?
 	\item Einfacher kinematischer Aufbau und trotzdem sehr flexibel
 	\item Weitreichende biologische Untersuchungen vorhanden
 \end{itemize}
-Mechanisches Modell der Stabheuschrecke in \autoref{ch:02:fig:stabheuschrecke_mechanisch}. %TODO Folie 49,51
-
+\autoref{ch:02:fig:stabheuschrecke_mechanisch} zeigt ein mechanisches Modell der Stabheuschrecke. 
+%TODO Folie 49,51
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{figures/stabheuschrecke_mechanisch.png}
 	\caption{Stabheuschrecke -- Mechanisches Modell}
 	\label{ch:02:fig:stabheuschrecke_mechanisch}
-\end{figure}
-
+\end{figure}\\ \\
 \textbf{Sechsbeinige Laufmaschine -- Optimierung}
 \begin{itemize}
 	\item Berechnung der Dynamik \\
@@ -189,21 +191,30 @@ Mechanisches Modell der Stabheuschrecke in \autoref{ch:02:fig:stabheuschrecke_me
 		\item Optimale Aufstandskraft"=Richtungen
 		\item Minimale Antriebsleistung
 	\end{itemize}
-	\item[$\Rightarrow$] Optimale sind $40\%$ Biegepotential und $60\%$ Verspannung. Das entspricht genau der Stabheuschrecke!
+	\item[$\Rightarrow$] Optimal sind $40\%$ Biegepotential und $60\%$ Verspannung. Das entspricht genau der Stabheuschrecke!
 \end{itemize}
-
-\textbf{Vorteil eines langen Zentralkörpers}
-
-\includegraphics[width=\textwidth]{figures/zentralkoerper.png}
-
+\textbf{Vorteil eines langen Zentralkörpers}\\
+Je nach Beinanordnung verändert sich die Stabilitätsreserve (vgl. \autoref{sr}).
+\begin{figure}
+	\centering	
+	\includegraphics[width=\textwidth]{figures/zentralkoerper.png}
+	\caption{}
+	\label{sr}
+\end{figure}
 \subsubsection{Lokomotionsarten} %TODO Beispiele 55-58
 \begin{itemize}
 	\item Zweibeiniges Laufen: Menschen, Vögel
-	\item Vierbeiniges Laufen
+	\item Vierbeiniges Laufen: Sehr viele unterschiedliche Morphologien/Kinematiken vierbeiniger Läufer
 	\begin{itemize}
-		\item Reptilienartiges Laufen: Schildkröten, Eidechsen, Geckos
+		\item Reptilienartiges Laufen: Schildkröten, Eidechsen, Geckos (Tier trägt viel von seiner Gewichtskraft)
 		\item Amphibienartiges Laufen: Salamander, Frösche
-		\item Säugetierartiges Laufen: Zehengäner (Hund, Katze), Spitzengänger (Pferde, Elefanten), Sohlengänger (Bären, Kängurus)
+		\item Säugetierartiges Laufen:
+		\begin{itemize}
+			\item Zehengänger: z.B. Hund, Katze; Stand ohne Energieverbrauch bei komplett arretierten Beinen
+			\item Spitzengänger: z.B. Pferde, Elefanten
+			\item Sohlengänger: z.B. Bären, Kängurus; niederigerer Hebelarm aber immer noch angespanntes System im Stehen; führt zu hohem Energieverbrauch, aber dafür hoch agil/dynamisch; für 						  Elefanten wäre z.B. Sohlengang nicht möglich
+		\end{itemize}
+		\item[$\rightarrow$] Anordung der Beine am Zentralkörper ist eine wichtige Designentscheidung
 	\end{itemize}
 	\item Sechsbeiniges Laufen: Stabheuschrecke, Ameisen, Kakerlaken, Gottesanbeterinnen
 	\item Achtbeiniges Laufen: Spinnen, Skorpione, Krebse
@@ -222,9 +233,9 @@ Bei Vertebraten (Wirbeltieren) hat die Wirbelsäule eine Einfluss beim Auf- und 
 		\centering
 		\includegraphics[width=\textwidth]{figures/befestigungswinkel_1.png}
 	\end{subfigure}
-	\caption{Vergleich der Befestigungswinkel im Beinansatzpunkt für technische und biologisch-inspirierte Roboter}
+	\caption{Vergleich der Befestigungswinkel im Beinansatzpunkt für technische und biologisch-inspirierte Roboter, hier LAURON}
 \end{figure}
-
+\newpage
 \subsubsection{Arbeitsraumvergrößerung durch Anstellwinkel}
 \begin{enumerate}
 	\item Analyse des Arbeitsraums für einen Laufroboter
@@ -247,19 +258,19 @@ Bei Vertebraten (Wirbeltieren) hat die Wirbelsäule eine Einfluss beim Auf- und 
 
 
 \subsection{Energie--Effizienz}
-
+\emph{Billig bedeutet in der Biologie immer \glqq mit geringem Energieaufwand erreichbar\grqq}
 \subsubsection{Reduktion des Strömungswiderstandes}
 Strömungswiderstandskoeffizient $c_w = \frac{F_w}{q \cdot A} = \frac{\text{Widerstandskraft}}{\text{Staudruck der Anstroemung} \cdot \text{Referenzflaecheninhalt}}$
 \begin{itemize}
 	\item Strömungswiderstand und Form am Beispiel Pinguin
 	\begin{itemize}
-		\item er kann bis zu einer Geschwindikeit von $7$ m/s schwimmen, das entspricht $100$ m/s in der Luft
-		\item er taucht täglich bis zu $100$km weit und $400$m tief, mit einer Magenfüllung Planktion pro Tag (ca. $1500$ bis $2000$km mit $1$l Benzin)
-		\item ermöglicht durch einen cw Wert von $0.07$ und strömungsgünstigen Flossen
+		\item er kann bis zu einer Geschwindikeit von $7$m/s schwimmen, das entspricht $100$m/s in der Luft
+		\item er taucht täglich bis zu $100$km weit und $400$m tief, mit einer Magenfüllung Plankton pro Tag (ca. $1500$ bis $2000$km mit $1$l Benzin)
+		\item ermöglicht durch einen $c_w$-Wert von $0.07$ und strömungsgünstigen Flossen
 	\end{itemize}
 	\item Strömungsoptimierte Fahrzeugkarosserie: Bionic Car von Mercedes Benz
 	\begin{itemize}
-		\item $140$PS, $4.3$ Liter/$100$km, cw-Wert $0.19$
+		\item $140$PS, $4.3$ Liter/$100$km, $c_w$-Wert $0.19$
 		\item Pate für die Entwicklung war der Kofferfisch, der trotz seiner kantigen Form hervorragende Strömungseigenschaften hat
 	\end{itemize}
 	\item Strömungswiderstand und Oberfläche
@@ -273,16 +284,17 @@ Strömungswiderstandskoeffizient $c_w = \frac{F_w}{q \cdot A} = \frac{\text{Wide
 \subsubsection{Energieeffizienz beim Laufen}
 \textbf{Specific Resistance} beschreibt die Effizienz der Lokomotion:
 \begin{equation}
- \epsilon = \frac{P_{lok}(t)}{G \cdot v(t)}
+ \varepsilon = \frac{P_{lok}(t)}{G \cdot v(t)}
 \end{equation}
 mit Leistung der Fortbewegung $P_{lok}(t)$, Laufgeschwindigkeit $v(t)$ und Gewichtskraft $G$. 
 Sie ist dimensionslos, unabhängig von der Art des Fahrzeugs oder des Roboters und gut vergleichbar.
 Die \emph{Metabolic Cost of Transport} ist formelmäßig ähnlich, was einen Vergleich zur Natur ermöglicht.\\
-In der Robotik gebräuchliche Form (integriert über die Zeit): $\epsilon = \frac{E}{G \cdot s}$
+\noindent
+In der Robotik gebräuchliche Form (integriert über die Zeit): $\varepsilon = \frac{E}{G \cdot s}$.
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{figures/specific_resistance.png}
-	\caption{Detail: Specific Resistance}
+	\caption{Specific Resistance: Für Hund, Vogel, etc. wurde der $CO_2$-Gehalt und somit indirekt der Energieverbrauch gemessen. Kein System konnte sich unterhalb der G\&K-Linie bewegen.}
 \end{figure}
 
 Effizienzsteigerung durch Gewichtsreduktion und/oder Geschwindigkeitssteigerung
