@@ -1,5 +1,6 @@
+\emph{Planen bedeutet zu Vermeiden herauszufinden, was man als nächstes zu tun hat}
 \subsection{Verhalten im Tierreich: Neurologisch, Psychologisch, Ethologisch}
-
+\emph{It is said that the limbic system of the brain controls the four Fs: Feeding, Fighting, Fleeing and Reproduction}
 \subsubsection{Neurologisch -- Vektorfeldaddition im Frosch-Rückenmark}
 \begin{itemize}
 	\item Neurobiologische Hypothese der motorischen Kontrolle durch Vektorfelder
@@ -39,7 +40,7 @@ Drei Klassen von Verhalten im Tierreich:
 \end{itemize}
 
 \subsection{Verhaltensbasierte Robotik -- Übersicht  und Einführung}
-
+\emph{Es gibt zwei Möglichkeiten beim Entwurf von Robotersteuerungen: Erstens, so simpel, dass es keine offensichtlichen Mängel gibt; Zweitens, so komplex, dass es keine offensichtlichen Mängel gibt.}
 \subsubsection{Motivation -- Warum verhaltensbasierte Architekturen}
 \begin{itemize}
 	\item Komplexe Verhalten entstehen nicht notwendigerweise aus komplexen Steuerungssystemen
@@ -105,8 +106,8 @@ Drei Klassen von Verhalten im Tierreich:
 	\item Rückkopplung primär über die Umgebung
 	\item Eigenes C Derivat: Interactive C
 \end{itemize}
-
-\begin{figure}
+Siehe \autoref{subsum}.
+\begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/aufbau_verhaltensebenen.png}
@@ -127,11 +128,14 @@ Drei Klassen von Verhalten im Tierreich:
 		\includegraphics[width=\textwidth]{figures/verschaltung_basiselement.png}
 		\caption{Verschaltung von Basiselementen}
 	\end{subfigure}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=\textwidth]{figures/subsumption_beispiel.png}
-	\caption{Subsumption Beispiel der MIT Laufroboter Ghengis/Attila -- Ebenen}
+	\caption{Subsumptionsarchitektur}
+	\label{subsum}
+\end{figure}\\
+Ein Beispiel für diese Architektur zeigt \autoref{subbsp}.
+\begin{figure}[h!]
+	\includegraphics[width=.8\textwidth]{figures/subsumption_beispiel.png}
+	\caption{Subsumption: Beispiel der MIT Laufroboter Ghengis/Attila -- Ebenen}
+	\label{subbsp}
 \end{figure}
 
 \textbf{Subsumption Bewertung}
@@ -159,15 +163,17 @@ Drei Klassen von Verhalten im Tierreich:
 \begin{itemize}
 	\item Verhalten des gesamten Systems schwer zu überschauen 
 	\item Viel Aufwand durch Tuning des Systems, speziell der Fusion
-\end{itemize}
+	\item[$\rightarrow$] schwer zu debuggen, jedes einzelne Verhalten ja, aber wenn zu großem Gesamtverhalten zusammengeschaltet \textbf{unvorhersehbar}!!!
+	\end{itemize}
 Die Vor- und Nachteile hängen von konkreten Architektur"=Ausprägungen ab. Mögliche Varianten und deren Charakteristika sind:
 \begin{itemize}
 	\item Fusionsprinzip/Coordinator: von Kooperativ bis Konkurrierend
 	\item Abstaktionsniveau/Granularity: von Reaktiv bis Deliberativ
 	\item Datenformat/Action"=encoding: von Diskret bis Kontinuierlich
 \end{itemize}
-
-\textbf{Ausgabe"=Fusion}: die Fusion oder Koordination der Ausgabe der einzelnen Verhalten:
+\noindent
+\textbf{Ausgabe"=Fusion}:\\
+Die Fusion oder Koordination der Ausgabe der einzelnen Verhalten:
 \begin{itemize}
 	\item \textbf{Cooperative}
 	\begin{itemize}
@@ -181,23 +187,24 @@ Die Vor- und Nachteile hängen von konkreten Architektur"=Ausprägungen ab. Mög
 		\item[$\Rightarrow$] Einfacher zu überschauen und zu testen
 	\end{itemize}
 \end{itemize}
-Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe \autoref{ch:08:fig:fusion_beispiel}.
-
+Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab. Dies ist in \autoref{bsp3} an einem Beispiel verdeutlicht.
+\autoref{fus} stellt die unterschiedlichen Methoden zur Fusion gegenüber.\\
 \begin{figure}
 	\centering
 	\begin{subfigure}{.8\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/fusion_beispiel.png}
-		\caption{Beispiel: 3 Verhalten: weiche nach links/rechts aus, fahre gerade zum Ziel}
+		\caption{Beispiel: Drei Verhalten: weiche nach links/rechts aus, fahre gerade zum Ziel}
+		\label{bsp3}
 	\end{subfigure}\par\medskip
 	\begin{subfigure}{.8\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/fusion_methoden.png}
 		\caption{Unterschiedliche Methoden zur Fusion}
+		\label{fus}
 	\end{subfigure}
-	\label{ch:08:fig:fusion_beispiel}
+	\caption{Verhaltensbasierte Steuerungen: Ausgabe-Fusion}
 \end{figure}
-
 \textbf{Priorität"=basierte Fusion}
 \begin{itemize}
 	\item Jedem Verhalten wird eine Priorität zugewiesen
@@ -221,8 +228,9 @@ Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe 
 \end{itemize}
 
 \textbf{Fuzzy"=basierte Fusion:}\\
+\begin{center}
 \includegraphics[width=.8\textwidth]{figures/fuzzy_based.png}
-
+\end{center}
 \textbf{Wahl"=basierte Fusion}
 \begin{itemize}
 	\item Endliche Menge definierter Aktionen
@@ -236,9 +244,10 @@ Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe 
 		\item Die Aktivität mit den meisten Stimmen wird ausgeführt
 		\item Alle Aktivitäten werden mit ihren Stimmen gewichtet ausgeführt
 	\end{itemize}
-	\item Variante: Fusion besitzt ein Gedächtnis. Verhalten kann sowohl für als auch gegen eine Aktion stimmen. Die stimmen werden über die Zyklen akkumuliert. Vor- und Nachteil: Schnelle Aktionswechsel können verhindert werden.
+	\item Variante: Fusion besitzt ein Gedächtnis. Verhalten kann sowohl für als auch gegen eine Aktion stimmen. Die stimmen werden über die Zyklen akkumuliert.\\
+	 Vor- und Nachteil: Schnelle Aktionswechsel können verhindert werden.
 \end{itemize}
-
+\noindent
 \textbf{Status"=basierte Fusion}
 \begin{itemize}
 	\item Ein endlicher Automat kontrolliert die Verhalten
@@ -258,7 +267,7 @@ Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe 
 
 \textbf{BISAM}:\\
 \begin{center}
-\includegraphics[width=.5\textwidth]{figures/bisam.png}
+\includegraphics[width=.3\textwidth]{figures/bisam.png}
 \end{center}
 
 \begin{figure}
@@ -282,10 +291,11 @@ Problem: beste Wahl hängt stark von Situation und konkreten Verhalten ab siehe 
 		\includegraphics[width=\textwidth]{figures/verhalten_netzwerke.png}
 		\caption{Verhalten -- Netzwerke}
 	\end{subfigure}
-	\label{ch:08:fig:verhalten_bisam}
+	\caption{}
+	\label{fig:verhalten_bisam}
 \end{figure}
-
-zu Netzwerken (vgl. \autoref{ch:08:fig:verhalten_bisam}):
+\autoref{fig:verhalten_bisam} veranschaulicht BISAMs Verhalten.
+Zu \autoref{fig:verhalten_bisam}d:
 \begin{itemize}
 	\item Verteilung von reaktiv nach deliberativ
 	\item Zustandsbewertung und Aktivität a als virtuelle Sensoren
@@ -298,7 +308,7 @@ zu Netzwerken (vgl. \autoref{ch:08:fig:verhalten_bisam}):
 	\end{align}
 \end{itemize}
 
-Verhalten -- Entwurfsverfahren:
+\textbf{Verhalten -- Entwurfsverfahren}:
 \begin{enumerate}
 	\item Definition der Verhalten und Reflexe
 	\item Finden von kinematischen Gruppen
@@ -306,8 +316,8 @@ Verhalten -- Entwurfsverfahren:
 	\item Top-Down Sortierung deliberativ nach reaktiv (Regionen)
 	\item Bottom-Up Implementierung und schrittweise Validierung
 \end{enumerate}
-
-Statisch stabiles Laufen:
+\newpage
+\textbf{Statisch stabiles Laufen}:
 \begin{itemize}
 	\item Variabler Untergrund
 	\item Adaption an Hindernisse
@@ -325,9 +335,9 @@ BISAM Bewertung:
 	\item Beschränkte Flexibilität der Laufzeit
 	\item Effektive Erfüllung der Aufgaben
 \end{itemize}
-
-\textbf{InBOT} als Beispiel für verhaltesbasierte Steuerung für Fahrzeuge:
-\begin{figure}
+\noindent
+\textbf{InBOT} (selbstfahrender Einkaufswagen, der mit Menschen interagiert) als Beispiel für verhaltesbasierte Steuerung für Fahrzeuge:
+\begin{figure}[h!]
 	\includegraphics[width=\textwidth]{figures/inbot.png}
 	\caption{Verhaltensbasierte Steuerung für Fahrzeuge Beispiel InBOT}
 	\label{ch:08:fig:inbot}
@@ -363,8 +373,8 @@ Nachteile:
 	\item D.h. schwieriger zu kontrollieren
 \end{itemize}
 %TODO f59,60,62
-
-Welt Modell -- Drei Ebenen:
+\noindent
+\textbf{Welt Modell} -- Drei Ebenen:
 \begin{itemize}
 	\item Topologische Karte
 	\begin{itemize}
@@ -384,8 +394,9 @@ Welt Modell -- Drei Ebenen:
 	\end{itemize}
 \end{itemize}
 
-Aufgaben-Orientieres Level:
-\begin{figure}
+\textbf{Aufgaben-Orientiertes Level}:
+Vgl. \autoref{ch:08:fig:aufgaben-orientiert}.
+\begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/aufgaben_level.png}
@@ -414,9 +425,10 @@ Aufgaben-Orientieres Level:
 		\item[$\Rightarrow$] Klassisches Problem der Lokalen Minima der Potentialfeldermethoden wird vermieden
 	\end{itemize}
 \end{itemize}
-
-Objekt-Orientiertes Level:
-\begin{figure}
+\noindent
+\textbf{Objekt-Orientiertes Level}:
+Vgl. \autoref{ch:08:fig:objekt-orientiert}.
+\begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/objekt_level.png}
@@ -427,14 +439,15 @@ Objekt-Orientiertes Level:
 		\includegraphics[width=\textwidth]{figures/objekt_level_1.png}
 		\caption{Behandlung statischer Hindernisse}
 	\end{subfigure}
+	\caption{}
 	\label{ch:08:fig:objekt-orientiert}
 \end{figure}
 \begin{itemize}
 	\item Fusion der Aktion aus dem Aufgaben-Orientierten Level mit den Ausgaben der Verhaltensgruppen zur Hindernisbehandlung
 	\item Kooperative Fusion (alle drei Aktionen werden gewichtet und gleichzeitig ausgeführt)
 \end{itemize}
-Objekt-Orientiertes Level: Avoid Obstacles
-\begin{figure}
+Objekt-Orientiertes Level: Avoid Obstacles (vgl. \autoref{ch:08:fig:objekt-orientiert-hindernis}).
+\begin{figure}[h!]
 	\centering
 	\begin{subfigure}{.4\textwidth}
 		\centering

@@ -2,7 +2,7 @@
 
 \subsubsection{Fragestellungen bei der Entwicklung Humanoider}
 \begin{itemize}
-	\item Welche physiologischen Eigenschaften braucht ein humanoider Roboter?
+	\item Welche physiologischen Eigenschaften braucht ein humanoider Roboter? (z.B. Haut nötig? Anzahl der Arme?)
 	\item Welche Fähigkeiten müssen existieren um jede Art von Objekt zu manipulieren?
 	\item Wie können wir diese Fähigkeiten finden und optimieren?
 	\item Wie zuverlässig ist das Robotersystem und wie sicher in Kooperation mit dem Menschen?
@@ -12,35 +12,38 @@
 \end{itemize}
 
 \subsubsection{Beispiele humanoider Roboter}
+Mechatronik schon sehr gutm Autonomie und Perzeption noch sehr basal.
 \begin{itemize}
-	\item Honda Asimo, Japan
+	\item Honda \textbf{Asimo}, Japan:  sehr stabiles Laufen, kann auch auf einem Bein hüpfen
 	\item HRP4, Japan
-	\item ARMAR III, Deutschland
-	\item Walking Trumpet (Toyota), Japan
-	\item Wabian, Japan
-	\item Shadow Biped, UK
-	\item iCub, Italien, UK, Schweiz
-	\item Rollin' Justin, DLR, Deutschland
-	\item Elvis, Uni Gothenburg, Schweden
+	\item \textbf{ARMAR III}, Deutschland: hybrides system (keine Beine), aber von Perzeption und Planungskomponenten sehr weit
+	\item \textbf{Walking Trumpet} (Toyota), Japan: Entertainment
+	\item \textbf{Wabian}, Japan: sehr natürliches menschenähnliches Laufen
+	\item Shadow Biped, UK: pneumatische Muskeln
+	\item iCub, Italien, UK, Schweiz: Mechatronik sehr weit
+	\item Rollin' Justin, DLR, Deutschland:  kann z.B. Ball im Flug aus der Luft fangen, regelungstechnisch sehr weit
+	\item Elvis, Uni Gothenburg, Schweden: viele kleine Servomotoren, wenige Freiheitsgrade in Beinen
 	\item HoLLiE, FZI, Deutschland
 	\item ARMAR 4, KIT, Deutschland
-	\item REEM-C, PAL, Spanien
-	\item TORO, DLR, Deutschland
-	\item SCHAFT, Japan (DARPA)
-	\item ATLAS, USA (DARPA)
+	\item REEM-C, PAL, Spanien: sehr weit kommerzialisiert ($\rightarrow$ Öl-Schaich), auch hybride Version
+	\item TORO, DLR, Deutschland: Weiterentwicklung von Justin, sehr fortschrittliche regelungstechnische Modelle, gutes Laufen
+	\item SCHAFT, Japan (DARPA): Gewinner im Vorentscheid, dann von Google gekauft und von DRC abgemeldet
+	\item ATLAS, USA (DARPA): entwickelt von Boston Dynamics für DARPA (10 an Unis, 2 Mio. das Stück)
 	\item HUBO, Japan (DARPA)
-	\item Valkyrie, USA (DARPA)
+	\item Valkyrie, USA (DARPA): JPL, Entwickler von Curiosity; nicht fertig geworden
 	\item Teilkomponenten:
 	\begin{itemize}
 		\item DLR-Arm II + III
 		\item Fa. Otto Bock, Duderstadt
 		\item Frauenhofer, Magdeburg
-		\item Schunk SVH
+		\item Schunk SVH: 5-Finger-Hand, schon im industriellen Einsatz, mechatronisch sehr fortschrittlich
 	\end{itemize}
 \end{itemize}
 
 \subsubsection{Uncanny Valley}
 Je ähnlicher Roboter dem Menschen werden, desto unheimlicher wirken sie auf uns.
+Wenn sie zu ähnlich sind vergleicht man sie direkt mit echten Menschen und wirken daher freakig. Das Uncanny Valley ist ein stark untersuchtes wissenschaftliches Phänomen.
+Sollte man als Forscher bewusst abstrahieren und Roboter lieber eckig und kantig gestalten, um ihre Akzeptanz zu erhöhen?
 Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley}.
 \begin{figure}
 	\centering
@@ -61,7 +64,7 @@ Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley
 \begin{itemize}
 	\item Humanoide Roboter als Service-Roboter
 	\item Niedrige Herstellungskosten, Leichtbaukonstruktion mit niedrigem Energieverbrauch
-	\item Programmierung von Manipulationsaufgaben
+	\item Einfache Programmierung von Manipulationsaufgaben
 	\item Direkte Mensch-Roboter-Interaktion
 	\item Einfacher, direkter Transfer von menschlichen Fertigkeiten
 	\item Adäquate Benutzerschnittstelle
@@ -70,7 +73,7 @@ Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley
 \begin{figure}
 	\centering
 	\includegraphics[width=.6\textwidth]{figures/armar.png}
-	\caption{ARMARx}
+	\caption{ARMARx, PdV}
 \end{figure}
 
 \subsubsection{ARMAR-III} %TODO wichtig?!
@@ -121,7 +124,7 @@ Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley
 		\item Acoustic localization
 		\item Visual user tracking
 		\item Visual color-based object
-		\item Redundancy resolving
+		\item Redundancy resolving (Redundanz in inverser Kinematik, plötzlich ein df mehr)
 		\item Hybrid force position control
 		\item Coordination of tast execution
 	\end{itemize}
@@ -133,24 +136,26 @@ Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley
 \begin{itemize}
 	\item Artifical Skin for the Support of Save MMI
 	\begin{itemize}
-		 \item Multimodale künstliche Haut mit Distanzsensoren
+		 \item Multimodale künstliche Haut mit Distanzsensoren: erhöht Sicherheit; direktes Feedback um Roboter irgendwo hin zuziehen
+		 \item[$\rightarrow$] Japaner haben schon Babysitter-Roboter (aber schon mutig)
 		 \item Beschleunigungssensoren
 		 \item Kraft-Moment-Messung
 		 \item Finger mit speziellen Tastsensoren
 	\end{itemize}
 	\item Inverse Kinematik
 	\begin{itemize}
+		\item brauche 6 df um jede Position im Raum anzufahren (3 Richtungen + 3 Orientierungen), bei 7 ist ein Gelenk nicht bestimmt $\rightarrow$ mathematische Probleme beim Lösen der inversen Kinematik
 		\item Keine Invertierung der Jacobi-Matrix
 		\item Redundanz ist parametrisiert als Kreis im kartesischen Raum
 		\item Direkte Kontrolle von allen Punkten im Arbeitsraum
 	\end{itemize}
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\begin{subfigure}{.4\textwidth}
 		\includegraphics[width=\textwidth]{figures/flexible_greifersysteme.png}
-		\caption{Flexible Greifersysteme mit geringem Gewicht}
+		\caption{Flexible Greifersysteme mit geringem Gewicht: geringe Verletzunggefahr}
 	\end{subfigure}
 	\begin{subfigure}{.4\textwidth}
 		\includegraphics[width=\textwidth]{figures/regelungsansatz.png}
@@ -158,8 +163,9 @@ Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley
 	\end{subfigure}\\
 	\begin{subfigure}{.7\textwidth}
 		\includegraphics[width=\textwidth]{figures/regelung_humanoider.png}
-		\caption{Regelung des Humanoiden Systems -- Konzept des Neuro-Fuzzy-basierten Überwachungs- und Regelungskonzepts}
+		\caption{Regelung des Humanoiden Systems -- Konzept des Neuro-Fuzzy-basierten Überwachungs- und Regelungskonzepts; viele Regler; aufgrund von Beobachtung des Umfeldes kann Roboter sich für Verhalten entscheiden}
 	\end{subfigure}
+	\caption{}
 \end{figure}
 
 \subsubsection{Programmierung von Manipulationsaufgaben}
@@ -190,13 +196,14 @@ Human detection in Smart rooms:
 	\end{itemize}
 \end{itemize}
 \textbf{Programmieren durch Vormachen}:\\
-Demonstration Environment und Execution Environment. Multimodale Perzeption: mit Kameras, Kinects, Datenhandschuh usw.\\
+Demonstration Environment und Execution Environment. \\
+Multimodale Perzeption: mit Kameras, Kinects, Datenhandschuh usw.\\
 \textbf{Interaktives Lernen von humanoiden Robotern}\\
 Menschlicher Operator als Lehrer: Demonstration, Kontrollabsichten, Kommentare zu ausgeführten Aktionen\\
 Roboter: Hypothesen bilden, Nachfragen von Hypothesen\\
 \textbf{Simulation eines humanoiden Roboters}\\
 VR für Roboter"=Mensch Interaktion. Simulation eines komplexen mechatronischen Systems mit unterschiedlichen Sensoren.
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{figures/pdv.png}
 	\caption{Programmieren durch Vormachen}
@@ -263,7 +270,7 @@ Stereo Vision:
 
 \subsection{Anwendungen und Einsatz}
 \begin{itemize}
-	\item DESIRE -- Functions and components for everyday use
+	\item DESIRE (Deutsche Service Roboter Initiative) -- Functions and components for everyday use
 	\begin{itemize}
 		\item Perception
 		\begin{itemize}

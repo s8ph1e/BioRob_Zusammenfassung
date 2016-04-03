@@ -1,27 +1,36 @@
+\emph{Jedes Kind lernt irgendwann, dass heiße Herdplatten gefährlich sind. Können Roboter das auch?}
 \subsection{Motivation und Einführung in lernende Systeme}
-%
+\emph{Maschinelles Lernen ist genau genommen nur eine Optimierung mit clever parametrisiertem Gradientenabstieg.}
 %\subsubsection{Warum/Wieso/Wann sollte man lernen?}
 Wenn kein Modell des zu steuernden Prozesses vorhanden ist, die Modellberechnung sehr komplex oder schwierig ist und/oder nicht modellierbare Umwelteinflüsse existieren.
-Dann muss der Zustands-/Aktionsraum experimentell erforscht werden.
-Im Falle eines Roboters muss dies zwangsläufig (oder zumindest größtenteils) online sein.\\
+Dann muss der Zustands-/Aktionsraum experimentell \glqq erforscht\grqq{} werden.
+Im Falle eines Roboters muss dies zwangsläufig (oder zumindest größtenteils) \textit{online} sein.\\
 %
-Sumsymbolische Lernverfahren:
+\textbf{Subsymbolische (low-level) Lernverfahren}:
 \begin{itemize}
 	\item Echtzeit Verarbeitung
 	\item Hohe Fehlertoleranz und Generalisierung
 	\item Leichte Erweiterbarkeit
 	\item Integration sensorischer Massendaten
 	\item Direkte Generierung kontinuierlicher Steuersignale
-	\item Neuronale Netze sind als Lösungsansatz geeignet
+	\item[$\rightarrow$] Neuronale Netze sind als Lösungsansatz geeignet
 	\item online/offline Lernen
 	\item überwachtest/unüberwachtes Lernen
 \end{itemize}
 
 \subsubsection{Gradientenabstieg}
-\begin{center}
+Optimierung einer Gütefunktion (häufig Minimum): 
+\begin{itemize}
+\item Gradientenabstieg in mehrdimensionalem Feld, Bewegung  entlang des Gradienten im $> 3$-Dimensionalen: lokale Minima und flache Plateaus sind ein Problem!
+\item Lernverfahren hören terminieren im Grunde nicht, sondern es wird eine Anzahl von Iterationen oder ein sonstiges Abbruchkriterium künstlich definiert
+\item Strategien: z.B. aggressivere Lernrate, aber dabei kann man über das Minimum hinaus schießen (in \autoref{grad}d dargestellt)
+\end{itemize}
+\begin{figure}[h!]
+	\centering
 	\includegraphics[width=.7\textwidth]{figures/gradientenabstieg.png}
-\end{center}
-
+	\caption{Gradientenabstieg}
+	\label{grad}
+\end{figure}
 \subsubsection{Reinforcement Learning -- Zuckerbrot und Peitsche in der Robotik}
 \begin{itemize}
 	\item Online-Lernen
@@ -41,23 +50,33 @@ Betrachte Zustände $s$, Aktionen $a$, Übergänge und Bewertung $r$
 	\delta &: \left(S \times A \right) \rightarrow S ; \delta \left(s_t, a_t\right) = s_{t + 1} \\
 	r &: \left(S \times A \right) \rightarrow R ; r\left(s_t, a_t\right) = r_t
 \end{align}
-Lernen entspricht dem Finden der (optimalen) Zielfunktion $\tau:S\rightarrow A, \tau(s_t)=a_t$ wobei $\tau:=$ optimale Handlungsstrategie, sodass die akkumulierte Bewertung (zum Ziel hin) 
+Lernen entspricht dem Finden der (optimalen) Zielfunktion $\pi:S\rightarrow A, \tau(s_t)=a_t$ \\
+wobei $\pi:=$ optimale Handlungsstrategie, sodass die akkumulierte Bewertung (zum Ziel hin) 
 \begin{equation}
 V^{\tau}(s_t) = r_t + \gamma r_{t+1} + \gamma^2 r_{t+2} + \ldots = \sum_{i = 0}^\infty \gamma^i r_{t+i}
 \end{equation}
-maximiert wird, mit $V:=$ Value Function, $s_t:=$ aktueller Zustand, $r_t:=$ erhaltende Bewertung beim Übergang zu $s_{t+1}$ und Gewichtung der Bewertung (Diskontierungsfaktor) $0 \leq \gamma \leq 1$ ($0:$ aktuelle Aktionsbewertung ist wichtig, $>0:$ zukünftige (letzte) Bewertungen werden bevorzugt.
-
-\begin{figure}
+maximiert wird, mit $V:=$ Value Function, $s_t:=$ aktueller Zustand, $r_t:=$ erhaltende Bewertung beim Übergang zu $s_{t+1}$ und Gewichtung der Bewertung (Diskontierungsfaktor) $0 \leq \gamma \leq 1$ ($0:$ aktuelle Aktionsbewertung ist wichtig, $>0:$ zukünftige (letzte) Bewertungen werden bevorzugt ($n$-step).
+\textbf{Lernarchitektur} (siehe \autoref{lernarch}):\\
+Schleife über Roboter, z.B. für pneumatische Muskeln: Bewegung eines Beins
+\begin{itemize}
+\item beliebige Random-Steuersignale, Bewegung in richtige/vorgegebene Richtung
+\item kein Modell notwendig
+\item unabhängig von Technologie
+\item aber: bei sehr empfindlichen oder sehr großen Robotern nicht zu empfehlen, da der Roboter oder seine Umgebung dabei kaputt gehen könnten
+\end{itemize}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=.7\textwidth]{figures/lernarchitektur.png}
+	\caption{}
+	\label{lernarch}
 \end{figure}
 
 \subsection{Verschiedene Möglichkeiten der Wissensrepräsentation}
 
 \subsubsection{Cerebellar Model Articulation Controller (CMAC)}
 Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter sind die Anzahl der Gitter (Netze) und die Auflösung der Kacheln (Neuronen pro Netz).
-
-\subsubsection{Radial Basis FUnctions (RBF)}
+Hierbei enstpricht die Anzahl der Gitter den Schichten des Netzes, die Auflösung der Kacheln entspricht Anzahl der Neuronen im Netz.
+\subsubsection{Radial Basis Functions (RBF)}
 \begin{itemize}
 	\item Lokale rezeptive Felder
 	\begin{align}
@@ -70,6 +89,7 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 		\item Überlappung beim Einfügen
 	\end{itemize}
 \end{itemize}
+\textbf{CMAC vs. RBF-Netze} siehe \autoref{ch:09:fig:cmac-vs-rbf}\\
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{figures/rbf_vs_cmac.png}
@@ -80,26 +100,33 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 \subsection{Algorithmen zum Online-Lernen}
 
 \subsubsection{Adaptive Heuristic Critic (AHC) mit Stochastic Real Value Exploration (SRV)}
-
 \textbf{Aktor/Kritiker--Ansatz} siehe \autoref{ch:09:fig:aktor-ansatz}.
-\begin{figure}[H]
+\begin{itemize}
+\item NN wird über Sensorwerte (z.B. Gelenkwinkelstellungen) angeregt
+\item zwei Teilnetze, eines für Kritiker, anderes für Generation von Aktionen
+\item auch Kritiker wird bewertet $\rightarrow$ versuche, zukünftige Bewertungen für Kritiker zu prädizieren
+\item bewusste Variation der Aktionen, also nicht genau was  Netz sagt sondern Exploration/Varianz (stochastischer Zufall), werden dann auf Roboter gegeben und dann wird wieder geschaut wie es läuft
+\item externe Bewertungsfunktion (vorher vorgegeben) + interne Bewertung über Kritiker: schaue von einem Zustand zum nächsten, wie Variation sich auswirkt, falls gut, adaptiere Gewichtung im Netz
+\end{itemize}
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figures/kritiker_ansatz.png}
+	\includegraphics[width=0.7\textwidth]{figures/kritiker_ansatz.png}
 	\caption{Aktor/Kritiker--Ansatz}
 	\label{ch:09:fig:aktor-ansatz}
 \end{figure}
 
-\textbf{Real-Valued Reinforcement Learning} (\autoref{ch:09:fig:srvrl})
+\textbf{Stochastic Real-Valued Reinforcement Learning} (\autoref{ch:09:fig:srvrl})
 \begin{figure}[h!]
-	\label{ch:09:fig:srvrl}
 	\begin{minipage}{0.5\linewidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/srvrl.png}
+		\caption{Reinforcement Learning}
+		\label{ch:09:fig:srvrl}
 	\end{minipage}
 	\begin{minipage}{0.5\linewidth}
 		\begin{enumerate}
 			\item Berechne Zustand $s(t)$
-			\item Aktion: $u(t) = N(\nu (t), \sigma(\overset{\wedge}{r}(t))$
+			\item Aktion: $u(t) = N(\nu (t), \sigma(\overset{\wedge}{r}(t))$ (stochastischer Prozess, abhängig v.a. von Aktionsnetz)
 			\item Zustandsübergang $s(t + 1) = \delta (s(t),u(t))$
 			\item $\Delta = r(t) - \overset{\wedge}{r}(t)$
 			\item Adaption von $W$ mit $\Delta$
@@ -122,14 +149,14 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 		\sigma(t) &= f(\overset{\wedge}{r}(t)) \\
 		f(\overset{\wedge}{r}(t)) &= \max \left(\left( \frac{1.0 - \overset{\wedge}{r}(t)}{5.0}\right), 0.0\right)
 	\end{align*}
-	\item Stochastische Aktionsauswahl
+	\item Stochastische Aktionsauswahl (wird bewusst verrauscht)
 	\begin{equation*}
 		u(t) \leftarrow N (\mu (t), \sigma (t))
 	\end{equation*}
 	\item \textbf{Adaption der Aktionsgewichte abhängig von Aktionen und Zustand}
 	\begin{align*}
-		w_t(t+1) &= w_t(t) + \alpha \Delta_w (t) s_t (t) \\
-		\Delta_w(t) &= \left(r(t) - \overset{\wedge}{r}(t)\right)\left(\frac{a(t) - \mu (t)}{\sigma (t)}\right)
+		w_t(t+1) &= w_t(t) + \alpha \Delta_w (t) s_t (t), text{ Lernfaktor }\alpha\\ 
+		\Delta_w(t) &= \left(r(t) - \overset{\wedge}{r}(t)\right)\left(\frac{a(t) - \mu (t)}{\sigma (t)}\right) \text{ Bewertungsfunktion}
 	\end{align*}
 	\item \textbf{Adaption der Kritikergewichte}
 	\begin{align*}
@@ -138,21 +165,21 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 	\end{align*}
 \end{itemize}
 
-\subsubsection{Zustandsrum Randwertkontrolle mit Boundary Controllern (BC)}
-\textbf{Problematik:} Der Zustandsraum eines realen Roboters ist begrenzt. Die stochastische Exploration führt zum Verlassen des erlaubten Zustandsraumes
+\subsubsection{Zustandsraum Randwertkontrolle mit Boundary Controllern (BC)}
+\textbf{Problematik:} Der Zustandsraum eines realen Roboters ist begrenzt (durch Mechanik, Motortreiber/Elektronik, Leistung). Die stochastische Exploration führt zum Verlassen des erlaubten Zustandsraumes
 \begin{itemize}
 	\item Basissteuerung des Roboters verhindert Aktion
 	\item Zustand des Roboters ändert sich nicht
 	\item kein $\Delta$ mehr
 	\item kein Lernen mehr möglich
 \end{itemize}
-\textbf{Lösung:} Aktive Kontrolle des Randbereiches und Eingriff in den Lernvorgang mit Hilfe eines \emph{Boundary Controller}:
+\textbf{Lösung:} Aktive Kontrolle des Randbereiches und Eingriff in den Lernvorgang mit Hilfe eines \emph{Boundary Controller}: soll erkennen, wenn Zustandsraum verlassen wird
 \begin{itemize}
 	\item Randbereichsbewertung $b(s_t)$:
 	\begin{align*}
 		r_{t_{gesamt}} &= r_{t_{sensor}} - b(s_t) \\
 		b &: S \Rightarrow R \\
-		s_t & \in S \text{Zustandsraum}
+		s_t & \in S \text{ Zustandsraum}
 	\end{align*}
 	\item Identifikation der für das Verlassen des Aktionsraumes verantwortlichen Stellgrößen $u_k$
 	\begin{align*}
@@ -208,7 +235,7 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 		\item periodische Bewegungen
 		\item Energieeffizienz
 	\end{itemize}
-	diese Vorgaben spezifizieren das Laufmuster nicht vollständig, legen aber die Bereiche fest, in denen das Lernen der Bewegungsmuster stattfinden soll
+	Diese Vorgaben spezifizieren das Laufmuster nicht vollständig, legen aber die Bereiche fest, in denen das Lernen der Bewegungsmuster stattfinden soll -- Roboter lernt nicht gesamten Aktionsraum; 		verhindert langes Lernen und Feststecken in lokalem Minimum (z.B. \glqq Schlurfen\grqq)
 	\item Steuerungsstrategien
 	\begin{itemize}
 		\item 1 Hauptgangregler
@@ -226,8 +253,8 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 		\item Nur bei kleinen Abweichungen ist die Beeinflussung z.B.\ durch Knöchel und Hüfte möglich
 		\item Bei größeren Abweichungen müssen Zwischenschritte eingefügt werden
 	\end{itemize}
-	\item Körperhöhe \cref{ch:09:fig:koerperhoehe} %TODO reference
-	\item Zusammensetzung \cref{ch:09:fig:zusammensetzung}
+	\item Körperhöhe \autoref{ch:09:fig:koerperhoehe}
+	\item Zusammensetzung \autoref{ch:09:fig:zusammensetzung}
 	\item Lernarchitektur \autoref{ch:09:fig:bdw-lernarchitektur}
 	\item Gesamtübersicht Aktor \autoref{ch:09:fig:gesamtuebersicht-aktor}
 	\item CPG Kritiker \autoref{ch:09:fig:cpg-kritiker}
@@ -249,51 +276,52 @@ Lokale Wissensrepräsentation mit mehreren assoziativen Netzen/Layer. Parameter 
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/zentraler_mustergenerator.png}
-		\label{ch:09:fig:zentraler-mustergenerator}
 		\caption{Zentraler Mustergenerator}
+		\label{ch:09:fig:zentraler-mustergenerator}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/haltungskontrolle.png}
-		\label{ch:09:fig:haltungskontrolle}
 		\caption{Haltungskontrolle}
+		\label{ch:09:fig:haltungskontrolle}
 	\end{subfigure} \\
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/koerperhoehe.png}
-		\label{ch:09:fig:koerperhoehe}
 		\caption{Körperhöhe}
+		\label{ch:09:fig:koerperhoehe}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/zusammensetzung.png}
-		\label{ch:09:fig:zusammensetzung}
 		\caption{Zusammensetzung}
+		\label{ch:09:fig:zusammensetzung}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/bdw_lernarchitektur.png}
-		\label{ch:09:fig:bdw-lernarchitektur}
 		\caption{Biped dynamic walking -- Lernarchitektur}
+		\label{ch:09:fig:bdw-lernarchitektur}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/gesamtuebersicht_aktor.png}
-		\label{ch:09:fig:gesamtuebersicht-aktor}
 		\caption{Gesamtübersicht Aktor}
+		\label{ch:09:fig:gesamtuebersicht-aktor}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/cpg_kritiker.png}
-		\label{ch:09:fig:cpg-kritiker}
 		\caption{CPG Kritiker}
+		\label{ch:09:fig:cpg-kritiker}
 	\end{subfigure}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/fusspunkttrajektorien.png}
-		\label{ch:09:fig:fusspunkttrajektorien}
 		\caption{Fußpunkttrajektorien}
+		\label{ch:09:fig:fusspunkttrajektorien}
 	\end{subfigure}
+	\caption{}
 \end{figure}
 
 
@@ -306,7 +334,7 @@ Experimentelles Lernen zur Optimierung der Haltung (Schwerpunkt) im Kreuzgang\\
 \textbf{BISAM -- Lernen Gewichtsverlagerung im Schritt}
 \begin{itemize}
 	\item Problemstellung: Optimierung der Schwerpunktsverschiebung zur Unterstützung des Schritts
-	\item Bewertungskriterien: Lage des Schwerpunktes (SSM)
+	\item Bewertungskriterien: Lage des Schwerpunktes (static stability margin, SSM)
 	\item Netzeingaben: SSMx, SSMy, letzte Verschiebung x, Verschiebung y
 	\item Netzausgaben: Kritiker, Verschiebung x, Verschiebung y
 \end{itemize}
@@ -320,8 +348,8 @@ Experimentelles Lernen zur Optimierung der Haltung (Schwerpunkt) im Kreuzgang\\
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{figures/bisam_steuerungsarchitektur.png}
-	\caption{BISAM -- Steuerungsarchitektur}
+	\includegraphics[width=.7\textwidth]{figures/bisam_steuerungsarchitektur.png}
+	\caption{BISAM -- Steuerungsarchitektur: lerne Reflexe, entwickle System welches Roboter selbst stabilisiert}
 \end{figure}
 
 \begin{figure}
@@ -332,20 +360,22 @@ Experimentelles Lernen zur Optimierung der Haltung (Schwerpunkt) im Kreuzgang\\
 	\end{subfigure}
 	\begin{subfigure}{.4\textwidth}
 		\includegraphics[width=\textwidth]{figures/bisam_gewichtsverlagerung_schritt_1.png}
-		\caption{BISAM -- Lernverlauf im Schritt: Bewertung und Exploration}
+		\caption{BISAM -- Lernverlauf im Schritt: Bewertung und Exploration; nach ca. 500 Iterationen erreicht Bewertung ein Maximum (stabiler Zustand) und Exploration wird aufgrund der guten Bewertung eingestellt}
 	\end{subfigure}
+	\caption{Lernen von BISAM}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\begin{subfigure}{.4\textwidth}
 		\includegraphics[width=\textwidth]{figures/bisam_schwerpunktverlauf_kreuzgang.png}
-		\caption{BISAM -- Schwerpunktverlauf Kreuzgang}
+		\caption{BISAM -- Schwerpunktverlauf Kreuzgang: Grenzen: ca. -0.25, außerhalb dieses Bereiches würde Roboter umfallen; Exploration in diesem Bereich früh genug verhindern (Boundary)}
 	\end{subfigure}
 	\begin{subfigure}{.4\textwidth}
 		\includegraphics[width=\textwidth]{figures/bisam_schwerpunktverlauf_kreuzgang_1.png}
-		\caption{BISAM -- Bewertung des Schwerpunktverlaufes im Kreuzgang}
+		\caption{BISAM -- Bewertung des Schwerpunktverlaufes im Kreuzgang: stabile Bereiche für Schwerpunkt in $x$- und $y$-Richtung in grün}
 	\end{subfigure}
+	\caption{}
 \end{figure}
 
 \subsubsection{Diskussion}

@@ -9,7 +9,7 @@ z.B. Verhaltensbasiertes System, KNN
 z.B. Empirisch, Reinforcement Learning,
 \item[$\rightarrow$] Leider nicht immer eindeutig trennbar!
 \end{itemize}
-Beispiel: PID - proportional–integral–derivative controller
+\textbf{Beispiel: PID - proportional–integral–derivative controller}:
 \begin{itemize}
 \item Reglerstruktur:
 \begin{itemize}
@@ -23,18 +23,24 @@ Parametrisierung: Bestimmen der Werte $K_P, T_V, T_N$
 \item Einstellregel nach Chien, Hrones und Reswick
 \end{itemize}
 \end{itemize}
-Elementare Bewegungsteuerung in der Natur: Bewegungsabläufe
+\textbf{Elementare Bewegungsteuerung in der Natur}: Bewegungsabläufe
 \begin{itemize}
 \item Willkürmotorik
 \item Rhythmische Bewegungsabläufe
 \item Reflexe
 \end{itemize}
-Elementare Bewegungsteuerung in der Robotik: Verhaltensbasierte Steuerung der sechsbeinigen Laufmaschine LAURON
+\textbf{Elementare Bewegungsteuerung in der Robotik}: Verhaltensbasierte Steuerung der sechsbeinigen Laufmaschine LAURON (vgl. \autoref{lauri})
 \begin{itemize}
 \item Höhere Verhalten
 \item Haltungskontrolle
 \item Reflexe
 \end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.63\textwidth]{figures/ch05_lauron.png}
+	\caption{Steuerung von LAURON}
+	\label{lauri}
+\end{figure}
 \subsubsection{Zentraler Mustergenerator vs. Reflexe}
 Als \textbf{zentraler Mustergenerator} (Central Pattern Generator - CPG) wird
 ein neuronales Netzwerk verstanden, welches bei isoliertem zentralen
@@ -45,7 +51,7 @@ Mustergenerator sowie die modulierende Sensorinformation ein.\\
 \textbf{Reflexe} sind zielgerichtete, sensorgekoppelte Verhaltensweisen, bei
 denen motorische sowie vegetative Prozesse ablaufen können. Die
 Reflexantwort ist dabei hinsichtlich Latenz, Stärke und Muster eng an die
-Intensität der Sensorerregung gekoppelt (nach Schmidt95).\\ 
+Intensität der Sensorerregung gekoppelt (nach Schmidt95).\\ \\
 Beispiele für Mustergeneratoren und Reflexe:
 \begin{itemize}
 \item Rhythmogenese der Atmung (Respiratory CPG)
@@ -67,7 +73,7 @@ Beispiele für Mustergeneratoren und Reflexe:
 \item Eingabe durch eine Propagierungsfunktion mit Gewichten verknüpft
 \item Aktivierungsfunktion definiert Reaktion auf Eingabe
 \end{itemize}
-Künstliche Neuronale Netze - Historischer Abriss
+\textbf{Künstliche Neuronale Netze - Historischer Abriss}:
 \begin{itemize}
 \item 1943: McCulloch und Pitts beschreiben erstes neurologisches Netz
 \item 1949: Hebb'sche Lernregel: aktivierende oder hemmende Wirkung einer Synapse lässt sich als Produkt der prä-
@@ -75,7 +81,7 @@ und postsynaptischen Aktivität berechnen
 \item 1958: Frank Rosenblatt präsentiert das Perzeptron, welches die Grundlage der heutigen KNNs bildet
 \item Heute: Große Vielfalt an Topologien (Strukturen der Netze) und Verbindungsarten (z.B. \glqq spiking neural networks\grqq), spezialisierte Netze
 \end{itemize}
-Anwendungsgebiete von KNNs in biologisch motivierter Robotik:
+\textbf{Anwendungsgebiete von KNNs in biologisch motivierter Robotik}:
 \begin{itemize}
 \item Robotersteuerungen
 \item Regelung komplexer Bewegungsabläufe
@@ -84,7 +90,7 @@ Anwendungsgebiete von KNNs in biologisch motivierter Robotik:
 \item Spracherkennung
 \item virtuelle Agenten
 \end{itemize}
-KNNs -- Prinzipien:
+\textbf{KNNs -- Prinzipien}:
 \begin{itemize}
 \item Einfaches Einzelneuron – komplexes Gesamtsystem
 \item Hohe Fehlertoleranz
@@ -93,7 +99,7 @@ KNNs -- Prinzipien:
 \item Direkte Generierung kontinuierlicher Steuersignale
 \item Komplizierte nichtlineare Funktionen erlernbar
 \end{itemize}
-Netztopologien:
+\textbf{Netztopologien}:
 \begin{itemize}
 \item Einschichtiges Feed-Forward-Netzwerk (azyklischer gerichteter Graph): eine Eingabeschicht, eine Ausgabeschicht (azyklischer gerichteter Graph)
 \item Mehrschichtiges Feed-Forward Netzwerk: 1-$n$ verdeckte Schichten, verbesserte die Abstraktionsfähigkeit, z.B. XOR Problem lösbar
@@ -105,7 +111,8 @@ Netztopologien:
 \item vollständige Verbindungen (jedes Neuron ist mit jedem anderen Neuron verbunden)
 \end{itemize}
 \end{itemize}
-Neuro-Oszillatoren:
+\newpage
+\textbf{Neuro-Oszillatoren}:
 \begin{itemize}
 \item Paare aus sich gegenseitig hemmenden und erregenden Neuronen
 \item Der Antagonistische Aufbau der Muskeln setzt sich in der Steuerung fort
@@ -113,10 +120,10 @@ Neuro-Oszillatoren:
 \end{itemize}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{figures/ch05_NeuroOs.png}
-	\caption{Neuro-Oszillator}
+	\includegraphics[width=0.8\textwidth]{figures/ch05_NeuroOs.png}
+	\caption{Neuro-Oszillator: rhythmische alternierende Aktivität}
 \end{figure}
-Verhaltensbasierte Systeme
+\textbf{Verhaltensbasierte Systeme}:
 \begin{itemize}
 \item Komplexe Verhalten entstehen nicht notwendigerweise aus komplexen Steuerungssystemen
 \item Kein Modell sondern direkte Interaktion mit der Umwelt
@@ -127,7 +134,7 @@ Verhaltensbasierte Systeme
 \item Emergence: Intelligenz entsteht durch Interaktion mit der Umwelt
 \end{itemize}
 \end{itemize}
-Hierarchie biologisch motivierter Steuerstrukturen (zunehmende Abstraktion und Komplexität)
+\textbf{Hierarchie biologisch motivierter Steuerstrukturen} (zunehmende Abstraktion und Komplexität):
 \begin{itemize}
 \item[0.] Mustergeneratoren $\rightarrow$ CPGs, zyklische Bewegungen
 \item[1.] Reflexe $\rightarrow$ reaktive Systeme in Robotern
@@ -135,8 +142,8 @@ Hierarchie biologisch motivierter Steuerstrukturen (zunehmende Abstraktion und K
 \item[3.] Verhalten $\rightarrow$ verhaltensbasierte Systeme (vgl. Kap. 9)
 \item[$\rightarrow$] es werden aber auch mehr und mehr Parameter!
 \end{itemize}
-Steuerungsstrukturen parametrieren: Parameteridentifikation und Tuning stellt bei komplexen
-Robotern und anspruchsvollen Aufgaben eine zentrale Herausforderung der Entwicklung dar. 
+\textbf{Steuerungsstrukturen parametrieren}: \textit{Parameteridentifikation und Tuning stellt bei komplexen
+Robotern und anspruchsvollen Aufgaben eine zentrale Herausforderung der Entwicklung dar}.\\ 
 Es gibt verschiedene Verfahren und Methoden:
 \begin{itemize}
 \item Modellbasierte Parametrierung – \glqq Regler Einstellregeln\grqq
@@ -273,7 +280,7 @@ Drei Modelle von Rhytmusgeneratoren:
 	\end{subfigure}
 	\caption{Modelle von Rhythmusgeneratoren}
 \end{figure}
-Das Neuron -- Funktionale Approximation:
+\textbf{Das Neuron -- Funktionale Approximation}:
 \begin{itemize}
 \item Eingabe durch eine Propagierungsfunktion mit Gewichten verknüpft
 \item Aktivierungsfunktion definiert Reaktion auf Eingabe
@@ -298,7 +305,8 @@ Verwendung einer Zustandsvariable $m_i$ (Membranpotential), vgl. Abb.
 	\caption{\glqq Leaky Integrator\grqq{} Modell}
 	\label{LI}
 \end{figure}
-\textbf{Matsuoka Oszillatoren} -- Formale Beschreibung des Half-Center Modells
+\textbf{Matsuoka Oszillatoren}\footnote{\textit{Mechanisms of frequency and pattern control in the neural rhythm generators}, K. Matsuoka, Biol. Cybern. 56, 1987\\
+\textit{Sustained oscillations generated by mutually inhibiting neurons with adaptation}, K. Matsuoka, Biol. Cybern. 52, 1985} -- Formale Beschreibung des Half-Center Modells
 \begin{itemize}
 \item einzelnes Neuron: 
 \begin{align*}
@@ -323,11 +331,11 @@ T_a\dot{f_i} + f_i &= y_i, y = max(0,x_i)
 \item $sen_i:$ Sensor input
 \end{itemize}
 \includegraphics[width=0.4\textwidth]{figures/ch05_matHalfCenter.png}
-\item relevante Literatur hierzu:
-\begin{itemize}
-\item \glqq Mechanisms of frequency and pattern control in the neural rhythm generators\grqq , K. Matsuoka, Biol. Cybern. 56, 1987
-\item \glqq Sustained oscillations generated by mutually inhibiting neurons with adaptation\grqq , K. Matsuoka, Biol. Cybern. 52, 1985
-\end{itemize}
+%\item relevante Literatur hierzu:
+%\begin{itemize}
+%\item \glqq Mechanisms of frequency and pattern control in the neural rhythm generators\grqq , K. Matsuoka, Biol. Cybern. 56, 1987
+%\item \glqq Sustained oscillations generated by mutually inhibiting neurons with adaptation\grqq , K. Matsuoka, Biol. Cybern. 52, 1985
+%\end{itemize}
 \item Attraktorverhalten:
 \begin{itemize}
 \item Nach Auftreten der Störung schwingt sich der Oszillator wieder auf den Attraktor ein und das System kehrt in einen stabilen Zustand zurück (siehe Abb. \ref{GW})

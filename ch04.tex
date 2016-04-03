@@ -70,7 +70,7 @@ Der Begriff des Sensors (lateinisch \glqq sensus\grqq{} der Sinn) leitet sich ab
 \item Geschmack $\Rightarrow$ chemische Sensoren
 \end{itemize}
 IEC-Definition für technische Sensoren:
-\glqq Ein Sensor ist das primäre Element in einer Messkette, das eine variable Eingangsgröße in ein geeignetes Messsignal umsetzt.\grqq \\
+\glqq Ein Sensor ist das primäre Element in einer Messkette, das eine variable Eingangsgröße in ein geeignetes Messsignal umsetzt.\grqq \\ \\
 \textbf{Sensoren in der Robotik}:\\
 Siehe Abbildungen \ref{klassfkt} bis \ref{intextbsp}.
 \begin{figure}[h!]
@@ -96,7 +96,7 @@ Siehe Abbildungen \ref{klassfkt} bis \ref{intextbsp}.
 	\includegraphics[width=0.5\linewidth]{figures/ch04_intext.png}
 	\caption{Beispiel Interne vs. Externe Sensoren}
 	\label{intextbsp}
-\end{figure}
+\end{figure}\\
 \textbf{Sensoren und Perzeption}:\\
 Siehe \autoref{sensperz}.
 \begin{figure}[h!]
@@ -105,6 +105,7 @@ Siehe \autoref{sensperz}.
 	\caption{}
 	\label{sensperz}
 \end{figure}
+\newpage
 \textbf{Anforderungen an technische Sensorik:}
 \begin{itemize}
 \setlength\itemsep{0em}
@@ -122,7 +123,7 @@ Siehe \autoref{sensperz}.
 \item Querempfindlichkeit
 \item Alterung
 \item Ansprechverhalten
-\item[$\Rightarrow$] Ausgehend von der Aufgabenstellung und des Ortes der Integration wird der Sensor ausgewählt
+\item[$\Rightarrow$] Ausgehend von der Aufgabenstellung und des Ortes der Integration wird der Sensor ausgewählt; jedoch können meistens nur 2-3 Eigenschaften auf einmal erfüllt werden da viele sich gegenseitig ausschließen; man muss auf den angestrebten Anwendungsfall optimieren
 \end{itemize}
 
 \textbf{Bionik in der Sensorik:}
@@ -239,15 +240,15 @@ hat sehr guten Frequenzbereich, aber spezialisiert:
 \textbf{Absolute Positionsmessung}
 \begin{itemize}
 \setlength\itemsep{0em}
-\item relative optische Encoder:
+\item Relative optische Encoder:
 \begin{itemize}
 \setlength\itemsep{0em}
-\item nur relative Ticks
+\item Nur relative Ticks
 \item Absoluten Winkel nur durch Anschlag, Indexkanal
 \item Pro: einfacher \& robuster Sensor, kostengünstig
 \item Contra: Komplexere Reset-Routine, nur einmalige Referenzierung
 \end{itemize}
-\item absolute optische Encoder: 
+\item Absolute optische Encoder: 
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Absolute Position in jedem Schritt
@@ -265,6 +266,14 @@ hat sehr guten Frequenzbereich, aber spezialisiert:
 \end{itemize}
 \end{itemize}
 \subsubsection{Gravitation bzw. Beschleunigung – Innenohr gegen Inertialsystem}
+Das Gleichgewichts-(Vestibular-)organ des Menschen enthält Bogengänge (siehe \autoref{vest}): drei Kreisel im Ohr, welche jeweils um 90° gegeneinander verschoben sind. So ist Neigung in allen drei Raumrichtungen messbar. Ein weiteres Beispiel aus der Natur sind Borstenfelder zur Messung des Schwersinns bei der Ameise. Die Borstenverformung ist messbar, so können Insekten Gravitation kompensieren.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch04_vestibular.png}
+	\caption{Gleichgewichts-(Vestibular-)organ des Menschen}
+	\label{vest}
+\end{figure}
+\noindent
 \textbf{Inertialsysteme (Kreiselsysteme)}
 \begin{itemize}
 \setlength\itemsep{0em}
@@ -289,16 +298,30 @@ hat sehr guten Frequenzbereich, aber spezialisiert:
 \item Genauigkeit hängt vom verwendeten Kreiselsystem ab (Laserkreisel: 1cm Abweichung pro Stunde)
 \end{itemize}
 \end{itemize}
+\autoref{inertsys}  zeigt ein Inertialsystem. Es enthält drei Rotationssensoren, drei Beschleunigungssensoren sowie Magnetkompass. Die Messung (und somit auch ihr
+Fehler) wird hierbei zweimal aufintegriert, was bei der Positionsberechnung nicht zu vernachlässigen ist.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figures/ch04_inertsys.png}
+	\caption{Inertialsystem}
+	\label{inertsys}
+\end{figure}
 \subsubsection{Temperatur – Wo ist es warm?}
-\textbf{Temperaturmessung beim Menschen}
+\textbf{Temperaturmessung beim Menschen} (vgl. \autoref{temp})
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch04_temp.png}
+	\caption{Thermorezeptoren}
+	\label{temp}
+\end{figure}
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Die Haut hat spezifische Kalt- und Warmpunkte
 \item Pro cm2 Haut 1-4 Kaltpunkte und 0,4 Warmpunkte
 \item Kalt- und Warmsinn haben unterschiedliche statische und dynamische Empfindlichkeiten
-\item Empfindlichkeit steigt mit der Geschwindigkeit von Temperaturänderungen
+\item Empfindlichkeit steigt mit der Geschwindigkeit von Temperaturänderungen; sehr starke Gewöhnung an Signale
 \end{itemize}
-
+\noindent
 \textbf{Der Feuerkäfer}
 \begin{itemize}
 \setlength\itemsep{0em}
@@ -310,10 +333,10 @@ hat sehr guten Frequenzbereich, aber spezialisiert:
 \item Sinnesorgane reagieren über viele km auf kleinste Temperaturunterschiede
 \end{itemize}
 \end{itemize}
-
+\noindent
 \textbf{Temperaturmessung in der Technik}
 \begin{itemize}
-\item Thermoresistive Sensoren:
+\item Thermoresistive Sensoren: Materialien, die ihren Widerstand in Abhängigkeit von Temperatur verändern oder sich verformen; Einsatz vor allem bei sicherheitskritischen Schaltkreisen (z.B. Feuermelder)
 \begin{itemize}
 \item Metalle
 \begin{itemize}
@@ -339,5 +362,213 @@ hat sehr guten Frequenzbereich, aber spezialisiert:
 \end{itemize}
 \end{itemize}
 \subsubsection{Tasten – Schreibtischplatte oder Kaktus...}
-\subsubsection{Riechen – Chemie der Stoffe}
+\textbf{Menschliche Haut}:\\
+Die menschliche Haut weist spezialisierte Tastrezeptoren auf. Die Hauptrezeptoren beim Menschen (in \autoref{tast} dargestellt) sind
+\begin{enumerate}
+\setlength\itemsep{0em}
+\item Berührung
+\item Druck
+\item Vibration
+\item Berührung
+\item Druck
+\item Dehnung
+\end{enumerate}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch04_tast.png}
+	\caption{Tastende Sensorik}
+	\label{tast}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch04_tast1.png}
+	\caption{Reaktion der Hautrezeptoren für Druck (1), Berührung (2) und Vibration (3)}
+	\label{tast1}
+\end{figure}
+\textbf{Fühler von Insekten}:
+\begin{itemize}
+\item Erfassung der Umgebung mittels Fühlern (können einen torusartigen Bereich abdecken; häufig dort auch Geruchssinn)
+\item[$\rightarrow$] bei LAURON: wenn kein Bodenkontakt wird erst gesucht
+\item Anpassung der Laufbewegung anhand der Fühler; Beine folgen Fühlern
+\item Zyklische Fühlerbewegung synchron mit dem Laufmuster
+\end{itemize}
+\textbf{Künstlicher Schnurrbart}:
+\begin{itemize}
+\item Schnurrbart bei Mäusen zum Ertasten der Umgebung
+\item Technische Umsetzung: Feines Haar (menschliches Haar) auf beweglichem Mikrofon
+\end{itemize}
+\textbf{Dehnmessstreifen als Kraftsensoren}
+\begin{itemize}
+\item Dehnmessstreifen verformt sich bei Krafteinwirkung
+\item[$\rightarrow$] Veränderung des ohmschen Widerstands
+\item Zusammenhang: $\frac{\Delta R}{R} = \kappa \cdot \varepsilon$ mit
+\begin{itemize}
+\item $\varepsilon = \frac{\Delta l}{l}$ \textit{Längenänderung}
+\item $\kappa$ \textit{Dehnungsempfindlichkeitskonstante}
+\end{itemize}
+\item bei Lauron:  3D Kraftvektor als Messwerte, in $Z$- sowie $X-$ und $Y-$Richtung
+\begin{itemize}
+\item hochpräzise, empfindlich, aufwändige Auswerteelektronik, anfällige Kontaktierung
+\end{itemize}
+\end{itemize}
+\textbf{Taktile Sensoren}: Kraftmessung über die Nutzung physikalischer Effekte von
+Materialien. Man unterscheidet folgende Klassen taktiler Sensoren:
+\begin{itemize}
+\item Piezoresistiv
+\item Piezoelektrisch
+\item Kapazitiv
+\item Induktiv
+\item Optisch (Reflektion, Transduktion, Polarisation)
+\end{itemize}
+\textbf{Touchscreens} können mittels zahlreicher, unterschiedlicher Technologien umgesetzt werden:
+\begin{itemize}
+\item Resistive Touchscreens
+\begin{itemize}
+\item Zwei leitfähige, transparente Schichten
+\item Gleichspannung an jede Schicht anlegen
+\item An Berührpunkt ist Spannung in Schichten gleich
+\item Über Spannungsteiler kann Berührpunkt ermittelt werden
+\end{itemize}
+\item Kapazitive Touchscreens
+\begin{itemize}
+\item Beschichtete Folie mit transparentem Metalloxid
+\item Über Wechselspannung entsteht elektrisches Feld
+\item Bei Berührung fließt kleiner Entladestrom
+\item Dominierende Technologie: Smartphones (Apple, Samsung, HTC,...)
+\end{itemize}
+\item Induktion, Akustische Oberflächenwelle, Infrarote Gitter, Hybride
+\end{itemize}
+\subsubsection{Riechen und Geschmack – Chemie der Stoffe}
+Das menschliche Riechorgan ist in \autoref{riech} dargestellt.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/ch04_riech.png}
+	\caption{Nasenhöhle mit Riechorgan/ Riechepithel: Mehrere Dutzend bis mehrere Tausend Rezeptortypen}
+	\label{riech}
+\end{figure}\\
+\textbf{Feuchtigkeitssensoren} (vgl. \autoref{feuchtsens}):
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/ch04_feuchtsens.png}
+	\caption{Prinzip Feuchtigkeitssensoren}
+	\label{feuchtsens}
+\end{figure}
+\begin{itemize}
+\item Messprinzip erfolgt über Kapazitätsmessung des Dielektrikums
+\item Schaltung ist aufwendig, wegen benötigtem Wechselspannung
+\end{itemize}
+\newpage
+\textbf{Gassensor-Arrays}:
+\begin{itemize}
+\item KArlsruher MIkroNAse -- KAMINA (siehe \autoref{kamina}): 
+\begin{itemize}
+\item Entwicklung eines speziellen Gassensor-Mikroarrays
+\item Chip, monolithische Fertigung
+\item Schnelles Probeentnahmemodul sowie spezielle Aufbereitung
+\item Lernalgorithmus, Aufzeichnung von Feature-Vektorem für verschiedene Gerüche $\rightarrow$ Matching der charakteristischen Kurven
+\item Software zur Online-Analyse
+\item Optimierung der Baugröße
+\end{itemize}
+\item Spezielle Gassensor-Mikroarrays als \glqq electronic noses\grqq{} zur Weinunterscheidung \\(siehe \autoref{wein}):
+\begin{itemize}
+\item fruity, floral, herbaceous, vegetative, spicy, smoky
+\end{itemize}
+\end{itemize}
+\begin{figure}[h!]
+	\begin{subfigure}{.3\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch04_kamina.png}
+		\caption{KAMINA}
+		\label{kamina}
+	\end{subfigure}
+	\begin{subfigure}{.6\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch04_wein.png}
+		\caption{Gassensor-Arrays zur Weinunterscheidung}
+		\label{wein}
+	\end{subfigure}
+	\caption{}
+\end{figure}
 \subsubsection{Sehen – Facetten, Kameras und der optische Fluss}
+\begin{figure}[h!]
+	\begin{subfigure}{.31\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch04_auge.png}
+		\caption{Menschliches Auge}
+		\label{auge}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\linewidth]{figures/ch04_netzhaut.png}
+		\caption{Gassensor-Arrays zur Weinunterscheidung}
+		\label{netzhaut}
+	\end{subfigure}
+	\caption{Menschlicher Sehsinn}
+\end{figure}
+Die \textbf{Netzhaut} enthält zwei Rezeptortypen:
+\begin{itemize}
+\item Stäbchen: Hell – Dunkel empfindlich (gestrichelte Linie)
+\item Zapfen: 3 Arten mit unterschiedlichen Empfindlichkeiten (vgl. \autoref{zapfen})
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch04_zapfen.png}
+	\caption{Trichromatisches Farbsehen}
+	\label{zapfen}
+\end{figure}
+\textbf{Facettenauge bei Insekten}:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.25\textwidth]{figures/ch04_facette.png}
+	\caption{Facettenauge}
+	\label{facette}
+\end{figure}
+Die Navigation von Insekten erfordert \glqq \textbf{Sensorfusion}\grqq: 
+\begin{itemize}
+\item Biene orientiert sich am Erdmagnetfeld
+\item Berücksichtigung von Sonnenstand und Sonnenweg
+\item Polarisation des Himmellichtes
+\item Geschwindigkeit der Bilder des linken + rechten Auges
+\item ermöglicht Flug mit geringstem Energieverbrauch und kürzestem Weg
+\end{itemize}
+\textbf{Technische Facettenaugen} können folgendermaßen realisiert werden:
+\begin{itemize}
+\item Kameraarrays mit unterschiedlichen opt. Eigenschaften:
+\begin{itemize}
+\item Unterschiedliche Spektralfilter, Brennweiten, Fokus
+\item Multi-Kamera Fusion, verbesserte Bild- Segmentierung, größere Tiefenschärfe, 3D-Rekonstruktion
+\end{itemize}
+\item Kameraarrays mit gleichen optischen Eigenschaften:
+\begin{itemize}
+\item Einsatz von Mikrolinsen zum Zusammensetzen von Bildern
+\item Prinzip der Lichtfeld-Fotografie
+\item Schärfe und Fokus nachträglich veränderbar
+\item weniger Platzbedarf
+\item 3D-Rekonstruktion möglich
+\end{itemize}
+\end{itemize}
+Ein Beispiel für die Verwendung \textbf{insektenartiger Odometrie} (Methode zur Lageschätzung) ist \glqq \textbf{Melissa}\grqq{} (siehe \autoref{melissa}).
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\textwidth]{figures/ch04_melissa.png}
+	\caption{Melissa}
+	\label{melissa}
+\end{figure}\\
+\textbf{Optischer Fluss für Roboter \& Flugdrohnen} (vgl.\autoref{optflow}):
+\begin{itemize}
+\item Optischer Fluss basiert auf Featuredetection und Tracking
+\begin{itemize}
+\item Markante Features werden im Bild erkannt (SIFT, SURF, ...) \footnote{siehe z.B. Nourani-Vatan2012, \textit{A Study of Feature Extraction Algorithms for Optical Flow Tracking}}
+\item Bewegung des Features von Frame zu Frame erzeugt Flussvektor
+\end{itemize}
+\item Optischer Fluss für mobile Robotern, Autos und Flugdrohnen
+\begin{itemize}
+\item Hardware (Kamera) sehr günstig + Optischen Flusses algorithmisch einfach
+\item Nur relative Lokalisierungmethode (mit Drift),
+\item Keine Lokalisierung in featurelosen, homogenen Umgebungen
+\end{itemize}
+\item Optical Flow Sensoren als kompakte, günstige \glqq Fertig\grqq- Sensoren verfügbar
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figures/ch04_optflow.png}
+	\caption{Optischer Fluss}
+	\label{optflow}
+\end{figure}
+\newpage
