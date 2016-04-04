@@ -44,7 +44,7 @@ Mechatronik schon sehr gutm Autonomie und Perzeption noch sehr basal.
 Je ähnlicher Roboter dem Menschen werden, desto unheimlicher wirken sie auf uns.
 Wenn sie zu ähnlich sind vergleicht man sie direkt mit echten Menschen und wirken daher freakig. Das Uncanny Valley ist ein stark untersuchtes wissenschaftliches Phänomen.
 Sollte man als Forscher bewusst abstrahieren und Roboter lieber eckig und kantig gestalten, um ihre Akzeptanz zu erhöhen?
-Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley}.
+Dieses \glqq Tal\grqq{}  muss überwunden werden (vgl. \autoref{ch:10:fig:uncanny-valley}).
 \begin{figure}
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/uncanny_valley.png}
@@ -181,7 +181,7 @@ Dieses \glqq Tal\grqq  muss überwunden werden \autoref{ch:10:fig:uncanny-valley
 \end{itemize}
 Human detection in Smart rooms:
 \begin{itemize}
-	\item Sensors:
+	\item Sensoren:
 	\begin{itemize}
 		\item On-board: Stereo-camera + $2 \ldots 8$ microphones
 		\item Extern: $2 \ldots n$ monocular cameras + 4-channel microphone arrays
@@ -190,27 +190,29 @@ Human detection in Smart rooms:
 	\begin{itemize}
 		\item Individual color models, detectors for head and upper body, difference images
 	\end{itemize}
-	\item Method:
+	\item Methode:
 	\begin{itemize}
 		\item Shared particle filter for A/V featurs, local calculation of features achieving real-time computation
 	\end{itemize}
 \end{itemize}
-\textbf{Programmieren durch Vormachen}:\\
-Demonstration Environment und Execution Environment. \\
-Multimodale Perzeption: mit Kameras, Kinects, Datenhandschuh usw.\\
-\textbf{Interaktives Lernen von humanoiden Robotern}\\
+\textbf{Programmieren durch Vormachen}:
+\begin{itemize}
+\item Demonstration Environment und Execution Environment.
+\item Multimodale Perzeption: mit Kameras, Kinects, Datenhandschuh usw.
+\item Interaktives Lernen von humanoiden Robotern: \\
 Menschlicher Operator als Lehrer: Demonstration, Kontrollabsichten, Kommentare zu ausgeführten Aktionen\\
-Roboter: Hypothesen bilden, Nachfragen von Hypothesen\\
-\textbf{Simulation eines humanoiden Roboters}\\
+Roboter: Hypothesen bilden, Nachfragen von Hypothesen
+\item Simulation eines humanoiden Roboters: 
 VR für Roboter"=Mensch Interaktion. Simulation eines komplexen mechatronischen Systems mit unterschiedlichen Sensoren.
+\end{itemize}
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{figures/pdv.png}
+	\includegraphics[width=.8\textwidth]{figures/pdv.png}
 	\caption{Programmieren durch Vormachen}
 \end{figure}
-
+\newpage
 \subsection{Perzeption für humanoide Roboter}
-
 \subsubsection{Detektion und Modellierung menschlicher Operator und Umwelt}
 \begin{itemize}
 	\item Entwicklung eines erweiterten Umfeldmodels, mit interaktiven Mechanismen
@@ -220,7 +222,7 @@ VR für Roboter"=Mensch Interaktion. Simulation eines komplexen mechatronischen 
 	\item Robuste Detektion und Segmentierung
 	\item Audio-visuelles Tracking des menschlichen Operators
 	\item Detektion von bestimmten Körperteilen
-	\item Bestimmung des \glqq focus of attention\grqq	 des menschlichen Operators
+	\item Bestimmung des \glqq focus of attention\grqq{} des menschlichen Operators
 	\item Audio-visuelle Kontrolle des \glqq focus of attention\grqq
 \end{itemize}
 
@@ -260,14 +262,11 @@ Stereo Vision:
 	\item Appearance-based recognition using a global approach
 	\item Model-based generation of viewsets
 	\item Combination of stereo vision and stored orientation information for 6D-localization (with resprect to a given 3D model)
-\end{itemize}
 \begin{align*}
 	\text{Object Recognition} + \text{Scene} & \text{ Representation} + \text{Perception of Humans} \\
 	& \Downarrow \\ \text{Human Activity Reco} & \text{gnition and Understanding}
 \end{align*}
-
-
-
+\end{itemize}
 \subsection{Anwendungen und Einsatz}
 \begin{itemize}
 	\item DESIRE (Deutsche Service Roboter Initiative) -- Functions and components for everyday use

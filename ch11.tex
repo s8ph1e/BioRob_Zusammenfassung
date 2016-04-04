@@ -2,7 +2,7 @@
 
 \subsubsection{Die Mendelschen Gesetze}
 
-\textbf{Nomenklatur}
+\textbf{Nomenklatur} (vgl. \autoref{nom})
 \begin{itemize}
 	\item Homozygotie: Reinerbigkeit im Bezug auf ein genetisches Merkmal
 	\item Heterozygotie: Mischerbigkeit im Bezug auf ein genetisches Merkmal
@@ -17,11 +17,12 @@
 	\centering
 	\includegraphics[width=.5\textwidth]{figures/nomenklatur.png}
 	\caption{Vererbung Nomenklatur}
+	\label{nom}
 \end{figure}
-
+\noindent
 \textbf{Vererbung von Merkmalen in der Natur -- Mendelsche Gesetzte}
 \begin{enumerate}
-	\item Uniformitätsgesetz:
+	\item \textbf{Uniformitätsgesetz}:
 	Kreuzt man zwei homozygote Linien, die sich in einem oder mehreren Allelpaaren unterscheiden, so sind alle F1-Hybriden uniform.
 	\begin{itemize}
 		\item Es werden zwei reinerbige (homozygote) Eltern verpaart
@@ -34,7 +35,7 @@
 			\item Kodominant: beide Merkmale separat ausgebildet
 		\end{itemize}
 	\end{itemize}
-	\item Spaltungsgesetz:
+	\item \textbf{Spaltungsgesetz}:
 	Kreuzt man (F1-)Hybriden, die in einem Allelpaar heterozygot sind, so ist die F1-Generation nicht uniform.
 	\begin{itemize}
 		\item Es werden zwei mischerbige (heterozygote) Eltern verpaart
@@ -47,7 +48,7 @@
 			\item $\frac{1}{4}$ rein dominant
 		\end{itemize}
 	\end{itemize}
-	\item Unabhängigkeitsregel (gilt eingeschränkt):
+	\item \textbf{Unabhängigkeitsregel} (gilt eingeschränkt):
 	Kreuzt man zwei hohozygote Linien untereinander, die sich in zwei oder mehreren Allelpaaren voneinander unterscheiden, so werden die einzelnen Allele unabhängig voneinander, entsprechend den beiden ersten Mendelschen Gesetzen vererbt.
 \end{enumerate}
 
@@ -96,7 +97,8 @@
 \subsection{Genetische Algorithmen -- \glqq Evolution im Rechner\grqq}
 
 \subsubsection{Genetische Algorithmen -- Motivation und Nomenklatur}
-Biologisches Evolutionsmodell nach Darwin: \emph{survival of the fittest}, \emph{natural selection}; Selektion als treibende Kraft\\
+Biologisches Evolutionsmodell nach Darwin: \emph{survival of the fittest} als Synonym \emph{natural selection};\\
+Selektion als treibende Kraft\\
 Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $\Rightarrow$ hoch komplexe und and die Arbeits- bzw.\ Lebensumgebung hervorragend angepasste Systeme erzeugen lassen \\\\
 \textbf{Nomenklatur}
 \begin{itemize}
@@ -145,8 +147,8 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 \begin{itemize}
 	\item Mutation einzelner Bits: Bitinversion
 	\begin{align*}
-		\text{Elternteil: } & 1010110 \\
-		\text{Nachkomme: } & 1011110
+		\text{Elternteil: } & 101\textbf{0}110 \\
+		\text{Nachkomme: } & 101\textbf{1}110
 	\end{align*}
 	\item Konzepte:
 	\begin{itemize}
@@ -162,7 +164,11 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 	\begin{itemize}
 		\item Herausnehmen einer Teilsequenz und Einfügen an anderer Stelle
 		\item Invertiertes Einfügen der Teilsequenz
-		\item Spezielle Mutationsoperationen  anwendungsspezifisch
+		\begin{align*}
+			\text{Elternteil: } & x_1 \hdots x_i \mathbf{x_{i+1}} \hdots \mathbf{x_j} x_{j+1} \hdots x_n \\
+			\text{Nachkomme: } & x_1 \hdots x_i \mathbf{x_j} \hdots \mathbf{x_{i+1}} x_{j+1} \hdots x_n
+		\end{align*}
+		\item Spezielle Mutationsoperationen $\rightarrow$ anwendungsspezifisch
 	\end{itemize}
 \end{itemize}
 %
@@ -192,10 +198,10 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 	\end{itemize}
 	\item Problem:
 	\begin{itemize}
-		\item Genetische Drift: Individuen vermehren sich zufällig mehr als andere
-		\item Crowding, Ausreißerproblem: fitte Individuen und ähnliche Nachkommen dominieren die Population
-		\item Vielfalt der Population wird eingeschränkt
-		\item Entwicklung der Individuen (Konvergenz) wird verlangsamt
+		\item Genetischer Drift: Individuen vermehren sich zufällig mehr als andere
+		\item Crowding, Ausreißerproblem: \glqq fitte\grqq{} Individuen und ähnliche Nachkommen dominieren die Population
+		\item[$\rightarrow$] Vielfalt der Population wird eingeschränkt
+		\item[$\rightarrow$] Entwicklung der Individuen (Konvergenz) wird verlangsamt
 	\end{itemize}
 	\item Lösung:
 	\begin{itemize}
@@ -219,7 +225,7 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 %
 \textbf{Populationsmitglieder}
 \begin{itemize}
-	\item Populationsgrößer
+	\item Populationsgröße
 	\begin{itemize}
 		\item Soll sie konstant bleiben? $\mu$
 		\item Wie viele neu erzeugte Nachkommen? $\lambda$
@@ -278,7 +284,7 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 		\item belohne davon, gemäß der Fitness das beste Individuum
 		\item wähle Individuen mit höchster Bewertung
 	\end{itemize}
-	wenig abhängig von dem Betrag der Fitness; Wahl der Selektionsmethode oft anwendungsspezifisch
+	wenig abhängig von dem Betrag der Fitness; \\Wahl der Selektionsmethode oft anwendungsspezifisch
 \end{itemize}
 %
 \textbf{Evolutionstheorien in der Biologie}
@@ -302,13 +308,13 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 
 \subsubsection{Anwendungen}
 \begin{itemize}
-	\item Cybermotten: Wer sich tarnt, wird nicht gefressen
+	\item Cybermotten: Wer sich tarnt, wird seltener gefressen. Doch was ist eine gute Tarnung?
 	\begin{itemize}
 		\item Konstante Population 200
 		\item Fitness -- Zeit in der die Motten vom Vogel entdeckt werden
 		\item Rekombination und Mutation (auf dem Graycode der Grauwertpixel)
 		\item Eltern erzeugen mehrere Nachkommen
-		\item Eltern überleben nur eine Generation
+		\item Eltern \glqq überleben\grqq{} nur eine Generation
 	\end{itemize}
 	\begin{center}
 	\includegraphics[width=.5\textwidth]{figures/cybermotten.png}
@@ -319,10 +325,10 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 		\item Beispiel -- Erzeugung von Beinsteuerung
 		\item Steuerungsparameter
 		\begin{itemize}
-			\item Gelenknummer: integer $[0;3]$
-			\item Startzeitpunkt: real $[0;t]$
-			\item Dauer: real $[0;t]$
-			\item Kräfte: real $[-max;max]$
+			\item Gelenknummer: \textit{integer} $[0;3]$
+			\item Startzeitpunkt: \textit{real} $[0;t]$
+			\item Dauer: \textit{real} $[0;t]$
+			\item Kräfte: \textit{real} $[-max;max]$
 		\end{itemize}
 		\item Individuum = Sequenz von Instruktionen variabler Länge
 		\item Mutation
@@ -346,7 +352,7 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 	\end{itemize}
 	\item Snakebot
 	\begin{itemize}
-		\item Biologische Inspiration: Seidenwinder Klapperschlange: $5 km/h$, und die schnellste Schlange, die Schwarze Mamba: bis $16 km/h$
+		\item Biologische Inspiration: Seitenwinder Klapperschlange: $5 km/h$ (schnellste Schlange) und die Schwarze Mamba: bis $16 km/h$
 		\item Individuum = Steuerung
 		\item Fitness = Geschwindigkeit in Fortbewegung und Klettern, Befreien aus Hindernissen etc.\
 		\item Adaption: ein oder zwei Gelenke unbeweglich
@@ -358,7 +364,7 @@ Evolution als Optimierung komplexer künstlicher Systeme: Zufall und Selektion $
 \textbf{Ontogenese:}
 struktureller Wandel einer Einheit ohne Verlust ihrer Organisation, Entwicklung des einzelnen Lebenswesens von der befruchteten Eizelle zu erwachsenen Lebewesen.\\
 \textbf{Ziel:}
-Entwicklung von Agenten durch künstliche Zellen\\\\
+Entwicklung von Agenten durch \glqq künstliche Zellen\grqq{}\\\\
 %
 \textbf{Methode}
 \begin{itemize}
@@ -377,7 +383,7 @@ Entwicklung von Agenten durch künstliche Zellen\\\\
 	\item Individuen = Regeln und Algorithmen für die Erzeugung (Generative Repräsentation)
 \end{itemize}
 %
-\textbf{Golem} -- life as it could be
+\textbf{Golem} -- \glqq life as it could be\grqq{}
 \begin{itemize}
 	\item Individuum = Repräsentation der Morphologie
 	\item Roboter: Stangen (Länge, D, Steifigkeit), Aktuatoren, Gelenktypen, Neuronen (threshold, synaptische Verbindung)
@@ -388,11 +394,41 @@ Entwicklung von Agenten durch künstliche Zellen\\\\
 		\item Evaluation (Fitness)
 		\item Übertragbarkeit in die Realität
 	\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.5\textwidth]{figures/ch11_golem.png}
+	\caption{Project Golem}
+	\label{golem}
+\end{figure}
 \end{itemize}
-
+\newpage
 \subsection{Selbstkonfigurierende Systeme -- Mutierende Roboter}
-siehe ab Folie 73
 \subsubsection{Kurzer Überblick (AIST, Japan) -- Selbstkonfiguration = Evolution? Mutation?}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.4\textwidth]{figures/ch11_selbstkonf.png}
+	\caption{Selbstkonfiguration \& -reparatur}
+	\label{selbstkonf}
+\end{figure}
 \subsubsection{Reales 2D System}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.45\textwidth]{figures/ch11_2d.png}
+	\caption{2D Einheiten}
+	\label{2d}
+\end{figure}
 \subsubsection{3D Selbstkonfigurierendes Robotersystem}
-
+\begin{figure}[!htb]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch11_3d.png}
+		\caption{3D Einheiten}
+		\label{3d}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch11_einsatz.png}
+		\caption{Anwendungen und Einsatzvisionen}
+		\label{einsatz}
+	\end{subfigure}
+\end{figure}
+\newpage
